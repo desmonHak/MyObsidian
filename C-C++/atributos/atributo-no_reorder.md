@@ -1,0 +1,3 @@
+`no_reorder`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-no_005freorder-function-attribute)
+
+No reordene las funciones o variables marcadas como "``no_reorder``" entre sí o contra las instrucciones de ensamblador de nivel superior del ejecutable. El orden real en el programa dependerá de la línea de comandos del enlazador. Las variables estáticas marcadas de esta manera tampoco se eliminan. Esto tiene un efecto similar a la opción ``-fno-toplevel-reorder``, pero solo se aplica a los símbolos marcados.

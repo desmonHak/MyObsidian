@@ -1,0 +1,10 @@
+`constructor`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-constructor-function-attribute)
+`destructor`
+`constructor (priority)`
+`destructor (priority)`
+
+El atributo `constructor` hace que la función sea llamada automáticamente antes de que la ejecución entre en `main ()`. De forma similar, el atributo `destructor` hace que la función sea llamada automáticamente después de que `main ()` finalice o se llame a `exit ()`. Las funciones con estos atributos son útiles para inicializar datos que se utilizan implícitamente durante la ejecución del programa.
+
+En algunos objetivos los atributos también aceptan un argumento entero para especificar una prioridad para controlar el orden en el que se ejecutan las funciones constructoras y destructoras. Un constructor con un número de prioridad menor se ejecuta antes que un constructor con un número de prioridad mayor; la relación inversa se mantiene para los destructores. Tenga en cuenta que las prioridades 0-100 están reservadas. Por lo tanto, si tienes un constructor que asigna un recurso y un destructor que desasigna el mismo recurso, ambas funciones suelen tener la misma prioridad. Las prioridades de las funciones constructoras y destructoras son las mismas que las especificadas para los objetos C++ de ámbito de espacio de nombres (véase [Atributos de variables, funciones y tipos específicos de C++](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html)). Sin embargo, actualmente, el orden en el que se invocan los constructores para objetos C++ con duración de almacenamiento estática y funciones decoradas con el atributo `constructor` no está especificado. En las declaraciones mixtas, el atributo `init_priority` puede utilizarse para imponer un orden específico.
+
+El uso de las formas de argumento de los atributos `constructor` y `destructor` en objetivos en los que la función no está soportada se rechaza con un error.

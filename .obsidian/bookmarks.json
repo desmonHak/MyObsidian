@@ -1,0 +1,98 @@
+{
+  "items": [
+    {
+      "type": "group",
+      "ctime": 1724617796166,
+      "items": [
+        {
+          "type": "graph",
+          "ctime": 1724617828158,
+          "title": "Windows",
+          "options": {
+            "collapse-filter": false,
+            "search": "",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": false,
+            "showOrphans": true,
+            "collapse-color-groups": false,
+            "colorGroups": [
+              {
+                "query": "path:malaware  ",
+                "color": {
+                  "a": 1,
+                  "rgb": 946957
+                }
+              },
+              {
+                "query": "path:Api-s-Windows  ",
+                "color": {
+                  "a": 1,
+                  "rgb": 7940650
+                }
+              },
+              {
+                "query": "path:C-C++  ",
+                "color": {
+                  "a": 1,
+                  "rgb": 2303
+                }
+              },
+              {
+                "query": "path:Assembly  ",
+                "color": {
+                  "a": 1,
+                  "rgb": 16711901
+                }
+              },
+              {
+                "query": "path:Api-s-Windows/Win-api/win32  ",
+                "color": {
+                  "a": 1,
+                  "rgb": 16711680
+                }
+              }
+            ],
+            "collapse-display": false,
+            "showArrow": true,
+            "textFadeMultiplier": -2.2,
+            "nodeSizeMultiplier": 1.01875,
+            "lineSizeMultiplier": 1.0953125,
+            "collapse-forces": false,
+            "centerStrength": 0.255208333333333,
+            "repelStrength": 5.83333333333333,
+            "linkStrength": 0.609375,
+            "linkDistance": 182,
+            "scale": 0.32133638605036013,
+            "close": false
+          }
+        },
+        {
+          "type": "folder",
+          "ctime": 1724614807616,
+          "path": "Api-s-Windows/Win-api/win32",
+          "title": "Doc_win32_microsoft"
+        },
+        {
+          "type": "folder",
+          "ctime": 1724614786544,
+          "path": "Api-s-Windows/Win-api",
+          "title": "Win-api"
+        },
+        {
+          "type": "folder",
+          "ctime": 1724614763720,
+          "path": "Api-s-Windows/Nt-api",
+          "title": "Nt-api"
+        },
+        {
+          "type": "folder",
+          "ctime": 1724617877551,
+          "path": "Api-s-Windows",
+          "title": "Api-s-Windows"
+        }
+      ],
+      "title": "Windows"
+    }
+  ]
+}

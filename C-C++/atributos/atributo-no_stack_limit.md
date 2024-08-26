@@ -1,0 +1,2 @@
+`no_stack_limit`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-no_005fstack_005flimit-function-attribute)
+Este atributo anula localmente las opciones de línea de comandos ``-fstack-limit-register`` y ``-fstack-limit-symbol``; tiene el efecto de deshabilitar la verificación del límite de pila en la función a la que se aplica.

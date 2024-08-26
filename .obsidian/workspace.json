@@ -1,0 +1,207 @@
+{
+  "main": {
+    "id": "ea5c772b1d6c9ade",
+    "type": "split",
+    "children": [
+      {
+        "id": "ddf932e8599c5852",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a76a4c64795fff1e",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "79ddba64bd75576e",
+    "type": "split",
+    "children": [
+      {
+        "id": "4fa283daa1c082c4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "759b28809427cd8a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2be819f62f78924d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          },
+          {
+            "id": "f94dc4552f32c55a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 360.5
+  },
+  "right": {
+    "id": "21a07210af194487",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf5bf8fb7223fe1d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6b8e0d7c5ef7778e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ccec2eac945ff48c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d66390eac759cc1f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b0b54b68e8448f71",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "36caea01409e94fd",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "switcher:Abrir selector rápido": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "markdown-importer:Abrir el importador de Markdown": false
+    }
+  },
+  "active": "a76a4c64795fff1e",
+  "lastOpenFiles": [
+    "git_pv",
+    "Nueva carpeta",
+    "Api-s-Windows/Win-api/kernelbase.dll/VirtualAlloc/example2.c",
+    "Api-s-Windows/Win-api/kernelbase.dll/VirtualAlloc/example1.c",
+    "Api-s-Windows/Nt-api/phnt/include/winsta.md",
+    "Api-s-Windows/Nt-api/phnt/include/winsta.h",
+    "Api-s-Windows/Nt-api/phnt/include/usermgr.md",
+    "Api-s-Windows/Nt-api/phnt/include/subprocesstag.md",
+    "Api-s-Windows/Nt-api/phnt/include/usermgr.h",
+    "Api-s-Windows/Nt-api/phnt/include/subprocesstag.h",
+    "Api-s-Windows/Nt-api/phnt/include/phnt_windows.md",
+    "Api-s-Windows/Nt-api/phnt/include/phnt_windows.h",
+    "Api-s-Windows/Nt-api/phnt/include/phnt_ntdef.h",
+    "Api-s-Windows/Nt-api/phnt/include/phnt_ntdef.md",
+    "Api-s-Windows/Nt-api/phnt/include/phnt.md",
+    "Api-s-Windows/Nt-api/phnt/include/phnt.h",
+    "Api-s-Windows/Nt-api/phnt/include/ntzwapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntxcapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntzwapi.h",
+    "Api-s-Windows/Nt-api/phnt/include/ntwmi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntwow64.md",
+    "Api-s-Windows/Nt-api/phnt/include/nttp.md",
+    "Api-s-Windows/Nt-api/phnt/include/nttmapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntsmss.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntsxs.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntseapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntsam.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntregapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntrtl.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntpsapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntpoapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntpebteb.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntpnpapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntpfapi.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntnls.md",
+    "Api-s-Windows/Nt-api/phnt/include/ntmmapi.md",
+    "Api-s-Windows/Nt-api/README-phnt.png",
+    "Api-s-Windows/Nt-api/ReactOs.png",
+    "Api-s-Windows/Nt-api/NT.png",
+    "aApi-s-Windows/Nt-api/README-phnt.png",
+    "aApi-s-Windows/Nt-api/ReactOs.png",
+    "aApi-s-Windows/Nt-api/NT.png",
+    "Api-s-Windowsa/Nt-api/README-phnt.png",
+    "Api-s-Windowsa/Nt-api/ReactOs.png",
+    "Api-s-Windowsa/Nt-api/NT.png",
+    "Sin título 1.canvas",
+    "Sin título.canvas",
+    "Pasted image 20240826043209.png"
+  ]
+}

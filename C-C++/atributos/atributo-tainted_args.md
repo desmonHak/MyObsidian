@@ -1,0 +1,5 @@
+`tainted_args`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-tainted_005fargs-function-attribute)
+
+El atributo `tainted_args` se utiliza para especificar que una función se llama de una manera que requiere la limpieza de sus argumentos, como una llamada al sistema en el núcleo de un sistema operativo, mire [[NTApi]] y [[syscall]]. Una función de este tipo puede considerarse parte de la "``superficie de ataque``" del programa. El atributo se puede utilizar tanto en declaraciones de funciones como en declaraciones de campos que contienen punteros de función. En el último caso, cualquier función utilizada como inicializador de dicho campo de devolución de llamada se tratará como si se llamara con argumentos contaminados.
+
+El analizador prestará especial atención a dichas funciones cuando se suministre ``-fanalyzer``, lo que podría generar advertencias protegidas por ``-Wanalyzer-tainted-allocation-size``, ``-Wanalyzer-tainted-array-index``, ``-Wanalyzer-tainted-divisor``, ``-Wanalyzer-tainted-offset`` y ``-Wanalyzer-tainted-size``.

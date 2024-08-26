@@ -1,0 +1,5 @@
+`hot`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-hot-function-attribute)
+
+El atributo `hot` en una función se utiliza para informar al compilador de que la función es un punto caliente del programa compilado. La función se optimiza de forma más agresiva y en muchos objetivos se coloca en una subsección especial de la sección de texto para que todas las funciones calientes aparezcan cerca unas de otras, mejorando la localidad. En C++, el atributo `hot` puede aplicarse a los tipos con el efecto de propagarse a las funciones miembro. Véase [Atributos de variables, funciones y tipos específicos de C++](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html).
+
+Cuando la retroalimentación de perfil está disponible, mediante`` -fprofile-use``, las funciones calientes se detectan automáticamente y este atributo se ignora.

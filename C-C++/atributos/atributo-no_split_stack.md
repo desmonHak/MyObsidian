@@ -1,0 +1,3 @@
+`no_split_stack`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-no_005fsplit_005fstack-function-attribute)
+
+Si se proporciona ``-fsplit-stack``, las funciones tienen un pequeño prólogo que decide si se debe dividir la pila. Las funciones con el atributo ``no_split_stack`` no tienen ese prólogo y, por lo tanto, pueden ejecutarse con solo una pequeña cantidad de espacio de pila disponible.

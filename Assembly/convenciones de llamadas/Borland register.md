@@ -1,0 +1,6 @@
+[[convenciones-de-llamadas]]
+[https://en.wikipedia.org/wiki/X86_calling_conventions](https://en.wikipedia.org/wiki/X86_calling_conventions)
+
+Evalúa los argumentos de izquierda a derecha, pasa tres argumentos a través de ``EAX``, ``EDX``, ``ECX``. Los argumentos restantes se introducen en la pila, también de izquierda a derecha.[15] Es la convención de llamada por defecto del compilador de 32 bits de Delphi, donde se conoce como register. Esta convención de llamada también es utilizada por ``Embarcadero's C++Builder``, donde se denomina [[__fastcall]].[16] En este compilador, la [[__fastcall]] de Microsoft se puede utilizar como [[__msfastcall]].[17]
+
+Se puede hacer que GCC y ``Clang`` usen una convención de llamada similar usando [[__stdcall]] con el atributo de función ``regparm`` o el modificador ``-mregparm=3``. (El orden de la pila se invierte). (El orden de la pila se invierte.) También es posible producir una variante de limpieza de llamada usando [[__cdecl]] o extender esto para usar también registros SSE.[18] Una versión basada en [[__cdecl]] es usada por el kernel de Linux en i386 desde la versión 2.6.20 (lanzada en Febrero de 2007).[19]

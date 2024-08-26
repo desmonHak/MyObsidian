@@ -1,0 +1,11 @@
+`gnu_inline`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-gnu_005finline-function-attribute)
+
+Este atributo debe utilizarse con una función declarada también con la palabra clave `inline`. Indica a ``GCC`` que trate la función como si estuviera definida en modo ``gnu90`` incluso al compilar en modo ``C99`` o ``gnu99``.
+
+Si la función se declara `externa`, entonces esta definición de la función se utiliza sólo para inlining. En ningún caso se compila la función como una función independiente, ni siquiera si se toma su dirección explícitamente. Dicha dirección se convierte en una referencia externa, como si sólo hubiera declarado la función y no la hubiera definido. Esto tiene casi el efecto de una macro. La forma de usar esto es poner una definición de función en un fichero de cabecera con este atributo, y poner otra copia de la función, sin `extern`, en un fichero de biblioteca. La definición en el fichero de cabecera hace que la mayoría de las llamadas a la función se inlineen. Si queda algún uso de la función, se referirá a la copia única de la biblioteca. Tenga en cuenta que las dos definiciones de las funciones no tienen por qué ser exactamente iguales, aunque si no tienen el mismo efecto su programa puede comportarse de forma extraña.
+
+En C, si la función no es ni `extern` ni `static`, entonces la función se compila como una función independiente, y se inlinea cuando es posible.
+
+Así es como GCC trataba tradicionalmente las funciones declaradas `inline`. Dado que ISO C99 especifica una semántica diferente para `inline`, este atributo de función se proporciona como una medida de transición y como una característica útil por derecho propio. Este atributo está disponible en GCC 4.1.3 y posteriores. Está disponible si cualquiera de las macros del preprocesador `__GNUC_GNU_INLINE__` o `__GNUC_STDC_INLINE__` están definidas. Véase [Una función en línea es tan rápida como una macro](https://gcc.gnu.org/onlinedocs/gcc/Inline.html).
+
+En C++, este atributo no depende de `extern` en modo alguno, pero requiere la palabra clave `inline` para activar su comportamiento especial.

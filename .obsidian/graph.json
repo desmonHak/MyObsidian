@@ -1,0 +1,58 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:malaware  ",
+      "color": {
+        "a": 1,
+        "rgb": 946957
+      }
+    },
+    {
+      "query": "path:Api-s-Windows  ",
+      "color": {
+        "a": 1,
+        "rgb": 7940650
+      }
+    },
+    {
+      "query": "path:C-C++  ",
+      "color": {
+        "a": 1,
+        "rgb": 2303
+      }
+    },
+    {
+      "query": "path:Assembly  ",
+      "color": {
+        "a": 1,
+        "rgb": 16711901
+      }
+    },
+    {
+      "query": "path:Api-s-Windows/Win-api/win32  ",
+      "color": {
+        "a": 1,
+        "rgb": 16711680
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": -2.2,
+  "nodeSizeMultiplier": 1.01875,
+  "lineSizeMultiplier": 1.0953125,
+  "collapse-forces": false,
+  "centerStrength": 0.255208333333333,
+  "repelStrength": 5.83333333333333,
+  "linkStrength": 0.609375,
+  "linkDistance": 182,
+  "scale": 0.16348370567220716,
+  "close": true
+}

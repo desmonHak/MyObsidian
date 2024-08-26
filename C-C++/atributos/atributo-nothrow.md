@@ -1,0 +1,3 @@
+`nothrow`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-nothrow-function-attribute)
+
+El atributo `nothrow` se utiliza para informar al compilador que una función no puede generar una excepción. Por ejemplo, se puede garantizar que la mayoría de las funciones de la biblioteca C estándar no generen una excepción con las notables excepciones de `qsort` y `bsearch` que toman argumentos de puntero de función.

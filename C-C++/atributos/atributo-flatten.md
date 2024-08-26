@@ -1,0 +1,4 @@
+`flatten`[](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-flatten-function-attribute)
+
+
+En general, el ``inlining`` dentro de una función es limitado. Para una función marcada con este atributo, cada llamada dentro de esta función se inlinea incluyendo las llamadas que tal ``inlining`` introduce a la función (pero no las llamadas recursivas a la propia función), si es posible. Las funciones declaradas con el atributo `noinline` y similares no se inlinean. El hecho de que la propia función se tenga en cuenta para el ``inlining`` depende de su tamaño y de los parámetros de ``inlining`` actuales.

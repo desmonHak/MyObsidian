@@ -1,0 +1,1 @@
+Las leyes del movimiento son tres leyes enunciadas por [[Isaac Newton]], que describen la relación entre el movimiento de un objeto, y las fuerzas que actúan sobre él.

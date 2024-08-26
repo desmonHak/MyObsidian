@@ -1,0 +1,3 @@
+`noipa` [¶](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-noipa-function-attribute)
+
+Desactivar las optimizaciones interprocedimentales entre la función con este atributo y sus invocadores, como si el cuerpo de la función no estuviera disponible al optimizar los invocadores y los invocadores no estuvieran disponibles al optimizar el cuerpo. Este atributo implica los atributos noinline, noclone y no_icf. Sin embargo, este atributo no es equivalente a una combinación de otros atributos, ya que su propósito es suprimir las optimizaciones existentes y futuras que emplean análisis interprocedimentales, incluidas aquellas que no tienen un atributo adecuado para deshabilitarlas individualmente.
