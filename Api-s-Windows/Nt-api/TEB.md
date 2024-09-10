@@ -208,7 +208,7 @@ La estructura [[TEB]] contiene un puntero a una estructura de tipo [[PEB|PEB- (P
 PPEB_process ProcessEnvironmentBlock
 ```
 
-Función para obtener el [[TEB]] con ensamblador via [[Registros de segmento en windows (gs & fs)]]:
+Función para obtener el [[TEB]] con ensamblador via [[Registros de segmento en Windows (GS & FS)]]:
 ```c
 PTEB_thread My_NtCurrentTeb() {
 	PTEB_thread teb;

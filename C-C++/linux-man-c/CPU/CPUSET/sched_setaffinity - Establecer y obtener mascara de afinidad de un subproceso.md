@@ -1,16 +1,13 @@
 _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
 
 ## [NAME](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#NAME)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        sched_setaffinity, sched_getaffinity - set and get a thread's CPU
        affinity mask
 
 ## [LIBRARY](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#LIBRARY)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        Standard C library (_libc_, _-lc_)
 
 ## [SYNOPSIS](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#SYNOPSIS)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
 ```c
        #define _GNU_SOURCE             /* See feature_test_macros(7) */
        #include <sched.h>
@@ -20,7 +17,6 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
 ```
 
 ## [DESCRIPTION](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#DESCRIPTION)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        A thread's CPU affinity mask determines the set of CPUs on which
        it is eligible to run.  On a multiprocessor system, setting the
        CPU affinity mask can be used to obtain performance benefits.
@@ -53,7 +49,6 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
        _pid_ is zero, then the mask of the calling thread is returned.
 
 ## [RETURN VALUE](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#RETURN_VALUE)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        On success, **sched_setaffinity**() and **sched_getaffinity**() return 0
        (but see "C library/kernel differences" below, which notes that
        the underlying **sched_getaffinity**() differs in its return value).
@@ -61,7 +56,6 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
        error.
 
 ## [ERRORS](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#ERRORS)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        **EFAULT** A supplied memory address was invalid.
 
        **EINVAL** The affinity bit mask _mask_ contains no processors that are
@@ -84,11 +78,9 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
        **ESRCH**  The thread whose ID is _pid_ could not be found.
 
 ## [STANDARDS](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#STANDARDS)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        Linux.
 
 ## [HISTORY](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#HISTORY)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        Linux 2.5.8, glibc 2.3.
 
        Initially, the glibc interfaces included a _cpusetsize_ argument,
@@ -97,7 +89,6 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
        _size_t_.
 
 ## [NOTES](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#NOTES)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        After a call to **sched_setaffinity**(), the set of CPUs on which the
        thread will actually run is the intersection of the set specified
        in the _mask_ argument and the set of CPUs actually present on the
@@ -184,7 +175,6 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
        of bits requested to be allocated).
 
 ## [EXAMPLES](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#EXAMPLES)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
-
        The program below creates a child process.  The parent and child
        then each assign themselves to a specified CPU and execute
        identical loops that consume some CPU time.  Before terminating,
@@ -224,8 +214,9 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
            sys 12.07
 
    **Program source**
-
+Ejemplo [[afinidad.c]]
 ```c
+
 #define _GNU_SOURCE
 #include <err.h>
 #include <sched.h>
@@ -234,53 +225,100 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
 #include <sys/wait.h>
 #include <unistd.h>
 
+/*
+ *
+ * El siguiente programa crea un proceso hijo.  El padre y 
+ * el hijo se asignan cada uno a una CPU específica y ejecutan 
+ * bucles idénticos que consumen algo de tiempo de CPU.  
+ * Antes de terminar, el proceso padre espera a que el proceso 
+ * hijo termine.  El programa toma tres argumentos de la 
+ * línea de comandos: 
+ *      el número de CPU para el proceso padre, 
+ *      el número de CPU para el proceso hijo y 
+ *      el número de iteraciones de bucle que ambos 
+ *          procesos deben realizar. 
+ * Como demuestran las siguientes ejecuciones de ejemplo, 
+ * la cantidad de tiempo real y de CPU consumido al ejecutar 
+ * el programa dependerá de los efectos de la caché 
+ * intra-núcleo y de si los procesos están utilizando la misma CPU.
+ */
+
 int main(int argc, char *argv[])
 
 {
-    int parentCPU, childCPU;
-    cpu_set_t set;
-    unsigned int nloops;
+    int parentCPU, childCPU;
+    cpu_set_t set;
+    unsigned int nloops;
 
-    if (argc != 4)
-    {
-        fprintf(stderr, "Usage: %s parent-cpu child-cpu num-loops\n", argv[0]);
-        exit(EXIT_FAILURE);
-    }
+    if (argc != 4)
+    {
+        fprintf(stderr, "Usage: %s parent-cpu child-cpu num-loops\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
 
-    parentCPU = atoi(argv[1]);
-    childCPU = atoi(argv[2]);
-    nloops = atoi(argv[3]);
+    parentCPU = atoi(argv[1]);
+    childCPU = atoi(argv[2]);
+    nloops = atoi(argv[3]);
 
-    CPU_ZERO(&set);
+    CPU_ZERO(&set);
 
-    switch (fork())
-    {
-    case -1:
-        /* Error */ err(EXIT_FAILURE, "fork");
-        
-    case 0:
-        /* Child */ CPU_SET(childCPU, &set);
+    switch (fork())
+    {
+    case -1:
+        /* Error */ err(EXIT_FAILURE, "fork");
+    
+    /*
+     * El sistema de archivos cpuset es una interfaz pseudo-sistema
+     * de archivos para el mecanismo cpuset del núcleo, que se utiliza 
+     * para controlar la ubicación de los procesos en el procesador y 
+     * en la memoria.  Normalmente se monta en /dev/cpuset.
+     * 
+     * En sistemas con kernels compilados con soporte integrado para 
+     * cpusets, todos los procesos se adjuntan a un cpuset, y los 
+     * cpusets están siempre presentes. 
+     * 
+     * Los cpusets se integran con el mecanismo de afinidad de 
+     * programación sched_setaffinity(2) y con los mecanismos de 
+     * asignación de memoria mbind(2) y set_mempolicy(2).
+     * los mecanismos de colocación de memoria mbind(2) y 
+     * set_mempolicy(2) en el kernel del núcleo.  Ninguno de estos 
+     * mecanismos permite a un proceso utilizar una CPU o un nodo 
+     * de memoria que no esté permitido por la cpuset.  
+     * Si los cambios en la colocación de cpuset de un proceso entran 
+     * en conflicto con estos otros mecanismos, entonces la colocación 
+     * de la cpuset es forzada incluso si significa anular estos 
+     * otros mecanismos.  El núcleo lleva a cabo este
+     * restringiendo silenciosamente las CPUs y los nodos de 
+     * memoria solicitados por estos otros mecanismos a los permitidos 
+     * por la cpuset del proceso invocador. Esto puede resultar en que 
+     * estas otras llamadas devuelvan un error, 
+     * si por ejemplo, dicha llamada termina solicitando un conjunto 
+     * vacío de CPUs o nodos de memoria, después de que la petición 
+     * esté restringida al cpuset del proceso invocador.
+     */
+    case 0:
+        /* Child */ CPU_SET(childCPU, &set);
 
-        if (sched_setaffinity(getpid(), sizeof(set), &set) == -1)
-            err(EXIT_FAILURE, "sched_setaffinity");
+        if (sched_setaffinity(getpid(), sizeof(set), &set) == -1)
+            err(EXIT_FAILURE, "sched_setaffinity");
 
-        for (unsigned int j = 0; j < nloops; j++)
-            getppid();
-            
-        exit(EXIT_SUCCESS);
-        
-    default:
-        /* Parent */ CPU_SET(parentCPU, &set);
-        if (sched_setaffinity(getpid(), sizeof(set), &set) == -1)
-            err(EXIT_FAILURE, "sched_setaffinity");
+        for (unsigned int j = 0; j < nloops; j++)
+            getppid();
+            
+        exit(EXIT_SUCCESS);
+        
+    default:
+        /* Parent */ CPU_SET(parentCPU, &set);
+        if (sched_setaffinity(getpid(), sizeof(set), &set) == -1)
+            err(EXIT_FAILURE, "sched_setaffinity");
 
-        for (unsigned int j = 0; j < nloops; j++)
-            getppid();
+        for (unsigned int j = 0; j < nloops; j++)
+            getppid();
 
-        wait(NULL); /* Wait for child to terminate */
-        exit(EXIT_SUCCESS);
+        wait(NULL); /* Wait for child to terminate */
+        exit(EXIT_SUCCESS);
 
-    }
+    }
 }
 ```
 

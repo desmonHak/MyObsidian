@@ -1,5 +1,7 @@
 [https://learn.microsoft.com/es-es/cpp/cpp/argument-passing-and-naming-conventions?view=msvc-170](https://learn.microsoft.com/es-es/cpp/cpp/argument-passing-and-naming-conventions?view=msvc-170)
 
+Vea la cabecera [[WINDEF.H]] donde se define macros para el uso de distintas convenciones de llamadas.
+
 Los compiladores de Microsoft C++ permiten especificar convenciones para pasar argumentos y valores devueltos entre funciones y llamadores. No todas las convenciones están disponibles en todas las plataformas compatibles y algunas convenciones utilizan implementaciones específicas de la plataforma. En la mayoría de los casos, se omiten palabras clave o modificadores de compilador que especifican una convención no compatible en una plataforma concreta y se usa la convención predeterminada de la plataforma.
 
 En plataformas x86, todos los argumentos se amplían a 32 bits cuando se pasan. Los valores devueltos también se amplían a 32 bits y se devuelven en el registro EAX, salvo las estructuras de 8 bytes, que se devuelven en el par de registros EDX:EAX. Las estructuras de mayor tamaño se devuelven en el registro EAX como punteros a estructuras de devolución ocultas. Los parámetros se insertan en la pila de derecha a izquierda. Las estructuras distintas de POD no se devolverán en registros.

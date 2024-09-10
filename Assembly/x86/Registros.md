@@ -58,53 +58,36 @@ El procesador x64 también proporciona varios conjuntos de registros de punto fl
 - Ocho registros x80 bits x87.
 - Ocho registros MMX de 64 bits. (Estos registros se superponen con los registros x87).
 - El conjunto original de ocho registros SSE de 128 bits se incrementa a dieciséis.
-## Convenciones de llamada
+## [[convenciones-de-llamadas]]
 
-A diferencia de x86, el compilador de C/C++ solo admite una convención de llamada en x64. Esta convención de llamada aprovecha el mayor número de registros disponibles en x64:
+A diferencia de x86, el compilador de C/C++ en x64 admite la convención [[__fastcall]]. Esta convención de llamada aprovecha el mayor número de registros disponibles en x64:
 
 - Los cuatro primeros parámetros enteros o de puntero se pasan en los registros **rcx**, **rdx**, **r8** y **r9** .
-
 - Los cuatro primeros parámetros de punto flotante se pasan en los cuatro primeros registros SSE, **xmm0**-**xmm3**.
-
 - El autor de la llamada reserva espacio en la pila para los argumentos pasados en los registros. La función llamada puede usar este espacio para volcar el contenido de los registros en la pila.
-
 - Los argumentos adicionales se pasan en la pila.
-
 - Se devuelve un valor devuelto de entero o puntero en el registro **rax** , mientras que se devuelve un valor devuelto de punto flotante en **xmm0**.
-
 - **rax**, **rcx**, **rdx**, **r8**-**r11** son volátiles.
-
 - **rbx**, **rbp**, **rdi**, **rsi**, **r12**-**r15** son no volátiles.
 
 La convención de llamada para C++ es similar. **Este puntero** se pasa como primer parámetro implícito. Los tres parámetros siguientes se pasan en los registros restantes, mientras que el resto se pasan en la pila.
 ## Modos de direccionamiento
 
 Los modos de direccionamiento en modo de 64 bits son similares, pero no idénticos a x86.
-
 - Las instrucciones que hacen referencia a registros de 64 bits se realizan automáticamente con precisión de 64 bits. Por ejemplo, **mov rax, [rbx]** mueve 8 bytes a partir de **rbx** a **rax**.
-
 - Se ha agregado una forma especial de la instrucción **mov** para constantes inmediatas de 64 bits o direcciones constantes. Para todas las demás instrucciones, las constantes inmediatas o las direcciones constantes siguen siendo de 32 bits.
-
 - x64 proporciona un nuevo modo de direccionamiento relativo a **la extracción**. Las instrucciones que hacen referencia a una sola dirección constante se codifican como desplazamientos de **rip**. Por ejemplo, la instrucción **mov rax, [**_addr_**]** mueve 8 bytes a partir de la**extracción**_del addr_ + a **rax**.
 
 Instrucciones, como **jmp**, **llamada**, **inserción** y **pop**, que hacen referencia implícitamente al puntero de instrucción y el puntero de pila los tratan como registros de 64 bits en x64.
 ## Consulte también
 
 - [X86-64 Wikipedia](https://en.wikipedia.org/wiki/X86-64)
-    
 - [Recursos para desarrolladores de AMD 64](https://developer.amd.com/resources/)
-    
 - [Intel: introducción al ensamblado x64](https://software.intel.com/content/www/us/en/develop/articles/introduction-to-x64-assembly.html)
-    
 - [x64 Primer: todo lo que necesita saber para empezar a programar sistemas Windows de 64 bits - Matt Pietrek](https://learn.microsoft.com/es-es/archive/msdn-magazine/2006/may/x64-starting-out-in-64-bit-windows-systems-with-visual-c)
-    
 - [La historia de las convenciones de llamada, parte 5: amd64 Raymond Chen](https://devblogs.microsoft.com/oldnewthing/20040114-00/?p=41053)
-
-
 ----
-
 ### Registros Puntero: puntero Base(BP), puntero Pila(SP) y puntero de instrucciones (IP):
-
 Estos registros guardara direcciones de memoria.
 #### Registros BP y SP:
 Estos registros trabajan de la la mano y se asocian al registro de segmento `ss`. Estos registros se usan en conjunto para manipular el `stack`, también conocido como pila. `bp` viene de `Base Pointer` que es lo mismo que `Puntero Base` y `sp` proviene de `Stack Pointer` o `Puntero Stack`. Podéis encontrar mas información de estos registros y del uso de la pila en este apartado:
@@ -152,3 +135,22 @@ En estos se almacenan direcciones de memoria de donde empieza y acaban los disti
 ---- 
 ### Registro de punto flotante
 Estos registros se usan para hacer cálculos en paralelo y de coma flotante(double, float). Forman parte del llamado `juego de intrucciones extendidas x86`. Estos registros usan sus propias instrucciones para operar.
+
+----
+## Registros de control ([[control-registers]])
+- [[CR0]]
+- [[CR1]]
+- [[CR2]]
+- [[CR3]]
+- [[CR4]]
+- [[CR5]]
+- [[CR6]]
+- [[CR7]]
+- [[CR8]]
+- [[CR9]]
+- [[CR10]]
+- [[CR11]]
+- [[CR12]]
+- [[CR13]]
+- [[CR14]]
+- [[CR15]]

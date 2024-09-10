@@ -8,51 +8,72 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "path:malaware  ",
+      "query": "path:Assembly  ",
       "color": {
         "a": 1,
-        "rgb": 946957
+        "rgb": 16711829
+      }
+    },
+    {
+      "query": "path:Python  ",
+      "color": {
+        "a": 1,
+        "rgb": 1114367
       }
     },
     {
       "query": "path:Api-s-Windows  ",
       "color": {
         "a": 1,
-        "rgb": 7940650
+        "rgb": 16753981
       }
     },
     {
       "query": "path:C-C++  ",
       "color": {
         "a": 1,
-        "rgb": 2303
+        "rgb": 2752497
       }
     },
     {
-      "query": "path:Assembly  ",
+      "query": "path:Haskell  ",
       "color": {
         "a": 1,
-        "rgb": 16711901
+        "rgb": 878666
       }
     },
     {
-      "query": "path:Api-s-Windows/Win-api/win32  ",
+      "query": "path:malaware  ",
       "color": {
         "a": 1,
         "rgb": 16711680
       }
+    },
+    {
+      "query": "path:Git  ",
+      "color": {
+        "a": 1,
+        "rgb": 327424
+      }
+    },
+    {
+      "query": "path:dev-os  ",
+      "color": {
+        "a": 1,
+        "rgb": 11141375
+      }
     }
   ],
   "collapse-display": false,
-  "showArrow": true,
-  "textFadeMultiplier": -2.2,
-  "nodeSizeMultiplier": 1.01875,
-  "lineSizeMultiplier": 1.0953125,
+  "showArrow": false,
+  "textFadeMultiplier": -2,
+  "nodeSizeMultiplier": 1.171875,
+  "lineSizeMultiplier": 1.325,
   "collapse-forces": false,
-  "centerStrength": 0.255208333333333,
-  "repelStrength": 5.83333333333333,
-  "linkStrength": 0.609375,
-  "linkDistance": 182,
-  "scale": 0.16348370567220716,
-  "close": true
+  "centerStrength": 0.286458333333333,
+  "repelStrength": 12.5,
+  "linkStrength": 1,
+  "linkDistance": 118,
+  "scale": 0.262370060537802,
+  "close": false
 }

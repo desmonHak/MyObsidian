@@ -316,7 +316,7 @@ PTEB_thread My_NtCurrentTeb()
 	return teb;
 }
 ```
-Se puede situar información de los registros de segmentos usados aquí: [[Registros de segmento en windows (gs & fs)]].
+Se puede situar información de los registros de segmentos usados aquí: [[Registros de segmento en Windows (GS & FS)]].
 
 
 Imprimir PEB:

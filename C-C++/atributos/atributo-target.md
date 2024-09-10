@@ -6,7 +6,7 @@ Varios back-ends de destino implementan el atributo `target` para especificar qu
 
 El atributo `target` se puede usar, por ejemplo, para compilar una función con una ISA (arquitectura de conjunto de instrucciones) diferente a la predeterminada. Se puede usar `#pragma GCC target'` para especificar opciones específicas de destino para más de una función. Consulte  [Function Specific Option Pragmas](https://gcc.gnu.org/onlinedocs/gcc/Function-Specific-Option-Pragmas.html), para obtener detalles sobre el pragma.
 
-Por ejemplo, en un ``x86``, podría declarar una función con el atributo `target("sse4.1,arch=core2")` y otra con `target("sse4a,arch=amdfam10")`. Esto es equivalente a compilar la primera función con las opciones ``-msse4.1`` y ``-march=core2``, y la segunda función con las opciones ``-msse4a`` y ``-march=amdfam10``. Depende de usted asegurarse de que una función solo se invoque en una máquina que admita la [[ISA]] particular para la que está compilada (por ejemplo, usando [[cpuid]] en ``x86`` para determinar qué bits de características y familia de arquitectura se usan).
+Por ejemplo, en un ``x86``, podría declarar una función con el atributo `target("sse4.1,arch=core2")` y otra con `target("sse4a,arch=amdfam10")`. Esto es equivalente a compilar la primera función con las opciones ``-msse4.1`` y ``-march=core2``, y la segunda función con las opciones ``-msse4a`` y ``-march=amdfam10``. Depende de usted asegurarse de que una función solo se invoque en una máquina que admita la [[ISA]] particular para la que está compilada (por ejemplo, usando [[CPUID]] en ``x86`` para determinar qué bits de características y familia de arquitectura se usan).
 
 ```c
 int core2_func (void) __attribute__ ((__target__ ("arch=core2")));
