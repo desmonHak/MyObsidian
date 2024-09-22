@@ -5,40 +5,40 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTPEBTEB_H
-#define _NTPEBTEB_H
+[[ifndef]] _NTPEBTEB_H
+[[define]] _NTPEBTEB_H
 
 typedef struct _RTL_USER_PROCESS_PARAMETERS *PRTL_USER_PROCESS_PARAMETERS;
 typedef struct _RTL_CRITICAL_SECTION *PRTL_CRITICAL_SECTION;
 typedef struct _SILO_USER_SHARED_DATA *PSILO_USER_SHARED_DATA;
 typedef struct _LEAP_SECOND_DATA *PLEAP_SECOND_DATA;
 
-#include <ntsxs.h>
+[[include]] <ntsxs.h>
 
 // private
-#define KACF_OLDGETSHORTPATHNAME 0x00000001
-#define KACF_VERSIONLIE_NOT_USED 0x00000002
-#define KACF_GETDISKFREESPACE 0x00000008
-#define KACF_FTMFROMCURRENTAPT 0x00000020
-#define KACF_DISALLOWORBINDINGCHANGES 0x00000040
-#define KACF_OLE32VALIDATEPTRS 0x00000080
-#define KACF_DISABLECICERO 0x00000100
-#define KACF_OLE32ENABLEASYNCDOCFILE 0x00000200
-#define KACF_OLE32ENABLELEGACYEXCEPTIONHANDLING 0x00000400
-#define KACF_RPCDISABLENDRCLIENTHARDENING 0x00000800
-#define KACF_RPCDISABLENDRMAYBENULL_SIZEIS 0x00001000
-#define KACF_DISABLEALLDDEHACK_NOT_USED 0x00002000
-#define KACF_RPCDISABLENDR61_RANGE 0x00004000
-#define KACF_RPC32ENABLELEGACYEXCEPTIONHANDLING 0x00008000
-#define KACF_OLE32DOCFILEUSELEGACYNTFSFLAGS 0x00010000
-#define KACF_RPCDISABLENDRCONSTIIDCHECK 0x00020000
-#define KACF_USERDISABLEFORWARDERPATCH 0x00040000
-#define KACF_OLE32DISABLENEW_WMPAINT_DISPATCH 0x00100000
-#define KACF_ADDRESTRICTEDSIDINCOINITIALIZESECURITY 0x00200000
-#define KACF_ALLOCDEBUGINFOFORCRITSECTIONS 0x00400000
-#define KACF_OLEAUT32ENABLEUNSAFELOADTYPELIBRELATIVE 0x00800000
-#define KACF_ALLOWMAXIMIZEDWINDOWGAMMA 0x01000000
-#define KACF_DONOTADDTOCACHE 0x80000000
+[[define]] KACF_OLDGETSHORTPATHNAME 0x00000001
+[[define]] KACF_VERSIONLIE_NOT_USED 0x00000002
+[[define]] KACF_GETDISKFREESPACE 0x00000008
+[[define]] KACF_FTMFROMCURRENTAPT 0x00000020
+[[define]] KACF_DISALLOWORBINDINGCHANGES 0x00000040
+[[define]] KACF_OLE32VALIDATEPTRS 0x00000080
+[[define]] KACF_DISABLECICERO 0x00000100
+[[define]] KACF_OLE32ENABLEASYNCDOCFILE 0x00000200
+[[define]] KACF_OLE32ENABLELEGACYEXCEPTIONHANDLING 0x00000400
+[[define]] KACF_RPCDISABLENDRCLIENTHARDENING 0x00000800
+[[define]] KACF_RPCDISABLENDRMAYBENULL_SIZEIS 0x00001000
+[[define]] KACF_DISABLEALLDDEHACK_NOT_USED 0x00002000
+[[define]] KACF_RPCDISABLENDR61_RANGE 0x00004000
+[[define]] KACF_RPC32ENABLELEGACYEXCEPTIONHANDLING 0x00008000
+[[define]] KACF_OLE32DOCFILEUSELEGACYNTFSFLAGS 0x00010000
+[[define]] KACF_RPCDISABLENDRCONSTIIDCHECK 0x00020000
+[[define]] KACF_USERDISABLEFORWARDERPATCH 0x00040000
+[[define]] KACF_OLE32DISABLENEW_WMPAINT_DISPATCH 0x00100000
+[[define]] KACF_ADDRESTRICTEDSIDINCOINITIALIZESECURITY 0x00200000
+[[define]] KACF_ALLOCDEBUGINFOFORCRITSECTIONS 0x00400000
+[[define]] KACF_OLEAUT32ENABLEUNSAFELOADTYPELIBRELATIVE 0x00800000
+[[define]] KACF_ALLOWMAXIMIZEDWINDOWGAMMA 0x01000000
+[[define]] KACF_DONOTADDTOCACHE 0x80000000
 
 // private
 typedef struct _API_SET_NAMESPACE
@@ -278,21 +278,21 @@ typedef struct _PEB
     ULONGLONG ExtendedFeatureDisableMask; // since WIN11
 } PEB, *PPEB;
 
-#ifdef _WIN64
+[[ifdef]] _WIN64
 C_ASSERT(FIELD_OFFSET(PEB, SessionId) == 0x2C0);
 //C_ASSERT(sizeof(PEB) == 0x7B0); // REDSTONE3
 //C_ASSERT(sizeof(PEB) == 0x7B8); // REDSTONE4
 //C_ASSERT(sizeof(PEB) == 0x7C8); // REDSTONE5 // 19H1
 C_ASSERT(sizeof(PEB) == 0x7d0); // WIN11
-#else
+[[else]]
 C_ASSERT(FIELD_OFFSET(PEB, SessionId) == 0x1D4);
 //C_ASSERT(sizeof(PEB) == 0x468); // REDSTONE3
 //C_ASSERT(sizeof(PEB) == 0x470); // REDSTONE4
 //C_ASSERT(sizeof(PEB) == 0x480); // REDSTONE5 // 19H1
 C_ASSERT(sizeof(PEB) == 0x488); // WIN11
-#endif
+[[endif]]
 
-#define GDI_BATCH_BUFFER_SIZE 310
+[[define]] GDI_BATCH_BUFFER_SIZE 310
 
 typedef struct _GDI_TEB_BATCH
 {
@@ -326,8 +326,8 @@ typedef struct _TEB_ACTIVE_FRAME_EX
     PVOID ExtensionIdentifier;
 } TEB_ACTIVE_FRAME_EX, *PTEB_ACTIVE_FRAME_EX;
 
-#define STATIC_UNICODE_BUFFER_LENGTH 261
-#define WIN32_CLIENT_INFO_LENGTH 62
+[[define]] STATIC_UNICODE_BUFFER_LENGTH 261
+[[define]] WIN32_CLIENT_INFO_LENGTH 62
 
 typedef struct _TEB
 {
@@ -349,15 +349,15 @@ typedef struct _TEB
     LCID CurrentLocale;
     ULONG FpSoftwareStatusRegister;
     PVOID ReservedForDebuggerInstrumentation[16];
-#ifdef _WIN64
+[[ifdef]] _WIN64
     PVOID SystemReserved1[25];
 
     PVOID HeapFlsData;
 
     ULONG_PTR RngState[4];
-#else
+[[else]]
     PVOID SystemReserved1[26];
-#endif
+[[endif]]
 
     CHAR PlaceholderCompatibilityMode;
     BOOLEAN PlaceholderHydrationAlwaysExplicit;
@@ -374,18 +374,18 @@ typedef struct _TEB
     ULONG_PTR InstrumentationCallbackSp;
     ULONG_PTR InstrumentationCallbackPreviousPc;
     ULONG_PTR InstrumentationCallbackPreviousSp;
-#ifdef _WIN64
+[[ifdef]] _WIN64
     ULONG TxFsContext;
-#endif
+[[endif]]
 
     BOOLEAN InstrumentationCallbackDisabled;
-#ifdef _WIN64
+[[ifdef]] _WIN64
     BOOLEAN UnalignedLoadStoreExceptions;
-#endif
-#ifndef _WIN64
+[[endif]]
+[[ifndef]] _WIN64
     UCHAR SpareBytes[23];
     ULONG TxFsContext;
-#endif
+[[endif]]
     GDI_TEB_BATCH GdiTebBatch;
     CLIENT_ID RealClientId;
     HANDLE GdiCachedProcessHandle;
@@ -418,11 +418,11 @@ typedef struct _TEB
     PVOID DbgSsReserved[2];
 
     ULONG HardErrorMode;
-#ifdef _WIN64
+[[ifdef]] _WIN64
     PVOID Instrumentation[11];
-#else
+[[else]]
     PVOID Instrumentation[9];
-#endif
+[[endif]]
     GUID ActivityId;
 
     PVOID SubProcessTag;
@@ -452,10 +452,10 @@ typedef struct _TEB
     ULONG_PTR ReservedForCodeCoverage;
     PVOID ThreadPoolData;
     PVOID *TlsExpansionSlots;
-#ifdef _WIN64
+[[ifdef]] _WIN64
     PVOID ChpeV2CpuAreaInfo; // CHPEV2_CPUAREA_INFO // previously DeallocationBStore
     PVOID Unused; // previously BStoreLimit
-#endif
+[[endif]]
     ULONG MuiGeneration;
     ULONG IsImpersonating;
     PVOID NlsCache;
@@ -517,13 +517,13 @@ typedef struct _TEB
     ULONG Rcu[2];
 } TEB, *PTEB;
 
-#ifdef _WIN64
+[[ifdef]] _WIN64
 //C_ASSERT(sizeof(TEB) == 0x1850); // WIN11
 C_ASSERT(sizeof(TEB) == 0x1878); // 24H2
-#else
+[[else]]
 //C_ASSERT(sizeof(TEB) == 0x1018); // WIN11
 C_ASSERT(sizeof(TEB) == 0x1038); // 24H2
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

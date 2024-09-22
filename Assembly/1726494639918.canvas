@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"type":"text","id":"4","text":"```\n\t\n\tcmp [ebp+var_8], 2\n\tjz loc_40103D\n```","startline":2,"endline":4,"x":-680,"y":300,"width":550,"height":175},
+		{"type":"text","id":"2","text":"```\nloc_401027\n\tCode for case 1\n\tjmp loc_401058\n```","startline":11,"endline":13,"x":640,"y":300,"width":550,"height":175},
+		{"type":"text","id":"6","text":"```\n\t\n\tcmp [ebp+var_8], 3\n\tjz loc_401053\n```","startline":5,"endline":7,"x":-680,"y":740,"width":550,"height":175},
+		{"type":"text","id":"1","text":"```\n\tcmp [ebp+var_8], 1\n\tjz loc_401027\n```","startline":0,"endline":1,"x":0,"y":0,"width":550,"height":140},
+		{"type":"text","id":"8","text":"```\n\t\n\tjmp loc_401058\n```","startline":8,"endline":9,"x":-680,"y":1248,"width":550,"height":140},
+		{"type":"text","id":"5","text":"```\nloc_40103D\n\tCode for case 2\n\tjmp loc_401058\n```","startline":15,"endline":17,"x":40,"y":740,"width":550,"height":175},
+		{"type":"text","id":"7","text":"```\nloc_401053\n\tCode for case 3\n\t\n\n```","startline":19,"endline":22,"x":0,"y":1213,"width":550,"height":210},
+		{"type":"text","id":"3","text":"```\nloc_401058\n\tProgram end\n```","startline":22,"endline":24,"x":640,"y":1248,"width":550,"height":140}
+	],
+	"edges":[
+		{"id":"5555","fromNode":"1","fromSide":"bottom","toNode":"2","toSide":"top","color":"4","label":"true"},
+		{"id":"5556","fromNode":"2","fromSide":"bottom","toNode":"3","toSide":"top"},
+		{"id":"5557","fromNode":"1","fromSide":"bottom","toNode":"4","toSide":"top","color":"1","label":"false"},
+		{"id":"5558","fromNode":"4","fromSide":"bottom","toNode":"5","toSide":"top","color":"4","label":"true"},
+		{"id":"5559","fromNode":"5","fromSide":"top","toNode":"3","toSide":"top"},
+		{"id":"5560","fromNode":"4","fromSide":"bottom","toNode":"6","toSide":"top","color":"1","label":"false"},
+		{"id":"5561","fromNode":"6","fromSide":"bottom","toNode":"7","toSide":"top","color":"4","label":"true"},
+		{"id":"5562","fromNode":"7","fromSide":"top","toNode":"3","toSide":"top"},
+		{"id":"5563","fromNode":"6","fromSide":"bottom","toNode":"8","toSide":"top","color":"1","label":"false"},
+		{"id":"5564","fromNode":"8","fromSide":"top","toNode":"3","toSide":"top"}
+	]
+}

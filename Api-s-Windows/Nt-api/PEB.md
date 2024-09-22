@@ -302,16 +302,16 @@ PTEB_thread My_NtCurrentTeb()
 	PTEB_thread teb;
 	
 	// Para sistemas de 64 bits
-	#if defined(_M_X64) || defined(__x86_64__)
+	[[if]] defined(_M_X64) || defined(__x86_64__)
     __asm__("movq %%gs:0x30, %0" : "=r"(teb));
 
 	// Para sistemas de 32 bits
-	#elif defined(_M_IX86) || defined(__i386__)
+	[[elif]] defined(_M_IX86) || defined(__i386__)
     __asm__("movl %%fs:0x18, %0" : "=r"(teb));
     
-	#else
-	#error "Unsupported architecture"
-	#endif
+	[[else]]
+	[[error]] "Unsupported architecture"
+	[[endif]]
 	
 	return teb;
 }

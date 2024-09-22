@@ -5,18 +5,18 @@
  * This file is part of System Informer.
  */
 
-#ifndef _PHNT_NTDEF_H
-#define _PHNT_NTDEF_H
+[[ifndef]] _PHNT_NTDEF_H
+[[define]] _PHNT_NTDEF_H
 
-#ifndef _NTDEF_
-#define _NTDEF_
+[[ifndef]] _NTDEF_
+[[define]] _NTDEF_
 
 // This header file provides basic NT types not included in Win32. If you have included winnt.h
 // (perhaps indirectly), you must use this file instead of ntdef.h.
 
-#ifndef NOTHING
-#define NOTHING
-#endif
+[[ifndef]] NOTHING
+[[define]] NOTHING
+[[endif]]
 
 // Basic types
 
@@ -71,28 +71,28 @@ typedef struct _LARGE_INTEGER_128
 
 // NT status macros
 
-#define NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
-#define NT_INFORMATION(Status) ((((ULONG)(Status)) >> 30) == 1)
-#define NT_WARNING(Status) ((((ULONG)(Status)) >> 30) == 2)
-#define NT_ERROR(Status) ((((ULONG)(Status)) >> 30) == 3)
+[[define]] NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
+[[define]] NT_INFORMATION(Status) ((((ULONG)(Status)) >> 30) == 1)
+[[define]] NT_WARNING(Status) ((((ULONG)(Status)) >> 30) == 2)
+[[define]] NT_ERROR(Status) ((((ULONG)(Status)) >> 30) == 3)
 
-#define NT_CUSTOMER_SHIFT 29
-#define NT_CUSTOMER(Status) ((((ULONG)(Status)) >> NT_CUSTOMER_SHIFT) & 1)
+[[define]] NT_CUSTOMER_SHIFT 29
+[[define]] NT_CUSTOMER(Status) ((((ULONG)(Status)) >> NT_CUSTOMER_SHIFT) & 1)
 
-#define NT_FACILITY_MASK 0xfff
-#define NT_FACILITY_SHIFT 16
-#define NT_FACILITY(Status) ((((ULONG)(Status)) >> NT_FACILITY_SHIFT) & NT_FACILITY_MASK)
+[[define]] NT_FACILITY_MASK 0xfff
+[[define]] NT_FACILITY_SHIFT 16
+[[define]] NT_FACILITY(Status) ((((ULONG)(Status)) >> NT_FACILITY_SHIFT) & NT_FACILITY_MASK)
 
-#define NT_NTWIN32(Status) (NT_FACILITY(Status) == FACILITY_NTWIN32)
-#define WIN32_FROM_NTSTATUS(Status) (((ULONG)(Status)) & 0xffff)
+[[define]] NT_NTWIN32(Status) (NT_FACILITY(Status) == FACILITY_NTWIN32)
+[[define]] WIN32_FROM_NTSTATUS(Status) (((ULONG)(Status)) & 0xffff)
 
 // Functions
 
-#ifndef _WIN64
-#define FASTCALL __fastcall
-#else
-#define FASTCALL
-#endif
+[[ifndef]] _WIN64
+[[define]] FASTCALL __fastcall
+[[else]]
+[[define]] FASTCALL
+[[endif]]
 
 // Synchronization enumerations
 
@@ -142,22 +142,22 @@ typedef struct _UNICODE_STRING
 
 typedef const UNICODE_STRING *PCUNICODE_STRING;
 
-#define RTL_CONSTANT_STRING(s) { sizeof(s) - sizeof((s)[0]), sizeof(s), s }
+[[define]] RTL_CONSTANT_STRING(s) { sizeof(s) - sizeof((s)[0]), sizeof(s), s }
 
-#define DECLARE_CONST_UNICODE_STRING(_var, _str) \
+[[define]] DECLARE_CONST_UNICODE_STRING(_var, _str) \
 const WCHAR _var ## _buffer[] = _str; \
 const UNICODE_STRING _var = { sizeof(_str) - sizeof(WCHAR), sizeof(_str), (PWCH) _var ## _buffer }
 
-#define DECLARE_GLOBAL_CONST_UNICODE_STRING(_var, _str) \
+[[define]] DECLARE_GLOBAL_CONST_UNICODE_STRING(_var, _str) \
 extern const DECLSPEC_SELECTANY UNICODE_STRING _var = RTL_CONSTANT_STRING(_str)
 
-#define DECLARE_UNICODE_STRING_SIZE(_var, _size) \
+[[define]] DECLARE_UNICODE_STRING_SIZE(_var, _size) \
 WCHAR _var ## _buffer[_size]; \
 UNICODE_STRING _var = { 0, (_size) * sizeof(WCHAR) , _var ## _buffer }
 
 // Balanced tree node
 
-#define RTL_BALANCED_NODE_RESERVED_PARENT_MASK 3
+[[define]] RTL_BALANCED_NODE_RESERVED_PARENT_MASK 3
 
 typedef struct _RTL_BALANCED_NODE
 {
@@ -178,7 +178,7 @@ typedef struct _RTL_BALANCED_NODE
     };
 } RTL_BALANCED_NODE, *PRTL_BALANCED_NODE;
 
-#define RTL_BALANCED_NODE_GET_PARENT_POINTER(Node) \
+[[define]] RTL_BALANCED_NODE_GET_PARENT_POINTER(Node) \
     ((PRTL_BALANCED_NODE)((Node)->ParentValue & ~RTL_BALANCED_NODE_RESERVED_PARENT_MASK))
 
 // Portability
@@ -210,20 +210,20 @@ typedef STRING64 ANSI_STRING64, *PANSI_STRING64;
 
 // Object attributes
 
-#define OBJ_PROTECT_CLOSE                   0x00000001L
-#define OBJ_INHERIT                         0x00000002L
-#define OBJ_AUDIT_OBJECT_CLOSE              0x00000004L
-#define OBJ_NO_RIGHTS_UPGRADE               0x00000008L
-#define OBJ_PERMANENT                       0x00000010L
-#define OBJ_EXCLUSIVE                       0x00000020L
-#define OBJ_CASE_INSENSITIVE                0x00000040L
-#define OBJ_OPENIF                          0x00000080L
-#define OBJ_OPENLINK                        0x00000100L
-#define OBJ_KERNEL_HANDLE                   0x00000200L
-#define OBJ_FORCE_ACCESS_CHECK              0x00000400L
-#define OBJ_IGNORE_IMPERSONATED_DEVICEMAP   0x00000800L
-#define OBJ_DONT_REPARSE                    0x00001000L
-#define OBJ_VALID_ATTRIBUTES                0x00001FF2L
+[[define]] OBJ_PROTECT_CLOSE                   0x00000001L
+[[define]] OBJ_INHERIT                         0x00000002L
+[[define]] OBJ_AUDIT_OBJECT_CLOSE              0x00000004L
+[[define]] OBJ_NO_RIGHTS_UPGRADE               0x00000008L
+[[define]] OBJ_PERMANENT                       0x00000010L
+[[define]] OBJ_EXCLUSIVE                       0x00000020L
+[[define]] OBJ_CASE_INSENSITIVE                0x00000040L
+[[define]] OBJ_OPENIF                          0x00000080L
+[[define]] OBJ_OPENLINK                        0x00000100L
+[[define]] OBJ_KERNEL_HANDLE                   0x00000200L
+[[define]] OBJ_FORCE_ACCESS_CHECK              0x00000400L
+[[define]] OBJ_IGNORE_IMPERSONATED_DEVICEMAP   0x00000800L
+[[define]] OBJ_DONT_REPARSE                    0x00001000L
+[[define]] OBJ_VALID_ATTRIBUTES                0x00001FF2L
 
 typedef struct _OBJECT_ATTRIBUTES
 {
@@ -237,7 +237,7 @@ typedef struct _OBJECT_ATTRIBUTES
 
 typedef const OBJECT_ATTRIBUTES *PCOBJECT_ATTRIBUTES;
 
-#define InitializeObjectAttributes(p, n, a, r, s) { \
+[[define]] InitializeObjectAttributes(p, n, a, r, s) { \
     (p)->Length = sizeof(OBJECT_ATTRIBUTES); \
     (p)->RootDirectory = r; \
     (p)->Attributes = a; \
@@ -246,7 +246,7 @@ typedef const OBJECT_ATTRIBUTES *PCOBJECT_ATTRIBUTES;
     (p)->SecurityQualityOfService = NULL; \
     }
 
-#define InitializeObjectAttributesEx(p, n, a, r, s, q) { \
+[[define]] InitializeObjectAttributesEx(p, n, a, r, s, q) { \
     (p)->Length = sizeof(OBJECT_ATTRIBUTES); \
     (p)->RootDirectory = r; \
     (p)->Attributes = a; \
@@ -255,11 +255,11 @@ typedef const OBJECT_ATTRIBUTES *PCOBJECT_ATTRIBUTES;
     (p)->SecurityQualityOfService = q; \
     }
 
-#define RTL_CONSTANT_OBJECT_ATTRIBUTES(n, a) { sizeof(OBJECT_ATTRIBUTES), NULL, n, a, NULL, NULL }
-#define RTL_INIT_OBJECT_ATTRIBUTES(n, a) RTL_CONSTANT_OBJECT_ATTRIBUTES(n, a)
+[[define]] RTL_CONSTANT_OBJECT_ATTRIBUTES(n, a) { sizeof(OBJECT_ATTRIBUTES), NULL, n, a, NULL, NULL }
+[[define]] RTL_INIT_OBJECT_ATTRIBUTES(n, a) RTL_CONSTANT_OBJECT_ATTRIBUTES(n, a)
 
-#define OBJ_NAME_PATH_SEPARATOR ((WCHAR)L'\\')
-#define OBJ_NAME_ALTPATH_SEPARATOR ((WCHAR)L'/')
+[[define]] OBJ_NAME_PATH_SEPARATOR ((WCHAR)L'\\')
+[[define]] OBJ_NAME_ALTPATH_SEPARATOR ((WCHAR)L'/')
 
 // Portability
 
@@ -338,7 +338,7 @@ typedef struct _CLIENT_ID64
     ULONGLONG UniqueThread;
 } CLIENT_ID64, *PCLIENT_ID64;
 
-#include <pshpack4.h>
+[[include]] <pshpack4.h>
 
 typedef struct _KSYSTEM_TIME
 {
@@ -347,32 +347,32 @@ typedef struct _KSYSTEM_TIME
     LONG High2Time;
 } KSYSTEM_TIME, *PKSYSTEM_TIME;
 
-#include <poppack.h>
+[[include]] <poppack.h>
 
-#ifndef AFFINITY_MASK
-#define AFFINITY_MASK(n) ((KAFFINITY)1 << (n))
-#endif
+[[ifndef]] AFFINITY_MASK
+[[define]] AFFINITY_MASK(n) ((KAFFINITY)1 << (n))
+[[endif]]
 
-#ifndef FlagOn
-#define FlagOn(_F, _SF) ((_F) & (_SF))
-#endif
-#ifndef BooleanFlagOn
-#define BooleanFlagOn(F, SF) ((BOOLEAN)(((F) & (SF)) != 0))
-#endif
-#ifndef SetFlag
-#define SetFlag(_F, _SF) ((_F) |= (_SF))
-#endif
-#ifndef ClearFlag
-#define ClearFlag(_F, _SF) ((_F) &= ~(_SF))
-#endif
+[[ifndef]] FlagOn
+[[define]] FlagOn(_F, _SF) ((_F) & (_SF))
+[[endif]]
+[[ifndef]] BooleanFlagOn
+[[define]] BooleanFlagOn(F, SF) ((BOOLEAN)(((F) & (SF)) != 0))
+[[endif]]
+[[ifndef]] SetFlag
+[[define]] SetFlag(_F, _SF) ((_F) |= (_SF))
+[[endif]]
+[[ifndef]] ClearFlag
+[[define]] ClearFlag(_F, _SF) ((_F) &= ~(_SF))
+[[endif]]
 
-#endif
+[[endif]]
 
-#if defined(_WIN64)
-#define POINTER_ALIGNMENT DECLSPEC_ALIGN(8)
-#else
-#define POINTER_ALIGNMENT
-#endif
+[[if]] defined(_WIN64)
+[[define]] POINTER_ALIGNMENT DECLSPEC_ALIGN(8)
+[[else]]
+[[define]] POINTER_ALIGNMENT
+[[endif]]
 
-#endif
+[[endif]]
 ```

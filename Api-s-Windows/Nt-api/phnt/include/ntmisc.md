@@ -5,13 +5,13 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTMISC_H
-#define _NTMISC_H
+[[ifndef]] _NTMISC_H
+[[define]] _NTMISC_H
 
 // Filter manager
 
-#define FLT_PORT_CONNECT 0x0001
-#define FLT_PORT_ALL_ACCESS (FLT_PORT_CONNECT | STANDARD_RIGHTS_ALL)
+[[define]] FLT_PORT_CONNECT 0x0001
+[[define]] FLT_PORT_ALL_ACCESS (FLT_PORT_CONNECT | STANDARD_RIGHTS_ALL)
 
 // VDM
 
@@ -43,5 +43,5 @@ NtVdmControl(
     _Inout_ PVOID ServiceData
     );
 
-#endif
+[[endif]]
 ```

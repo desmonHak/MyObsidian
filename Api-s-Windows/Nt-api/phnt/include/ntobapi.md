@@ -5,40 +5,40 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTOBAPI_H
-#define _NTOBAPI_H
+[[ifndef]] _NTOBAPI_H
+[[define]] _NTOBAPI_H
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
-#define OBJECT_TYPE_CREATE 0x0001
-#define OBJECT_TYPE_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | OBJECT_TYPE_CREATE)
-#endif
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
+[[define]] OBJECT_TYPE_CREATE 0x0001
+[[define]] OBJECT_TYPE_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | OBJECT_TYPE_CREATE)
+[[endif]]
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
-#define DIRECTORY_QUERY 0x0001
-#define DIRECTORY_TRAVERSE 0x0002
-#define DIRECTORY_CREATE_OBJECT 0x0004
-#define DIRECTORY_CREATE_SUBDIRECTORY 0x0008
-#define DIRECTORY_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | DIRECTORY_QUERY | DIRECTORY_TRAVERSE | DIRECTORY_CREATE_OBJECT | DIRECTORY_CREATE_SUBDIRECTORY)
-#endif
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
+[[define]] DIRECTORY_QUERY 0x0001
+[[define]] DIRECTORY_TRAVERSE 0x0002
+[[define]] DIRECTORY_CREATE_OBJECT 0x0004
+[[define]] DIRECTORY_CREATE_SUBDIRECTORY 0x0008
+[[define]] DIRECTORY_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | DIRECTORY_QUERY | DIRECTORY_TRAVERSE | DIRECTORY_CREATE_OBJECT | DIRECTORY_CREATE_SUBDIRECTORY)
+[[endif]]
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
-#define SYMBOLIC_LINK_QUERY 0x0001
-#define SYMBOLIC_LINK_SET 0x0002
-#define SYMBOLIC_LINK_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | SYMBOLIC_LINK_QUERY)
-#define SYMBOLIC_LINK_ALL_ACCESS_EX (STANDARD_RIGHTS_REQUIRED | 0xFFFF)
-#endif
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
+[[define]] SYMBOLIC_LINK_QUERY 0x0001
+[[define]] SYMBOLIC_LINK_SET 0x0002
+[[define]] SYMBOLIC_LINK_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | SYMBOLIC_LINK_QUERY)
+[[define]] SYMBOLIC_LINK_ALL_ACCESS_EX (STANDARD_RIGHTS_REQUIRED | 0xFFFF)
+[[endif]]
 
-#ifndef OBJ_PROTECT_CLOSE
-#define OBJ_PROTECT_CLOSE 0x00000001
-#endif
-#ifndef OBJ_INHERIT
-#define OBJ_INHERIT 0x00000002
-#endif
-#ifndef OBJ_AUDIT_OBJECT_CLOSE
-#define OBJ_AUDIT_OBJECT_CLOSE 0x00000004
-#endif
+[[ifndef]] OBJ_PROTECT_CLOSE
+[[define]] OBJ_PROTECT_CLOSE 0x00000001
+[[endif]]
+[[ifndef]] OBJ_INHERIT
+[[define]] OBJ_INHERIT 0x00000002
+[[endif]]
+[[ifndef]] OBJ_AUDIT_OBJECT_CLOSE
+[[define]] OBJ_AUDIT_OBJECT_CLOSE 0x00000004
+[[endif]]
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 typedef enum _OBJECT_INFORMATION_CLASS
 {
     ObjectBasicInformation, // q: OBJECT_BASIC_INFORMATION
@@ -50,15 +50,15 @@ typedef enum _OBJECT_INFORMATION_CLASS
     ObjectSessionObjectInformation, // s: void // change object session // (requires SeTcbPrivilege)
     MaxObjectInfoClass
 } OBJECT_INFORMATION_CLASS;
-#else
-#define ObjectBasicInformation 0
-#define ObjectNameInformation 1
-#define ObjectTypeInformation 2
-#define ObjectTypesInformation 3
-#define ObjectHandleFlagInformation 4
-#define ObjectSessionInformation 5
-#define ObjectSessionObjectInformation 6
-#endif
+[[else]]
+[[define]] ObjectBasicInformation 0
+[[define]] ObjectNameInformation 1
+[[define]] ObjectTypeInformation 2
+[[define]] ObjectTypesInformation 3
+[[define]] ObjectHandleFlagInformation 4
+[[define]] ObjectSessionInformation 5
+[[define]] ObjectSessionObjectInformation 6
+[[endif]]
 
 typedef struct _OBJECT_BASIC_INFORMATION
 {
@@ -75,12 +75,12 @@ typedef struct _OBJECT_BASIC_INFORMATION
     LARGE_INTEGER CreationTime;
 } OBJECT_BASIC_INFORMATION, *POBJECT_BASIC_INFORMATION;
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 typedef struct _OBJECT_NAME_INFORMATION
 {
     UNICODE_STRING Name;
 } OBJECT_NAME_INFORMATION, *POBJECT_NAME_INFORMATION;
-#endif
+[[endif]]
 
 typedef struct _OBJECT_TYPE_INFORMATION
 {
@@ -122,7 +122,7 @@ typedef struct _OBJECT_HANDLE_FLAG_INFORMATION
 
 // Objects, handles
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -145,9 +145,9 @@ NtSetInformationObject(
     _In_ ULONG ObjectInformationLength
     );
 
-#define DUPLICATE_CLOSE_SOURCE 0x00000001
-#define DUPLICATE_SAME_ACCESS 0x00000002
-#define DUPLICATE_SAME_ATTRIBUTES 0x00000004
+[[define]] DUPLICATE_CLOSE_SOURCE 0x00000001
+[[define]] DUPLICATE_SAME_ACCESS 0x00000002
+[[define]] DUPLICATE_SAME_ATTRIBUTES 0x00000004
 
 NTSYSCALLAPI
 NTSTATUS
@@ -206,7 +206,7 @@ NtWaitForMultipleObjects(
     _In_opt_ PLARGE_INTEGER Timeout
     );
 
-#if (PHNT_VERSION >= PHNT_WS03)
+[[if]] (PHNT_VERSION >= PHNT_WS03)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -217,7 +217,7 @@ NtWaitForMultipleObjects32(
     _In_ BOOLEAN Alertable,
     _In_opt_ PLARGE_INTEGER Timeout
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -246,7 +246,7 @@ NtClose(
     _In_ _Post_ptr_invalid_ HANDLE Handle
     );
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -254,13 +254,13 @@ NtCompareObjects(
     _In_ HANDLE FirstObjectHandle,
     _In_ HANDLE SecondObjectHandle
     );
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 
 // Directory objects
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -271,7 +271,7 @@ NtCreateDirectoryObject(
     _In_ POBJECT_ATTRIBUTES ObjectAttributes
     );
 
-#if (PHNT_VERSION >= PHNT_WIN8)
+[[if]] (PHNT_VERSION >= PHNT_WIN8)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -282,7 +282,7 @@ NtCreateDirectoryObjectEx(
     _In_ HANDLE ShadowDirectoryHandle,
     _In_ ULONG Flags
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -312,13 +312,13 @@ NtQueryDirectoryObject(
     _Out_opt_ PULONG ReturnLength
     );
 
-#endif
+[[endif]]
 
 // Private namespaces
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
-#if (PHNT_VERSION >= PHNT_VISTA)
+[[if]] (PHNT_VERSION >= PHNT_VISTA)
 
 // private
 typedef enum _BOUNDARY_ENTRY_TYPE
@@ -337,7 +337,7 @@ typedef struct _OBJECT_BOUNDARY_ENTRY
 } OBJECT_BOUNDARY_ENTRY, *POBJECT_BOUNDARY_ENTRY;
 
 // rev
-#define OBJECT_BOUNDARY_DESCRIPTOR_VERSION 1
+[[define]] OBJECT_BOUNDARY_DESCRIPTOR_VERSION 1
 
 // private
 typedef struct _OBJECT_BOUNDARY_DESCRIPTOR
@@ -383,13 +383,13 @@ NtDeletePrivateNamespace(
     _In_ HANDLE NamespaceHandle
     );
 
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 
 // Symbolic links
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -426,7 +426,7 @@ typedef enum _SYMBOLIC_LINK_INFO_CLASS
     MaxnSymbolicLinkInfoClass
 } SYMBOLIC_LINK_INFO_CLASS;
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -436,9 +436,9 @@ NtSetInformationSymbolicLink(
     _In_reads_bytes_(SymbolicLinkInformationLength) PVOID SymbolicLinkInformation,
     _In_ ULONG SymbolicLinkInformationLength
     );
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

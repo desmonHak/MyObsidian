@@ -5,15 +5,15 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTKEAPI_H
-#define _NTKEAPI_H
+[[ifndef]] _NTKEAPI_H
+[[define]] _NTKEAPI_H
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
-#define LOW_PRIORITY 0 // Lowest thread priority level
-#define LOW_REALTIME_PRIORITY 16 // Lowest realtime priority level
-#define HIGH_PRIORITY 31 // Highest thread priority level
-#define MAXIMUM_PRIORITY 32 // Number of thread priority levels
-#endif
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
+[[define]] LOW_PRIORITY 0 // Lowest thread priority level
+[[define]] LOW_REALTIME_PRIORITY 16 // Lowest realtime priority level
+[[define]] HIGH_PRIORITY 31 // Highest thread priority level
+[[define]] MAXIMUM_PRIORITY 32 // Number of thread priority levels
+[[endif]]
 
 typedef enum _KTHREAD_STATE
 {
@@ -46,7 +46,7 @@ typedef enum _KHETERO_CPU_POLICY
     KHeteroCpuPolicyMax = 9
 } KHETERO_CPU_POLICY, *PKHETERO_CPU_POLICY;
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 typedef enum _KWAIT_REASON
 {
@@ -125,9 +125,9 @@ typedef enum _KPROFILE_SOURCE
     ProfileMaximum
 } KPROFILE_SOURCE;
 
-#endif
+[[endif]]
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -138,14 +138,14 @@ NtCallbackReturn(
     _In_ NTSTATUS Status
     );
 
-#if (PHNT_VERSION >= PHNT_VISTA)
+[[if]] (PHNT_VERSION >= PHNT_VISTA)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtFlushProcessWriteBuffers(
     VOID
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -171,7 +171,7 @@ NtYieldExecution(
     VOID
     );
 
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

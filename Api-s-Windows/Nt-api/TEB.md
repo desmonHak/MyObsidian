@@ -1,6 +1,6 @@
 ```c
-#define WIN32_CLIENT_INFO_LENGTH 62
-#define STATIC_UNICODE_BUFFER_LENGTH 261
+[[define]] WIN32_CLIENT_INFO_LENGTH 62
+[[define]] STATIC_UNICODE_BUFFER_LENGTH 261
 
 typedef struct _TEB_thread
 {
@@ -23,13 +23,13 @@ typedef struct _TEB_thread
     ULONG FpSoftwareStatusRegister;
     PVOID ReservedForDebuggerInstrumentation[16];
 
-	#ifdef _WIN64
+	[[ifdef]] _WIN64
 	    PVOID SystemReserved1[25];
 	    PVOID HeapFlsData;
 	    ULONG_PTR RngState[4];
-	#else
+	[[else]]
 	    PVOID SystemReserved1[26];
-	#endif
+	[[endif]]
 
     CHAR PlaceholderCompatibilityMode;
     BOOLEAN PlaceholderHydrationAlwaysExplicit;
@@ -47,20 +47,20 @@ typedef struct _TEB_thread
     ULONG_PTR InstrumentationCallbackPreviousPc;
     ULONG_PTR InstrumentationCallbackPreviousSp;
 
-	#ifdef _WIN64
+	[[ifdef]] _WIN64
 		ULONG TxFsContext;
-	#endif
+	[[endif]]
 	
 	BOOLEAN InstrumentationCallbackDisabled;
 
-	#ifdef _WIN64
+	[[ifdef]] _WIN64
 		BOOLEAN UnalignedLoadStoreExceptions;
-	#endif
+	[[endif]]
 
-	#ifndef _WIN64
+	[[ifndef]] _WIN64
 		UCHAR SpareBytes[23];
 		ULONG TxFsContext;
-	#endif
+	[[endif]]
 
     GDI_TEB_BATCH GdiTebBatch;
     CLIENT_ID RealClientId;
@@ -96,11 +96,11 @@ typedef struct _TEB_thread
 
     ULONG HardErrorMode;
     
-	#ifdef _WIN64
+	[[ifdef]] _WIN64
 		PVOID Instrumentation[11];
-	#else
+	[[else]]
 		PVOID Instrumentation[9];
-	#endif
+	[[endif]]
 
 	GUID ActivityId;
 	PVOID SubProcessTag;
@@ -130,11 +130,11 @@ typedef struct _TEB_thread
     PVOID ThreadPoolData;
     PVOID *TlsExpansionSlots;
 
-	#ifdef _WIN64
+	[[ifdef]] _WIN64
 		PVOID ChpeV2CpuAreaInfo; // CHPEV2_CPUAREA_INFO 
 							     // previously DeallocationBStore
 	    PVOID Unused;            // previously BStoreLimit
-	#endif
+	[[endif]]
 
     ULONG MuiGeneration;
     ULONG IsImpersonating;
@@ -195,7 +195,7 @@ typedef struct _TEB_thread
     ULONG Rcu[2];
 } TEB_thread, *PTEB_thread;
 
-#endif
+[[endif]]
 ```
 
 La estructura [[TEB]] contiene una estructura [[TIB|TIB- (Thread Information Block)]] Con la información del bloque de subproceso/hilo:
@@ -214,16 +214,16 @@ PTEB_thread My_NtCurrentTeb() {
 	PTEB_thread teb;
 
 	// Para sistemas de 64 bits
-	#if defined(_M_X64) || defined(__x86_64__)
+	[[if]] defined(_M_X64) || defined(__x86_64__)
 		__asm__("movq %%gs:0x30, %0" : "=r"(teb));
 
 	 // Para sistemas de 32 bits
-	#elif defined(_M_IX86) || defined(__i386__)
+	[[elif]] defined(_M_IX86) || defined(__i386__)
 		__asm__("movl %%fs:0x18, %0" : "=r"(teb));
 
-	#else
-		#error "Unsupported architecture"
-	#endif
+	[[else]]
+		[[error]] "Unsupported architecture"
+	[[endif]]
 	
 	return teb;
 }

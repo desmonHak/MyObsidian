@@ -5,8 +5,8 @@
  * This file is part of System Informer.
  */
 
-#ifndef _SUBPROCESSTAG_H
-#define _SUBPROCESSTAG_H
+[[ifndef]] _SUBPROCESSTAG_H
+[[define]] _SUBPROCESSTAG_H
 
 typedef enum _TAG_INFO_LEVEL
 {
@@ -98,5 +98,5 @@ typedef ULONG (WINAPI *PQUERY_TAG_INFORMATION)(
     _Inout_ PVOID TagInfo
     );
 
-#endif
+[[endif]]
 ```

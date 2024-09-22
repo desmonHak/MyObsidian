@@ -5,82 +5,82 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTMMAPI_H
-#define _NTMMAPI_H
+[[ifndef]] _NTMMAPI_H
+[[define]] _NTMMAPI_H
 
 // Protection constants
 
-#define PAGE_NOACCESS 0x01
-#define PAGE_READONLY 0x02
-#define PAGE_READWRITE 0x04
-#define PAGE_WRITECOPY 0x08
-#define PAGE_EXECUTE 0x10
-#define PAGE_EXECUTE_READ 0x20
-#define PAGE_EXECUTE_READWRITE 0x40
-#define PAGE_EXECUTE_WRITECOPY 0x80
-#define PAGE_GUARD 0x100
-#define PAGE_NOCACHE 0x200
-#define PAGE_WRITECOMBINE 0x400
+[[define]] PAGE_NOACCESS 0x01
+[[define]] PAGE_READONLY 0x02
+[[define]] PAGE_READWRITE 0x04
+[[define]] PAGE_WRITECOPY 0x08
+[[define]] PAGE_EXECUTE 0x10
+[[define]] PAGE_EXECUTE_READ 0x20
+[[define]] PAGE_EXECUTE_READWRITE 0x40
+[[define]] PAGE_EXECUTE_WRITECOPY 0x80
+[[define]] PAGE_GUARD 0x100
+[[define]] PAGE_NOCACHE 0x200
+[[define]] PAGE_WRITECOMBINE 0x400
 
-#define PAGE_REVERT_TO_FILE_MAP     0x80000000
-#define PAGE_ENCLAVE_THREAD_CONTROL 0x80000000
-#define PAGE_TARGETS_NO_UPDATE      0x40000000
-#define PAGE_TARGETS_INVALID        0x40000000
-#define PAGE_ENCLAVE_UNVALIDATED    0x20000000
-#define PAGE_ENCLAVE_NO_CHANGE      0x20000000
-#define PAGE_ENCLAVE_MASK           0x10000000
-#define PAGE_ENCLAVE_DECOMMIT       (PAGE_ENCLAVE_MASK | 0)
-#define PAGE_ENCLAVE_SS_FIRST       (PAGE_ENCLAVE_MASK | 1)
-#define PAGE_ENCLAVE_SS_REST        (PAGE_ENCLAVE_MASK | 2)
+[[define]] PAGE_REVERT_TO_FILE_MAP     0x80000000
+[[define]] PAGE_ENCLAVE_THREAD_CONTROL 0x80000000
+[[define]] PAGE_TARGETS_NO_UPDATE      0x40000000
+[[define]] PAGE_TARGETS_INVALID        0x40000000
+[[define]] PAGE_ENCLAVE_UNVALIDATED    0x20000000
+[[define]] PAGE_ENCLAVE_NO_CHANGE      0x20000000
+[[define]] PAGE_ENCLAVE_MASK           0x10000000
+[[define]] PAGE_ENCLAVE_DECOMMIT       (PAGE_ENCLAVE_MASK | 0)
+[[define]] PAGE_ENCLAVE_SS_FIRST       (PAGE_ENCLAVE_MASK | 1)
+[[define]] PAGE_ENCLAVE_SS_REST        (PAGE_ENCLAVE_MASK | 2)
 
 // Region and section constants
 
-#define MEM_COMMIT 0x00001000
-#define MEM_RESERVE 0x00002000
-#define MEM_DECOMMIT 0x00004000
-#define MEM_RELEASE 0x00008000
-#define MEM_FREE 0x00010000
-#define MEM_PRIVATE 0x00020000
-#define MEM_MAPPED 0x00040000
-#define MEM_RESET 0x00080000
-#define MEM_TOP_DOWN 0x00100000
-#define MEM_WRITE_WATCH 0x00200000
-#define MEM_PHYSICAL 0x00400000
-#define MEM_ROTATE 0x00800000
-#define MEM_DIFFERENT_IMAGE_BASE_OK 0x00800000
-#define MEM_RESET_UNDO 0x01000000
-#define MEM_LARGE_PAGES 0x20000000
-#define MEM_DOS_LIM 0x40000000
-#define MEM_4MB_PAGES 0x80000000
-#define MEM_64K_PAGES (MEM_LARGE_PAGES | MEM_PHYSICAL)
+[[define]] MEM_COMMIT 0x00001000
+[[define]] MEM_RESERVE 0x00002000
+[[define]] MEM_DECOMMIT 0x00004000
+[[define]] MEM_RELEASE 0x00008000
+[[define]] MEM_FREE 0x00010000
+[[define]] MEM_PRIVATE 0x00020000
+[[define]] MEM_MAPPED 0x00040000
+[[define]] MEM_RESET 0x00080000
+[[define]] MEM_TOP_DOWN 0x00100000
+[[define]] MEM_WRITE_WATCH 0x00200000
+[[define]] MEM_PHYSICAL 0x00400000
+[[define]] MEM_ROTATE 0x00800000
+[[define]] MEM_DIFFERENT_IMAGE_BASE_OK 0x00800000
+[[define]] MEM_RESET_UNDO 0x01000000
+[[define]] MEM_LARGE_PAGES 0x20000000
+[[define]] MEM_DOS_LIM 0x40000000
+[[define]] MEM_4MB_PAGES 0x80000000
+[[define]] MEM_64K_PAGES (MEM_LARGE_PAGES | MEM_PHYSICAL)
 
-#define MEM_UNMAP_WITH_TRANSIENT_BOOST 0x00000001
-#define MEM_COALESCE_PLACEHOLDERS 0x00000001
-#define MEM_PRESERVE_PLACEHOLDER 0x00000002
-#define MEM_REPLACE_PLACEHOLDER 0x00004000
-#define MEM_RESERVE_PLACEHOLDER 0x00040000
+[[define]] MEM_UNMAP_WITH_TRANSIENT_BOOST 0x00000001
+[[define]] MEM_COALESCE_PLACEHOLDERS 0x00000001
+[[define]] MEM_PRESERVE_PLACEHOLDER 0x00000002
+[[define]] MEM_REPLACE_PLACEHOLDER 0x00004000
+[[define]] MEM_RESERVE_PLACEHOLDER 0x00040000
 
-#define SEC_HUGE_PAGES 0x00020000
-#define SEC_PARTITION_OWNER_HANDLE 0x00040000
-#define SEC_64K_PAGES 0x00080000
-#define SEC_DRIVER_IMAGE 0x00100000 // rev
-#define SEC_BASED 0x00200000
-#define SEC_NO_CHANGE 0x00400000
-#define SEC_FILE 0x00800000
-#define SEC_IMAGE 0x01000000
-#define SEC_PROTECTED_IMAGE 0x02000000
-#define SEC_RESERVE 0x04000000
-#define SEC_COMMIT 0x08000000
-#define SEC_NOCACHE 0x10000000
-#define SEC_GLOBAL 0x20000000
-#define SEC_WRITECOMBINE 0x40000000
-#define SEC_LARGE_PAGES 0x80000000
-#define SEC_IMAGE_NO_EXECUTE (SEC_IMAGE | SEC_NOCACHE)
-#if (PHNT_MODE == PHNT_MODE_KERNEL)
-#define MEM_IMAGE SEC_IMAGE
-#endif
+[[define]] SEC_HUGE_PAGES 0x00020000
+[[define]] SEC_PARTITION_OWNER_HANDLE 0x00040000
+[[define]] SEC_64K_PAGES 0x00080000
+[[define]] SEC_DRIVER_IMAGE 0x00100000 // rev
+[[define]] SEC_BASED 0x00200000
+[[define]] SEC_NO_CHANGE 0x00400000
+[[define]] SEC_FILE 0x00800000
+[[define]] SEC_IMAGE 0x01000000
+[[define]] SEC_PROTECTED_IMAGE 0x02000000
+[[define]] SEC_RESERVE 0x04000000
+[[define]] SEC_COMMIT 0x08000000
+[[define]] SEC_NOCACHE 0x10000000
+[[define]] SEC_GLOBAL 0x20000000
+[[define]] SEC_WRITECOMBINE 0x40000000
+[[define]] SEC_LARGE_PAGES 0x80000000
+[[define]] SEC_IMAGE_NO_EXECUTE (SEC_IMAGE | SEC_NOCACHE)
+[[if]] (PHNT_MODE == PHNT_MODE_KERNEL)
+[[define]] MEM_IMAGE SEC_IMAGE
+[[endif]]
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 typedef enum _MEMORY_INFORMATION_CLASS
 {
     MemoryBasicInformation, // q: MEMORY_BASIC_INFORMATION
@@ -99,22 +99,22 @@ typedef enum _MEMORY_INFORMATION_CLASS
     MemoryBadInformationAllProcesses, // since 22H1
     MaxMemoryInfoClass
 } MEMORY_INFORMATION_CLASS;
-#else
-#define MemoryBasicInformation 0x0
-#define MemoryWorkingSetInformation 0x1
-#define MemoryMappedFilenameInformation 0x2
-#define MemoryRegionInformation 0x3
-#define MemoryWorkingSetExInformation 0x4
-#define MemorySharedCommitInformation 0x5
-#define MemoryImageInformation 0x6
-#define MemoryRegionInformationEx 0x7
-#define MemoryPrivilegedBasicInformation 0x8
-#define MemoryEnclaveImageInformation 0x9
-#define MemoryBasicInformationCapped 0xA
-#define MemoryPhysicalContiguityInformation 0xB
-#define MemoryBadInformation 0xC
-#define MemoryBadInformationAllProcesses 0xD
-#endif
+[[else]]
+[[define]] MemoryBasicInformation 0x0
+[[define]] MemoryWorkingSetInformation 0x1
+[[define]] MemoryMappedFilenameInformation 0x2
+[[define]] MemoryRegionInformation 0x3
+[[define]] MemoryWorkingSetExInformation 0x4
+[[define]] MemorySharedCommitInformation 0x5
+[[define]] MemoryImageInformation 0x6
+[[define]] MemoryRegionInformationEx 0x7
+[[define]] MemoryPrivilegedBasicInformation 0x8
+[[define]] MemoryEnclaveImageInformation 0x9
+[[define]] MemoryBasicInformationCapped 0xA
+[[define]] MemoryPhysicalContiguityInformation 0xB
+[[define]] MemoryBadInformation 0xC
+[[define]] MemoryBadInformationAllProcesses 0xD
+[[endif]]
 
 typedef struct _MEMORY_WORKING_SET_BLOCK
 {
@@ -122,11 +122,11 @@ typedef struct _MEMORY_WORKING_SET_BLOCK
     ULONG_PTR ShareCount : 3;
     ULONG_PTR Shared : 1;
     ULONG_PTR Node : 3;
-#ifdef _WIN64
+[[ifdef]] _WIN64
     ULONG_PTR VirtualPage : 52;
-#else
+[[else]]
     ULONG VirtualPage : 20;
-#endif
+[[endif]]
 } MEMORY_WORKING_SET_BLOCK, *PMEMORY_WORKING_SET_BLOCK;
 
 typedef struct _MEMORY_WORKING_SET_INFORMATION
@@ -195,9 +195,9 @@ typedef struct _MEMORY_WORKING_SET_EX_BLOCK
             ULONG_PTR SharedOriginal : 1;
             ULONG_PTR Bad : 1;
             ULONG_PTR Win32GraphicsProtection : 4; // 19H1
-#ifdef _WIN64
+[[ifdef]] _WIN64
             ULONG_PTR ReservedUlong : 28;
-#endif
+[[endif]]
         };
         struct
         {
@@ -212,9 +212,9 @@ typedef struct _MEMORY_WORKING_SET_EX_BLOCK
             ULONG_PTR Reserved2 : 2;
             ULONG_PTR SharedOriginal : 1;
             ULONG_PTR Bad : 1;
-#ifdef _WIN64
+[[ifdef]] _WIN64
             ULONG_PTR ReservedUlong : 32;
-#endif
+[[endif]]
         } Invalid;
     };
 } MEMORY_WORKING_SET_EX_BLOCK, *PMEMORY_WORKING_SET_EX_BLOCK;
@@ -297,14 +297,14 @@ typedef struct _MEMORY_PHYSICAL_CONTIGUITY_INFORMATION
     PMEMORY_PHYSICAL_CONTIGUITY_UNIT_INFORMATION ContiguityUnitInformation;
 } MEMORY_PHYSICAL_CONTIGUITY_INFORMATION, *PMEMORY_PHYSICAL_CONTIGUITY_INFORMATION;
 
-#define MMPFNLIST_ZERO 0
-#define MMPFNLIST_FREE 1
-#define MMPFNLIST_STANDBY 2
-#define MMPFNLIST_MODIFIED 3
-#define MMPFNLIST_MODIFIEDNOWRITE 4
-#define MMPFNLIST_BAD 5
-#define MMPFNLIST_ACTIVE 6
-#define MMPFNLIST_TRANSITION 7
+[[define]] MMPFNLIST_ZERO 0
+[[define]] MMPFNLIST_FREE 1
+[[define]] MMPFNLIST_STANDBY 2
+[[define]] MMPFNLIST_MODIFIED 3
+[[define]] MMPFNLIST_MODIFIEDNOWRITE 4
+[[define]] MMPFNLIST_BAD 5
+[[define]] MMPFNLIST_ACTIVE 6
+[[define]] MMPFNLIST_TRANSITION 7
 
 //typedef enum _MMLISTS
 //{
@@ -318,18 +318,18 @@ typedef struct _MEMORY_PHYSICAL_CONTIGUITY_INFORMATION
 //    TransitionPage = 7
 //} MMLISTS;
 
-#define MMPFNUSE_PROCESSPRIVATE 0
-#define MMPFNUSE_FILE 1
-#define MMPFNUSE_PAGEFILEMAPPED 2
-#define MMPFNUSE_PAGETABLE 3
-#define MMPFNUSE_PAGEDPOOL 4
-#define MMPFNUSE_NONPAGEDPOOL 5
-#define MMPFNUSE_SYSTEMPTE 6
-#define MMPFNUSE_SESSIONPRIVATE 7
-#define MMPFNUSE_METAFILE 8
-#define MMPFNUSE_AWEPAGE 9
-#define MMPFNUSE_DRIVERLOCKPAGE 10
-#define MMPFNUSE_KERNELSTACK 11
+[[define]] MMPFNUSE_PROCESSPRIVATE 0
+[[define]] MMPFNUSE_FILE 1
+[[define]] MMPFNUSE_PAGEFILEMAPPED 2
+[[define]] MMPFNUSE_PAGETABLE 3
+[[define]] MMPFNUSE_PAGEDPOOL 4
+[[define]] MMPFNUSE_NONPAGEDPOOL 5
+[[define]] MMPFNUSE_SYSTEMPTE 6
+[[define]] MMPFNUSE_SESSIONPRIVATE 7
+[[define]] MMPFNUSE_METAFILE 8
+[[define]] MMPFNUSE_AWEPAGE 9
+[[define]] MMPFNUSE_DRIVERLOCKPAGE 10
+[[define]] MMPFNUSE_KERNELSTACK 11
 
 //typedef enum _MMPFNUSE
 //{
@@ -509,26 +509,26 @@ typedef struct _SECTION_INTERNAL_IMAGE_INFORMATION
     };
 } SECTION_INTERNAL_IMAGE_INFORMATION, *PSECTION_INTERNAL_IMAGE_INFORMATION;
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 typedef enum _SECTION_INHERIT
 {
     ViewShare = 1,
     ViewUnmap = 2
 } SECTION_INHERIT;
-#endif
+[[endif]]
 
-#define MEM_EXECUTE_OPTION_ENABLE 0x1
-#define MEM_EXECUTE_OPTION_DISABLE 0x2
-#define MEM_EXECUTE_OPTION_DISABLE_THUNK_EMULATION 0x4
-#define MEM_EXECUTE_OPTION_PERMANENT 0x8
-#define MEM_EXECUTE_OPTION_EXECUTE_DISPATCH_ENABLE 0x10
-#define MEM_EXECUTE_OPTION_IMAGE_DISPATCH_ENABLE 0x20
-#define MEM_EXECUTE_OPTION_DISABLE_EXCEPTION_CHAIN_VALIDATION 0x40
-#define MEM_EXECUTE_OPTION_VALID_FLAGS 0x7f
+[[define]] MEM_EXECUTE_OPTION_ENABLE 0x1
+[[define]] MEM_EXECUTE_OPTION_DISABLE 0x2
+[[define]] MEM_EXECUTE_OPTION_DISABLE_THUNK_EMULATION 0x4
+[[define]] MEM_EXECUTE_OPTION_PERMANENT 0x8
+[[define]] MEM_EXECUTE_OPTION_EXECUTE_DISPATCH_ENABLE 0x10
+[[define]] MEM_EXECUTE_OPTION_IMAGE_DISPATCH_ENABLE 0x20
+[[define]] MEM_EXECUTE_OPTION_DISABLE_EXCEPTION_CHAIN_VALIDATION 0x40
+[[define]] MEM_EXECUTE_OPTION_VALID_FLAGS 0x7f
 
 // Virtual memory
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 _Must_inspect_result_
 _When_(return == 0, __drv_allocatesMem(mem))
@@ -544,7 +544,7 @@ NtAllocateVirtualMemory(
     _In_ ULONG Protect
     );
 
-#if (PHNT_VERSION >= PHNT_REDSTONE5)
+[[if]] (PHNT_VERSION >= PHNT_REDSTONE5)
 
 _Must_inspect_result_
 _When_(return == 0, __drv_allocatesMem(mem))
@@ -561,7 +561,7 @@ NtAllocateVirtualMemoryEx(
     _In_ ULONG ExtendedParameterCount
     );
 
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -584,7 +584,7 @@ NtReadVirtualMemory(
     _Out_opt_ PSIZE_T NumberOfBytesRead
     );
 
-#if (PHNT_VERSION >= PHNT_WIN11)
+[[if]] (PHNT_VERSION >= PHNT_WIN11)
 // rev
 NTSYSCALLAPI
 NTSTATUS
@@ -597,7 +597,7 @@ NtReadVirtualMemoryEx(
     _Out_opt_ PSIZE_T NumberOfBytesRead,
     _In_ ULONG Flags
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -645,10 +645,10 @@ NtFlushVirtualMemory(
     _Out_ PIO_STATUS_BLOCK IoStatus
     );
 
-#endif
+[[endif]]
 
 // begin_private
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 typedef enum _VIRTUAL_MEMORY_INFORMATION_CLASS
 {
     VmPrefetchInformation, // MEMORY_PREFETCH_INFORMATION
@@ -661,26 +661,26 @@ typedef enum _VIRTUAL_MEMORY_INFORMATION_CLASS
     VmRemoveFromWorkingSetInformation,
     MaxVmInfoClass
 } VIRTUAL_MEMORY_INFORMATION_CLASS;
-#else
-#define VmPrefetchInformation 0x0
-#define VmPagePriorityInformation 0x1
-#define VmCfgCallTargetInformation 0x2
-#define VmPageDirtyStateInformation 0x3
-#define VmImageHotPatchInformation 0x4
-#define VmPhysicalContiguityInformation 0x5
-#define VmVirtualMachinePrepopulateInformation 0x6
-#define VmRemoveFromWorkingSetInformation 0x7
-#define MaxVmInfoClass 0x8
-#endif
+[[else]]
+[[define]] VmPrefetchInformation 0x0
+[[define]] VmPagePriorityInformation 0x1
+[[define]] VmCfgCallTargetInformation 0x2
+[[define]] VmPageDirtyStateInformation 0x3
+[[define]] VmImageHotPatchInformation 0x4
+[[define]] VmPhysicalContiguityInformation 0x5
+[[define]] VmVirtualMachinePrepopulateInformation 0x6
+[[define]] VmRemoveFromWorkingSetInformation 0x7
+[[define]] MaxVmInfoClass 0x8
+[[endif]]
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 typedef struct _MEMORY_RANGE_ENTRY
 {
     PVOID VirtualAddress;
     SIZE_T NumberOfBytes;
 } MEMORY_RANGE_ENTRY, *PMEMORY_RANGE_ENTRY;
 
-#define VM_PREFETCH_TO_WORKING_SET 0x1 // since 24H4
+[[define]] VM_PREFETCH_TO_WORKING_SET 0x1 // since 24H4
 
 typedef struct _MEMORY_PREFETCH_INFORMATION
 {
@@ -696,12 +696,12 @@ typedef struct _CFG_CALL_TARGET_LIST_INFORMATION
     PVOID Section; // since REDSTONE5
     ULONGLONG FileOffset;
 } CFG_CALL_TARGET_LIST_INFORMATION, *PCFG_CALL_TARGET_LIST_INFORMATION;
-#endif
+[[endif]]
 // end_private
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
-#if (PHNT_VERSION >= PHNT_WIN8)
+[[if]] (PHNT_VERSION >= PHNT_WIN8)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -715,10 +715,10 @@ NtSetInformationVirtualMemory(
     _In_ ULONG VmInformationLength
     );
 
-#endif
+[[endif]]
 
-#define MAP_PROCESS 1
-#define MAP_SYSTEM 2
+[[define]] MAP_PROCESS 1
+[[define]] MAP_SYSTEM 2
 
 NTSYSCALLAPI
 NTSTATUS
@@ -740,11 +740,11 @@ NtUnlockVirtualMemory(
     _In_ ULONG MapType
     );
 
-#endif
+[[endif]]
 
 // Sections
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -759,7 +759,7 @@ NtCreateSection(
     _In_opt_ HANDLE FileHandle
     );
 
-#if (PHNT_VERSION >= PHNT_REDSTONE5)
+[[if]] (PHNT_VERSION >= PHNT_REDSTONE5)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -774,7 +774,7 @@ NtCreateSectionEx(
     _Inout_updates_opt_(ExtendedParameterCount) PMEM_EXTENDED_PARAMETER ExtendedParameters,
     _In_ ULONG ExtendedParameterCount
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -801,7 +801,7 @@ NtMapViewOfSection(
     _In_ ULONG Win32Protect
     );
 
-#if (PHNT_VERSION >= PHNT_REDSTONE5)
+[[if]] (PHNT_VERSION >= PHNT_REDSTONE5)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -816,7 +816,7 @@ NtMapViewOfSectionEx(
     _Inout_updates_opt_(ExtendedParameterCount) PMEM_EXTENDED_PARAMETER ExtendedParameters,
     _In_ ULONG ExtendedParameterCount
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -826,7 +826,7 @@ NtUnmapViewOfSection(
     _In_opt_ PVOID BaseAddress
     );
 
-#if (PHNT_VERSION >= PHNT_WIN8)
+[[if]] (PHNT_VERSION >= PHNT_WIN8)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -835,7 +835,7 @@ NtUnmapViewOfSectionEx(
     _In_opt_ PVOID BaseAddress,
     _In_ ULONG Flags
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -864,19 +864,19 @@ NtAreMappedFilesTheSame(
     _In_ PVOID File2MappedAsFile
     );
 
-#endif
+[[endif]]
 
 // Partitions
 
-#ifndef MEMORY_PARTITION_QUERY_ACCESS
-#define MEMORY_PARTITION_QUERY_ACCESS 0x0001
-#define MEMORY_PARTITION_MODIFY_ACCESS 0x0002
-#define MEMORY_PARTITION_ALL_ACCESS \
+[[ifndef]] MEMORY_PARTITION_QUERY_ACCESS
+[[define]] MEMORY_PARTITION_QUERY_ACCESS 0x0001
+[[define]] MEMORY_PARTITION_MODIFY_ACCESS 0x0002
+[[define]] MEMORY_PARTITION_ALL_ACCESS \
     (STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | \
      MEMORY_PARTITION_QUERY_ACCESS | MEMORY_PARTITION_MODIFY_ACCESS)
-#endif
+[[endif]]
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 // private
 typedef enum _PARTITION_INFORMATION_CLASS
 {
@@ -897,24 +897,24 @@ typedef enum _PARTITION_INFORMATION_CLASS
     SystemMemoryPartitionMemoryListCommand, // since 24H2
     SystemMemoryPartitionMax
 } PARTITION_INFORMATION_CLASS, *PPARTITION_INFORMATION_CLASS;
-#else
-#define SystemMemoryPartitionInformation 0x0
-#define SystemMemoryPartitionMoveMemory 0x1
-#define SystemMemoryPartitionAddPagefile 0x2
-#define SystemMemoryPartitionCombineMemory 0x3
-#define SystemMemoryPartitionInitialAddMemory 0x4
-#define SystemMemoryPartitionGetMemoryEvents 0x5
-#define SystemMemoryPartitionSetAttributes 0x6
-#define SystemMemoryPartitionNodeInformation 0x7
-#define SystemMemoryPartitionCreateLargePages 0x8
-#define SystemMemoryPartitionDedicatedMemoryInformation 0x9
-#define SystemMemoryPartitionOpenDedicatedMemory 0xA
-#define SystemMemoryPartitionMemoryChargeAttributes 0xB
-#define SystemMemoryPartitionClearAttributes 0xC
-#define SystemMemoryPartitionSetMemoryThresholds 0xD
-#define SystemMemoryPartitionMemoryListCommand 0xE
-#define SystemMemoryPartitionMax 0xF
-#endif
+[[else]]
+[[define]] SystemMemoryPartitionInformation 0x0
+[[define]] SystemMemoryPartitionMoveMemory 0x1
+[[define]] SystemMemoryPartitionAddPagefile 0x2
+[[define]] SystemMemoryPartitionCombineMemory 0x3
+[[define]] SystemMemoryPartitionInitialAddMemory 0x4
+[[define]] SystemMemoryPartitionGetMemoryEvents 0x5
+[[define]] SystemMemoryPartitionSetAttributes 0x6
+[[define]] SystemMemoryPartitionNodeInformation 0x7
+[[define]] SystemMemoryPartitionCreateLargePages 0x8
+[[define]] SystemMemoryPartitionDedicatedMemoryInformation 0x9
+[[define]] SystemMemoryPartitionOpenDedicatedMemory 0xA
+[[define]] SystemMemoryPartitionMemoryChargeAttributes 0xB
+[[define]] SystemMemoryPartitionClearAttributes 0xC
+[[define]] SystemMemoryPartitionSetMemoryThresholds 0xD
+[[define]] SystemMemoryPartitionMemoryListCommand 0xE
+[[define]] SystemMemoryPartitionMax 0xF
+[[endif]]
 
 // private
 typedef struct _MEMORY_PARTITION_CONFIGURATION_INFORMATION
@@ -1000,9 +1000,9 @@ typedef struct _MEMORY_PARTITION_MEMORY_EVENTS_INFORMATION
     HANDLE MaximumCommitCondition; // \KernelObjects\MaximumCommitCondition
 } MEMORY_PARTITION_MEMORY_EVENTS_INFORMATION, *PMEMORY_PARTITION_MEMORY_EVENTS_INFORMATION;
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -1035,13 +1035,13 @@ NtManagePartition(
     _In_ ULONG PartitionInformationLength
     );
 
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 
 // User physical pages
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -1070,7 +1070,7 @@ NtAllocateUserPhysicalPages(
     _Out_writes_(*NumberOfPages) PULONG_PTR UserPfnArray
     );
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -1081,7 +1081,7 @@ NtAllocateUserPhysicalPagesEx(
     _Inout_updates_opt_(ParameterCount) PMEM_EXTENDED_PARAMETER ExtendedParameters,
     _In_ ULONG ExtendedParameterCount
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -1092,11 +1092,11 @@ NtFreeUserPhysicalPages(
     _In_reads_(*NumberOfPages) PULONG_PTR UserPfnArray
     );
 
-#endif
+[[endif]]
 
 // Misc.
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -1146,9 +1146,9 @@ NtFlushWriteBuffer(
     VOID
     );
 
-#endif
+[[endif]]
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 // Enclave support
 
 NTSYSCALLAPI
@@ -1193,9 +1193,9 @@ NtInitializeEnclave(
     );
 
 // rev
-#define TERMINATE_ENCLAVE_VALID_FLAGS     0x00000005ul
-#define TERMINATE_ENCLAVE_FLAG_NO_WAIT    0x00000001ul
-#define TERMINATE_ENCLAVE_FLAG_WAIT_ERROR 0x00000004ul // STATUS_PENDING -> STATUS_ENCLAVE_NOT_TERMINATED
+[[define]] TERMINATE_ENCLAVE_VALID_FLAGS     0x00000005ul
+[[define]] TERMINATE_ENCLAVE_FLAG_NO_WAIT    0x00000001ul
+[[define]] TERMINATE_ENCLAVE_FLAG_WAIT_ERROR 0x00000004ul // STATUS_PENDING -> STATUS_ENCLAVE_NOT_TERMINATED
 
 // rev
 NTSYSCALLAPI
@@ -1206,11 +1206,11 @@ NtTerminateEnclave(
     _In_ ULONG Flags // TERMINATE_ENCLAVE_FLAG_*
     );
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 
 // rev
-#define ENCLAVE_CALL_VALID_FLAGS  0x00000001ul
-#define ENCLAVE_CALL_FLAG_NO_WAIT 0x00000001ul
+[[define]] ENCLAVE_CALL_VALID_FLAGS  0x00000001ul
+[[define]] ENCLAVE_CALL_FLAG_NO_WAIT 0x00000001ul
 
 // rev
 NTSYSCALLAPI
@@ -1222,9 +1222,9 @@ NtCallEnclave(
     _In_ ULONG Flags,                 // ENCLAVE_CALL_FLAG_*
     _Inout_ PVOID* RoutineParamReturn // input routine parameter, output routine return value
     );
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

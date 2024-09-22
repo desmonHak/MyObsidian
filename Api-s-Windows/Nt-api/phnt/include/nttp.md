@@ -5,8 +5,8 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTTP_H
-#define _NTTP_H
+[[ifndef]] _NTTP_H
+[[define]] _NTTP_H
 
 // Some types are already defined in winnt.h.
 
@@ -27,7 +27,7 @@ typedef VOID (NTAPI *PTP_ALPC_CALLBACK_EX)(
     _In_ PVOID ApcContext
     );
 
-#if (PHNT_VERSION >= PHNT_VISTA)
+[[if]] (PHNT_VERSION >= PHNT_VISTA)
 
 // winbase:CreateThreadpool
 NTSYSAPI
@@ -64,7 +64,7 @@ TpSetPoolMinThreads(
     _In_ ULONG MinThreads
     );
 
-#if (PHNT_VERSION >= PHNT_WIN7)
+[[if]] (PHNT_VERSION >= PHNT_WIN7)
 // winbase:QueryThreadpoolStackInformation
 NTSYSAPI
 NTSTATUS
@@ -91,7 +91,7 @@ TpSetPoolThreadBasePriority(
     _Inout_ PTP_POOL Pool,
     _In_ ULONG BasePriority
     );
-#endif
+[[endif]]
 
 // winbase:CreateThreadpoolCleanupGroup
 NTSYSAPI
@@ -257,7 +257,7 @@ TpSetTimer(
     _In_opt_ ULONG WindowLength
     );
 
-#if (PHNT_VERSION >= PHNT_WIN8)
+[[if]] (PHNT_VERSION >= PHNT_WIN8)
 // winbase:SetThreadpoolTimerEx
 NTSYSAPI
 NTSTATUS
@@ -268,7 +268,7 @@ TpSetTimerEx(
     _In_ ULONG Period,
     _In_opt_ ULONG WindowLength
     );
-#endif
+[[endif]]
 
 // winbase:IsThreadpoolTimerSet
 NTSYSAPI
@@ -316,7 +316,7 @@ TpSetWait(
     _In_opt_ PLARGE_INTEGER Timeout
     );
 
-#if (PHNT_VERSION >= PHNT_WIN8)
+[[if]] (PHNT_VERSION >= PHNT_WIN8)
 // winbase:SetThreadpoolWaitEx
 NTSYSAPI
 NTSTATUS
@@ -327,7 +327,7 @@ TpSetWaitEx(
     _In_opt_ PLARGE_INTEGER Timeout,
     _In_opt_ PVOID Reserved
     );
-#endif
+[[endif]]
 
 // winbase:WaitForThreadpoolWaitCallbacks
 NTSYSAPI
@@ -404,7 +404,7 @@ TpAllocAlpcCompletion(
     _In_opt_ PTP_CALLBACK_ENVIRON CallbackEnviron
     );
 
-#if (PHNT_VERSION >= PHNT_WIN7)
+[[if]] (PHNT_VERSION >= PHNT_WIN7)
 // rev
 NTSYSAPI
 NTSTATUS
@@ -416,7 +416,7 @@ TpAllocAlpcCompletionEx(
     _Inout_opt_ PVOID Context,
     _In_opt_ PTP_CALLBACK_ENVIRON CallbackEnviron
     );
-#endif
+[[endif]]
 
 // private
 NTSYSAPI
@@ -458,7 +458,7 @@ TpCheckTerminateWorker(
     _In_ HANDLE Thread
     );
 
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

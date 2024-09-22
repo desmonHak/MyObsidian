@@ -11,12 +11,12 @@ La historia de ``x86`` comienza típicamente con el [[8086]] de ``16 bits``, per
 ### [[80286]] – Palabra de estado de la máquina
 El [[80286]] llegó con una forma sencilla de gestión de memoria que permitía ejecutar sistemas operativos más sofisticados (pero todavía no “modernos”), como las versiones originales de ``OS/2``. La “Palabra de estado de la máquina” de ``16 bits`` se creó para albergar el gran cambio entre el ``modo heredado`` ([[modo-real]]) y el nuevo modo de gestión de memoria ([[modo-protegido]]), y un programa podía acceder a ella utilizando las nuevas instrucciones “[[LMSW]]” y “[[SMSW]]”. El [[80286]] tenía más estado del sistema que solo este bit: el [[GDT]], el [[IDT]] y el [[TSS]] tenían sus propios registros e instrucciones dedicadas para acceder a ellos (“[[LGDT]]”/”[[SGDT]]”, “[[LIDT]]”/”[[SIDT]]”, “[[LTR]]”/”[[STR]]”)
 
-[[80386]]/i386 – Registros de control
+[[i80386]]/i386 – Registros de control
 El i386 finalmente tuvo una [[MMU]] real que permitió la [[modelos-memoria#^cd416f|paginación]] y, por lo tanto, los sistemas operativos modernos. La [[MMU]] requería dos registros más en el estado del sistema, uno para la __dirección base de las tablas de paginación__ y __otro para leer una dirección de falla__. Intel decidió no agregar más registros de propósito especial con instrucciones de acceso dedicadas, pero en su lugar introdujo ocho “registros de control” indexados de ``32 bits`` de ancho, [[CR0]] a [[CR7]]. Los nuevos accesores “``mov crn, r32``”/”``mov r32, crn``” permitían copiar entre registros y registros de control y tenían el índice ``CR`` de ``3 bits`` codificado en el código de operación.
 
 El antiguo [[MSW]] también estaba conectado a los ``16 bits`` inferiores de [[CR0]]; pero [[CR0]] también se amplió con nuevos bits como el interruptor para activar la paginación. [[CR1]] se mantuvo reservado, presumiblemente como un segundo registro de control para bits de control diversos, y __[[CR2]] y [[CR3]] se usaron para la dirección de falla y el puntero base de la tabla de paginación__ antes mencionados. Los códigos de operación para acceder a los registros de control reservados generaron un error de “``código de operación no válido``”, lo que hizo posible que Intel reutilizara los códigos de operación más adelante si no usaba los registros de control.
 
-### [[80486]]/i486 – [[CR4]]
+### [[i80486]]/i486 – [[CR4]]
 El ``i486`` agregó algunos bits de control más y algunos de ellos se instalaron en [[CR0]]. Pero en lugar de desbordar los nuevos bits en [[CR1]], Intel decidió omitirlo y abrir [[CR4]] en su lugar, por razones desconocidas.
 
 ### Pentium – [[MSR]]

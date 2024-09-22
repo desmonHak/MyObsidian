@@ -5,8 +5,8 @@
  * This file is part of System Informer.
  */
 
-#ifndef _USERMGR_H
-#define _USERMGR_H
+[[ifndef]] _USERMGR_H
+[[define]] _USERMGR_H
 
 // private
 typedef struct _SESSION_USER_CONTEXT
@@ -25,11 +25,11 @@ typedef struct _CRED_PROV_CREDENTIAL
     PVOID Information;
 } CRED_PROV_CREDENTIAL, *PCRED_PROV_CREDENTIAL;
 
-#define USERMGRAPI DECLSPEC_IMPORT
+[[define]] USERMGRAPI DECLSPEC_IMPORT
 
 // Contexts
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 
 // rev
 USERMGRAPI
@@ -75,11 +75,11 @@ UMgrQueryUserContextFromName(
     _Out_ PULONGLONG ContextToken
     );
 
-#endif
+[[endif]]
 
 // Tokens
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 
 // rev
 USERMGRAPI
@@ -136,9 +136,9 @@ UMgrGetConstrainedUserToken(
     _Out_ _Ret_maybenull_ PHANDLE OutputTokenHandle
     );
 
-#endif
+[[endif]]
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD2)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD2)
 
 // rev
 USERMGRAPI
@@ -158,9 +158,9 @@ UMgrGetImpersonationTokenForContext(
     _Out_ PHANDLE OutputTokenHandle
     );
 
-#endif
+[[endif]]
 
-#if (PHNT_VERSION >= PHNT_REDSTONE)
+[[if]] (PHNT_VERSION >= PHNT_REDSTONE)
 
 // rev
 USERMGRAPI
@@ -171,11 +171,11 @@ UMgrGetSessionActiveShellUserToken(
     _Out_ PHANDLE TokenHandle
     );
 
-#endif
+[[endif]]
 
 // Single-session SKU
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 
 // rev
 USERMGRAPI
@@ -196,11 +196,11 @@ UMgrOpenProcessHandleForAccess(
     _Out_ PHANDLE ProcessHandle
     );
 
-#endif
+[[endif]]
 
 // Credentials
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 
 // rev
 USERMGRAPI
@@ -219,7 +219,7 @@ UMgrGetCachedCredentials(
     _Outptr_ PCRED_PROV_CREDENTIAL *Credentials
     );
 
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

@@ -6,9 +6,9 @@ La forma de resolver estos problemas es poner '``__``' al principio y al final d
 
 Otros compiladores de C no aceptarán estas palabras clave alternativas; si desea compilar con otro compilador, puede definir las palabras clave alternativas como macros para sustituirlas por las palabras clave habituales. Se parece a esto:
 ```c
-#ifndef __GNUC__
-#define __asm__ asm
-#endif
+[[ifndef]] __GNUC__
+[[define]] __asm__ asm
+[[endif]]
 ```
 
 ``-pedantic`` y otras opciones generan advertencias para muchas extensiones de C de GNU. Puede suprimir dichas advertencias utilizando la palabra clave ``__extension__``. Específicamente:

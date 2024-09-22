@@ -18,7 +18,7 @@ Cuando llamamos a una función, se le asigna un [[stack-frame]](marco de pila), 
 La función que llama a la subrutina se denomina ``caller``. La función que recibe la llamada (es decir, la subrutina) del llamador se denomina ``callee``.
 ```cpp
 // C++ Program to illustrate the caller and callee 
-#include <iostream> 
+[[include]] <iostream> 
   
 // callee 
 void func() { std::cout << "Geeks"; } 
@@ -65,7 +65,7 @@ Existen muchas convenciones de llamada para diferentes plataformas. Vamos a ver 
 El siguiente programa ilustra cómo utilizar la convención de llamada.
 ```cpp
 // C++ Program to demonstrate the calling convention 
-#include <iostream> 
+[[include]] <iostream> 
   
 // __cdecl calling convention 
 int __cdecl cdeclAdd(int a, int b) 

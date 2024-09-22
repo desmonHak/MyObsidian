@@ -81,8 +81,8 @@ En resumen, el atributo `malloc` se utiliza para indicar que una función asigna
 
 Ejemplo:
 ```c
-#include <stdlib.h>
-#include <stdio.h>
+[[include]] <stdlib.h>
+[[include]] <stdio.h>
 
 // Función de desasignación (deallocator)
 void custom_free(void* ptr) {

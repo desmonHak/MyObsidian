@@ -23,7 +23,7 @@ Además, veremos cómo ``Windows x64`` aún permite que las aplicaciones en modo
 
 Al final del día, demostraremos que el increíble artículo de ``j00ru`` y ``Gynvael Coldwind`` sobre el abuso de las ``tablas de descriptores`` sigue siendo relevante, incluso en sistemas ``x64``, en sistemas hasta la actualización de aniversario de Windows 10. Como tal, la lectura de ese [artículo](https://j00ru.vexillium.org/2010/01/descriptor-tables-in-kernel-exploitation-a-new-article/) debe considerarse un prerrequisito para esta publicación.
 
-Tenga en cuenta que todas estas técnicas ya no funcionan en sistemas con actualización de aniversario o posteriores, ni funcionarán en procesadores [[Intel-Ivy-Bridge]] o posteriores, por lo que las presento ahora. Además, aquí no se presenta ninguna "vulnerabilidad" o "día cero", por lo que no hay motivo de alarma. Se trata simplemente de una combinación interesante de componentes internos de ``CPU``, sistema y SO, que en sistemas más antiguos podrían haberse utilizado como una forma de obtener la ejecución de código en el ``ring 0``, en presencia de una vulnerabilidad ya existente.
+Tenga en cuenta que todas estas técnicas ya no funcionan en sistemas con actualización de aniversario o posteriores, ni funcionarán en procesadores [[Intel-Ivy-Bridge]] o posteriores, por lo que las presento ahora. Además, aquí no se presenta ninguna "vulnerabilidad" o "día cero", por lo que no hay motivo de alarma. Se trata simplemente de una combinación interesante de componentes internos de ``CPU``, sistema y SO, que en sistemas más antiguos podrían haberse utilizado como una forma de obtener la ejecución de código en el [[ring-0]], en presencia de una vulnerabilidad ya existente.
 
 ## Una breve introducción a la programación en modo de usuario
 
@@ -34,7 +34,7 @@ Uno de los problemas clave que surgen cuando se intenta cambiar entre subproceso
 Como [[UMS]] ahora necesitaría permitir cambiar la dirección base de este registro por subproceso desde el modo de usuario (ya que involucrar una transición del núcleo iría en contra de todo el objetivo), existen dos problemas:
 
 1. En sistemas ``x86``, esto podría implementarse a través de la segmentación, lo que permite que un proceso tenga segmentos [[FS]] adicionales. Pero hacerlo en el [[GDT]] limitaría la cantidad de subprocesos [[UMS]] disponibles en el sistema (además de causar una degradación del rendimiento si varios procesos usan [[UMS]]), mientras que hacerlo en el [[LDT]] entraría en conflicto con el uso existente del [[LDT]] en el sistema (como [[NTVDM]]).
-2. En sistemas ``x64``, **modificar la dirección base del segmento [[GS]] requiere modificar los [[MSR]] antes mencionados**, lo que es una operación de ``Ring 0``.
+2. En sistemas ``x64``, **modificar la dirección base del segmento [[GS]] requiere modificar los [[MSR]] antes mencionados**, lo que es una operación de [[ring-0]].
 
 Vale la pena mencionar el hecho de que las ``fibras`` nunca resolvieron este problema, sino que todas las fibras comparten un solo subproceso (y [[TEB]]). Pero el objetivo de [[UMS]] es proporcionar un verdadero aislamiento de subprocesos. Entonces, ¿qué puede hacer Windows?
 
@@ -131,11 +131,11 @@ Esto significa que si una puerta de llamada se encontrara en una ``tabla de desc
 
 ## Técnica de explotación: Encontrar el [[LDT]]
 
-Primero, aunque [[SMEP]] hace que un ``RIP`` de ``Ring 3`` sea inutilizable para obtener la ejecución de ``Ring 0``, establecer el Desplazamiento de destino de una ``Puerta de llamada de 64 bits`` en una instrucción de pivote de pila y luego realizar una ``RET`` en un dispositivo de desactivación de [[SMEP]] permitirá que la ejecución del código de ``Ring 0`` continúe.
+Primero, aunque [[SMEP]] hace que un ``RIP`` de [[ring-3]] sea inutilizable para obtener la ejecución de [[ring-0]], establecer el Desplazamiento de destino de una ``Puerta de llamada de 64 bits`` en una instrucción de pivote de pila y luego realizar una ``RET`` en un dispositivo de desactivación de [[SMEP]] permitirá que la ejecución del código de [[ring-0]] continúe.
 
 Obviamente, [[HyperGuard]] ahora evita este comportamiento, pero [[HyperGuard]] solo se agregó en ``Anniversary Update``, que deshabilita el uso del [[LDT]] de todos modos.
 
-Esto significa que la capacidad de instalar una Puerta de llamada de ``64 bits`` sigue siendo una técnica viable para obtener una ejecución controlada con privilegios de ``Ring 0``.
+Esto significa que la capacidad de instalar una Puerta de llamada de ``64 bits`` sigue siendo una técnica viable para obtener una ejecución controlada con privilegios de [[ring-0]].
 
 Dicho esto, si el [[GDT]] está protegido por [[PatchGuard]], significa que insertar una puerta de llamada no es realmente viable: existe la posibilidad de que se detecte tan pronto como se inserte, e incluso un intento de limpiar la puerta de llamada después de usarla podría llegar demasiado tarde. Al intentar implementar una técnica de explotación estable y persistente, es mejor evitar las cosas que [[PatchGuard]] detectará.
 
@@ -151,7 +151,7 @@ Pool page ffffe00022f3b000 region is Nonpaged pool
 *ffffe00022f3b000 : large allocation, tag **kLDT**, size 0x10000 bytes
 ```
 
-Si bien esta es una buena fuga de información incluso en ``Windows 10``, en ``Windows 8.1`` entra en juego una mitigación: los procesos de nivel IL bajo ya no pueden usar la ``API`` que describí, lo que significa que la dirección [[LDT]] solo se puede filtrar (sin una vulnerabilidad de lectura arbitraria/fuga de información de ``Ring 0`` existente) en un nivel IL medio o superior.
+Si bien esta es una buena fuga de información incluso en ``Windows 10``, en ``Windows 8.1`` entra en juego una mitigación: los procesos de nivel IL bajo ya no pueden usar la ``API`` que describí, lo que significa que la dirección [[LDT]] solo se puede filtrar (sin una vulnerabilidad de lectura arbitraria/fuga de información de [[ring-0]] existente) en un nivel IL medio o superior.
 
 Sin embargo, dado que se trata de una asignación de tamaño bastante grande, significa que si se puede realizar una asignación controlada de ``64 KB`` en un grupo no paginado y se filtra su dirección desde un nivel IL bajo, aún se puede adivinar la dirección [[LDT]]. Las formas de hacerlo se dejan como ejercicio para el lector.
 
@@ -200,20 +200,20 @@ Tenemos, por lo tanto, dos problemas:
 1. ``0xE000`` no es un segmento válido
 2. ``0xFFFF1820`` es una dirección de modo de usuario, lo que provocará una violación de [[SMEP]] en la mayoría de los sistemas modernos.
 
-El primer problema no es fácil de resolver: si bien podríamos crear miles de subprocesos [[UMS]], lo que provocaría que ``0xE000`` se convirtiera en un segmento válido (que luego convertiríamos en un segmento de código de ``anillo 0``), este sería el segmento ``0xE004``. Y si uno puede cambiar ``0xE000``, también se puede evitar el problema y configurarlo en su valor correcto – (``KGDT64_R0_CODE``) ``0x10``, desde el principio.
+El primer problema no es fácil de resolver: si bien podríamos crear miles de subprocesos [[UMS]], lo que provocaría que ``0xE000`` se convirtiera en un segmento válido (que luego convertiríamos en un segmento de código de [[ring-0]]), este sería el segmento ``0xE004``. Y si uno puede cambiar ``0xE000``, también se puede evitar el problema y configurarlo en su valor correcto – (``KGDT64_R0_CODE``) ``0x10``, desde el principio.
 
 El segundo problema se puede solucionar de varias maneras.
 
-1. Se puede utilizar una escritura arbitraria para configurar ``BaseUpper``, ``BaseHigh``, ``LimitHigh``, ``Flags2`` y ``LimitLow`` (que conforman los ``64 bits`` de ``Code Offset``) en el ``RIP Ring 0`` deseado que contiene un pivote de pila o alguna otra instrucción o dispositivo interesante.
-2. O bien, una escritura arbitraria para modificar el [[PTE]] para convertirlo en ``Ring 0``, ya que la dirección base del [[PTE]] no es aleatoria en las versiones de Windows vulnerables a un ataque basado en [[LDT]]. 3. Por último, si solo nos interesa la escalada de ``SYSTEM->Ring 0``, los sistemas anteriores a Windows 10 pueden ser atacados a través del ataque basado en [[AWE]] que describí en Infiltrate 2015, que permitirá la creación de una página ``Ring 0`` ejecutable.
+1. Se puede utilizar una escritura arbitraria para configurar ``BaseUpper``, ``BaseHigh``, ``LimitHigh``, ``Flags2`` y ``LimitLow`` (que conforman los ``64 bits`` de ``Code Offset``) en el ``RIP``[[ring-0]]  deseado que contiene un pivote de pila o alguna otra instrucción o dispositivo interesante.
+2. O bien, una escritura arbitraria para modificar el [[PTE]] para convertirlo en [[ring-0]], ya que la dirección base del [[PTE]] no es aleatoria en las versiones de Windows vulnerables a un ataque basado en [[LDT]]. 3. Por último, si solo nos interesa la escalada de ``SYSTEM->``[[ring-0]], los sistemas anteriores a Windows 10 pueden ser atacados a través del ataque basado en [[AWE]] que describí en Infiltrate 2015, que permitirá la creación de una página [[ring-0]] ejecutable.
 
 También vale la pena mencionar que, dado que Windows 7 tiene todo el grupo no paginado marcado como ejecutable y el [[LDT]] es en sí mismo una asignación de grupo no paginado de ``64 KB``, está compuesto por páginas completamente ejecutables, por lo que se podría usar una escritura arbitraria para establecer el desplazamiento de [[Call-gates]] en algún lugar dentro de la asignación del [[LDT]] en sí.
 
 ## Técnica de explotación: escritura de la carga útil del anillo 0
 
-Escribir el código de carga útil del ``ring 0`` de ``x64`` es mucho más difícil que en ``x86``.
+Escribir el código de carga útil del [[ring-0]] de ``x64`` es mucho más difícil que en ``x86``.
 
-Para empezar, el segmento ``GS`` debe establecerse inmediatamente en su valor correcto, de lo contrario podría producirse una falla triple. Esto se hace mediante la instrucción ``swapgs``.
+Para empezar, el segmento [[GS]] debe establecerse inmediatamente en su valor correcto, de lo contrario podría producirse una falla triple. Esto se hace mediante la instrucción ``swapgs``.
 
 A continuación, es importante darse cuenta de que una compuerta de llamada establece el selector de segmento de pila ([[SS]]) en 0. Si bien ``x64`` funciona de forma nativa de esta manera, Windows espera que [[SS]] sea ``KGDT64_R0_DATA`` o ``0x18``, y puede ser una buena idea respetarlo.
 
@@ -248,15 +248,15 @@ Sel        Base              Limit          Type �
 
 Pero espere, ¿acaso establecer un límite de 0 no crea una [[LDT]] vacía? ¡No se preocupe! En el modo largo, los límites en las entradas del descriptor de [[LDT]] se ignoran por completo... desafortunadamente, aunque esto es lo que dice el manual de ``AMD64``, obtengo violaciones de acceso, al menos en ``Hyper-V x64``, si el límite no es lo suficientemente grande como para contener el segmento. Así que su rendimiento puede variar.
 
-Pero eso está bien, ¡podemos limitar esto a una simple sobrescritura de ``4 bytes``! El truco consiste simplemente en pasar por el proceso de crear una `[[LDT]]` real en primer lugar, luego filtrar su dirección (como se describe). A continuación, asigne la [[LDT]] falsa de modo de usuario en la misma dirección de ``32 bits`` inferior, manteniendo los ``32 bits`` superiores en cero. Luego, use la sobrescritura de 4 bytes para borrar el campo ``BaseUpper`` del ``LdtSystemDescriptor`` de [[KPROCESS]].
+Pero eso está bien, ¡podemos limitar esto a una simple sobrescritura de ``4 bytes``! El truco consiste simplemente en pasar por el proceso de crear una [[LDT]] real en primer lugar, luego filtrar su dirección (como se describe). A continuación, asigne la [[LDT]] falsa de modo de usuario en la misma dirección de ``32 bits`` inferior, manteniendo los ``32 bits`` superiores en cero. Luego, use la sobrescritura de 4 bytes para borrar el campo ``BaseUpper`` del ``LdtSystemDescriptor`` de [[KPROCESS]].
 
 Incluso si la dirección [[LDT]] del núcleo no se puede filtrar por alguna razón, uno puede "adivinar" fácilmente cada posibilidad (sabiendo que estará alineada con la página) y rociar todo el espacio de direcciones de ``32 bits``. Esto parece mucho, pero en realidad es solo alrededor de un millón de asignaciones.
 
-Finalmente, una técnica alternativa es aprovechar el manejo de excepciones: si se sobrescribe la [[LDT]] incorrecta, el núcleo no se bloqueará al cargar el segmento [[LDT]] no válido (siempre que sea canónico, no se verifica la validez del [[PTE]]). En cambio, solo cuando el exploit intente usar la puerta de llamada, se generará un [[GPF]], y solo en el contexto de la aplicación ``Ring 3``. Como tal, uno puede probar progresivamente cada posible dirección [[LDT]] de ``32 bits`` inferior hasta que ya no se emita un [[GPF]]. Voila: hemos encontrado los ``32 bits`` inferiores correctos.
+Finalmente, una técnica alternativa es aprovechar el manejo de excepciones: si se sobrescribe la [[LDT]] incorrecta, el núcleo no se bloqueará al cargar el segmento [[LDT]] no válido (siempre que sea canónico, no se verifica la validez del [[PTE]]). En cambio, solo cuando el exploit intente usar la puerta de llamada, se generará un [[GPF]], y solo en el contexto de la aplicación [[ring-3]]. Como tal, uno puede probar progresivamente cada posible dirección [[LDT]] de ``32 bits`` inferior hasta que ya no se emita un [[GPF]]. Voila: hemos encontrado los ``32 bits`` inferiores correctos.
 
 Como otra ventaja, ¿por qué el selector para la [[LDT]] es ``0x70`` en ``Windows 8.``1 y anteriores, pero ``0x60`` en ``Windows 10``?
 
-La respuesta se encuentra en un hecho aún menos conocido: hasta este último, el núcleo creaba un segmento de modo de compatibilidad de ``Ring 0`` en el desplazamiento ``0x60``. Esto significa que un atacante astuto puede establecer [[CS]] en ``0x60`` y disfrutar de una extraña combinación de ejecución de código heredado de ``32 bits`` con privilegios de ``Ring 0`` (se aplican varias advertencias, incluido lo que haría una interrupción al regresar y el hecho de que no se podría usar ninguna API del núcleo).
+La respuesta se encuentra en un hecho aún menos conocido: hasta este último, el núcleo creaba un segmento de modo de compatibilidad de [[ring-0]] en el desplazamiento ``0x60``. Esto significa que un atacante astuto puede establecer [[CS]] en ``0x60`` y disfrutar de una extraña combinación de ejecución de código heredado de ``32 bits`` con privilegios de [[ring-0]] (se aplican varias advertencias, incluido lo que haría una interrupción al regresar y el hecho de que no se podría usar ninguna API del núcleo).
 
 Finalmente, tenga en cuenta que incluso una vez que existe un proceso de aprovechamiento de [[UMS]], la entrada ``GDT`` no se borra y apunta a una asignación de grupo liberado. Esto significa que si se conoce una forma de asignar ``64 KB`` de memoria de grupo no paginado controlada (como algunas de las formas descritas en mi publicación de blog Big Pool), la entrada [[GDT]] podría hacerse para apuntar a la memoria controlada (como un búfer de canalización con nombre) que reutilizará el mismo puntero. Luego, se debe encontrar alguna manera de hacer que el sistema siga confiando en esta dirección/entrada (ya sea haciendo que se emita un [[LLDT]] de ``0x60``/``0x70`` o haciendo que el campo ``LdtSystemDescriptor`` de un [[EPROCESS]] reutilice esta dirección).
 

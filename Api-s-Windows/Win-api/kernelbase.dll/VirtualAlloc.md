@@ -156,12 +156,12 @@ Reservar una pagina de memoria:
 // A short program to demonstrate dynamic memory allocation
 // using a structured exception handler.
 
-#include <windows.h>
-#include <tchar.h>
-#include <stdio.h>
-#include <stdlib.h>             // For exit
+[[include]] <windows.h>
+[[include]] <tchar.h>
+[[include]] <stdio.h>
+[[include]] <stdlib.h>             // For exit
 
-#define PAGELIMIT 80            // Number of pages to ask for
+[[define]] PAGELIMIT 80            // Number of pages to ask for
 
 LPTSTR lpNxtPage;               // Address of the next page to ask for
 DWORD dwPages = 0;              // Count of pages gotten so far
@@ -274,10 +274,10 @@ Ejecutar shellcode usando VirtualAlloc:
  *
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <windows.h>
-#include <string.h>
+[[include]] <stdint.h>
+[[include]] <stdio.h>
+[[include]] <windows.h>
+[[include]] <string.h>
 
 void PrintLastErrorInfo() {
     LPVOID lpMsgBuf;

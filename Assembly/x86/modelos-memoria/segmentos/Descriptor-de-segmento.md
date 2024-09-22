@@ -25,7 +25,7 @@ Son **estructuras de datos** que se encuentran en la [[GDT]], [[LDT]] o [[IDT]] 
 - `DPL` (``Descriptor Privilege Level``). Nivel de privilegio del segmento. No se puede acceder al segmento si no se tiene suficiente privilegio o está conformado. ([CPU Privilege level](https://wiki.osdev.org/Security#Rings "Security")) 0 = privilegio más alto (`kernel`), 3 = privilegio más bajo (aplicaciones de usuario). ^1e145d
 - `A`(`Accessed bit`) Bit de acceso. La CPU lo establecerá cuando se acceda al segmento, a menos que se establezca en **1** de antemano. Esto significa que, en caso de que el descriptor [[GDT]] se almacene en páginas de **solo lectura** y este **bit se establezca en **0**, la `CPU` que intente establecer este bit activará una __falla de página__. Es mejor dejarlo establecido en **1** a menos que sea necesario.
 - `E`(`Executable bit`): Bit ejecutable. 
-	- `E=`**0** el descriptor define un segmento de datos. 
+	- `E=`**0** el descriptor define un segmento de datos.  ^eddd92
 	- `E=`**1** define un segmento de código desde el cual se puede ejecutar.
 - `DC` `Direction bit/Conforming bit`.
 	- Para selectores de datos: `bit de dirección`(`Direction bit`). 
@@ -34,7 +34,7 @@ Son **estructuras de datos** que se encuentran en la [[GDT]], [[LDT]] o [[IDT]] 
 	- Para selectores de código: `bit de conformidad`(`Conforming bit).
 		- `DC=`(**0**) el código en este segmento solo se puede ejecutar desde el anillo(`ring`) establecido en **DPL**.
 		- `DC=`(1) el código en este segmento se puede ejecutar desde un nivel de privilegio **igual o inferior**. 
-		 Por ejemplo, el código en el `ring 3` puede realizar un salto lejano(`jmp far`) al código _conforme_ en un segmento del `ring 2`. El campo **DPL** representa el nivel de privilegio más alto que se permite para ejecutar el segmento. Por ejemplo, el código en el `ring 0` no puede realizar un salto lejano(`jmp far`) a un segmento de código conforme donde **DPL**`=2`, mientras que el código en los `ring 2 y 3` sí puede. Tenga en cuenta que el nivel de privilegio sigue siendo el mismo, es decir, un salto lejano(`jmp far`) desde el `ring 3` a un segmento con un **DPL**`=2` **permanece en el `ring 3` después del salto**.
+		 Por ejemplo, el código en el [[ring-3]] puede realizar un salto lejano(`jmp far`) al código _conforme_ en un segmento del [[ring-2]]. El campo **DPL** representa el nivel de privilegio más alto que se permite para ejecutar el segmento. Por ejemplo, el código en el `ring 0` no puede realizar un salto lejano(`jmp far`) a un segmento de código conforme donde **DPL**`=2`, mientras que el código en los `ring 2 y 3` sí puede. Tenga en cuenta que el nivel de privilegio sigue siendo el mismo, es decir, un salto lejano(`jmp far`) desde el [[ring-3]] a un segmento con un **DPL**`=2` **permanece en el [[ring-3]] después del salto**.
 - ``P`` (``Present-segment``). Indica si el segmento está (``=1``) o no (``=0``) en memoria. **Permite un sistema de memoria virtual basado en la segmentación**.
 - ``D/B`` (``Default Operation Size/Default Stack Size``)  Indicador de tamaño.
 		- (``=1``) Direccionamiento ``32 bits`` y usa ``ESP``. define un segmento de [[modo-protegido]] de `32 bits`. Un [[GDT]] puede tener selectores de `16 y 32 bits` a la vez.
@@ -89,7 +89,7 @@ Tipos disponibles en [[modo-largo]]:
 
 Para más información, véase el apartado 8.2.3: **[[TSS]] Descriptor in 64-bit Mode**(Descriptor [[TSS]] en modo de `64 bits`) y la Figura 8-4: **Format of [[TSS]] and [[LDT]] Descriptors in 64-bit Mode**(Formato de los descriptores [[TSS]] y [[LDT]] en modo de `64 bits`) del `Intel Software Developer Manual`, `Volume 3-A`. 
 
-Descriptor de segmento del sistema `64-bit`.
+Descriptor de segmento del sistema `64-bit`. ^6c0bd8
 
 | 127....96 | 95....64 | 63...56               | 55...52              | 51...48                | 47...40                    | 39...32               | 31...16              | 15...0                |
 | --------- | -------- | --------------------- | -------------------- | ---------------------- | -------------------------- | --------------------- | -------------------- | --------------------- |

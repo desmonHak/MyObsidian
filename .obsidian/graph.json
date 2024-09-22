@@ -3,15 +3,29 @@
   "search": "",
   "showTags": true,
   "showAttachments": false,
-  "hideUnresolved": false,
+  "hideUnresolved": true,
   "showOrphans": true,
   "collapse-color-groups": false,
   "colorGroups": [
     {
+      "query": "path:Assembly/Instructions/CPUID  ",
+      "color": {
+        "a": 1,
+        "rgb": 7602762
+      }
+    },
+    {
+      "query": "path:Assembly/Microarquitecturas  ",
+      "color": {
+        "a": 1,
+        "rgb": 13107455
+      }
+    },
+    {
       "query": "path:Assembly  ",
       "color": {
         "a": 1,
-        "rgb": 16711829
+        "rgb": 16722342
       }
     },
     {
@@ -25,7 +39,7 @@
       "query": "path:Api-s-Windows  ",
       "color": {
         "a": 1,
-        "rgb": 16753981
+        "rgb": 16757596
       }
     },
     {
@@ -60,20 +74,48 @@
       "query": "path:dev-os  ",
       "color": {
         "a": 1,
-        "rgb": 11141375
+        "rgb": 6881438
+      }
+    },
+    {
+      "query": "path:SQL ",
+      "color": {
+        "a": 1,
+        "rgb": 16514816
+      }
+    },
+    {
+      "query": "path:Linux  ",
+      "color": {
+        "a": 1,
+        "rgb": 16749716
+      }
+    },
+    {
+      "query": "path:Go  ",
+      "color": {
+        "a": 1,
+        "rgb": 4128427
+      }
+    },
+    {
+      "query": "path:VirtualBox  ",
+      "color": {
+        "a": 1,
+        "rgb": 13722880
       }
     }
   ],
   "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": -2,
-  "nodeSizeMultiplier": 1.171875,
-  "lineSizeMultiplier": 1.325,
+  "textFadeMultiplier": -3,
+  "nodeSizeMultiplier": 0.647534246575342,
+  "lineSizeMultiplier": 1.19986301369863,
   "collapse-forces": false,
-  "centerStrength": 0.286458333333333,
-  "repelStrength": 12.5,
-  "linkStrength": 1,
-  "linkDistance": 118,
-  "scale": 0.262370060537802,
+  "centerStrength": 0.418590998043053,
+  "repelStrength": 10.1252446183953,
+  "linkStrength": 0.737964774951076,
+  "linkDistance": 347,
+  "scale": 0.6758696942791754,
   "close": false
 }

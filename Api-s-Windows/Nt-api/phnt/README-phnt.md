@@ -6,18 +6,18 @@ Primero asegúrese de que su programa esté utilizando el último SDK de Windows
 Estos archivos de encabezado están diseñados para ser utilizados por programas en modo de usuario. En lugar de `#include <windows.h>`, coloque
 
 ```c
-#include <phnt_windows.h>
-#include <phnt.h>
+[[include]] <phnt_windows.h>
+[[include]] <phnt.h>
 ```
 
 en la parte superior de su programa. La primera línea proporciona acceso a la API de Win32, así como a los valores `NTSTATUS`. La segunda línea proporciona acceso a toda la API nativa. De forma predeterminada, sólo se incluyen en su programa las definiciones presentes en Windows XP. Para cambiar esto, utilice uno de los siguientes:
 
 ```c
-#define PHNT_VERSION PHNT_WINXP // Windows XP
-#define PHNT_VERSION PHNT_WS03 // Windows Server 2003
-#define PHNT_VERSION PHNT_VISTA // Windows Vista
-#define PHNT_VERSION PHNT_WIN7 // Windows 7
-#define PHNT_VERSION PHNT_WIN8 // Windows 8
-#define PHNT_VERSION PHNT_WINBLUE // Windows 8.1
-#define PHNT_VERSION PHNT_THRESHOLD // Windows 10
+[[define]] PHNT_VERSION PHNT_WINXP // Windows XP
+[[define]] PHNT_VERSION PHNT_WS03 // Windows Server 2003
+[[define]] PHNT_VERSION PHNT_VISTA // Windows Vista
+[[define]] PHNT_VERSION PHNT_WIN7 // Windows 7
+[[define]] PHNT_VERSION PHNT_WIN8 // Windows 8
+[[define]] PHNT_VERSION PHNT_WINBLUE // Windows 8.1
+[[define]] PHNT_VERSION PHNT_THRESHOLD // Windows 10
 ```

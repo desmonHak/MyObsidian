@@ -5,8 +5,8 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTPNPAPI_H
-#define _NTPNPAPI_H
+[[ifndef]] _NTPNPAPI_H
+[[define]] _NTPNPAPI_H
 
 typedef enum _PLUGPLAY_EVENT_CATEGORY
 {
@@ -148,7 +148,7 @@ typedef enum _DEVICE_USAGE_NOTIFICATION_TYPE
     DeviceUsageTypeGuestAssigned
 } DEVICE_USAGE_NOTIFICATION_TYPE, *PDEVICE_USAGE_NOTIFICATION_TYPE;
 
-#if (PHNT_VERSION < PHNT_WIN8)
+[[if]] (PHNT_VERSION < PHNT_WIN8)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -158,7 +158,7 @@ NtGetPlugPlayEvent(
     _Out_writes_bytes_(EventBufferSize) PPLUGPLAY_EVENT_BLOCK EventBlock,
     _In_ ULONG EventBufferSize
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -169,7 +169,7 @@ NtPlugPlayControl(
     _In_ ULONG PnPControlDataLength
     );
 
-#if (PHNT_VERSION >= PHNT_WIN7)
+[[if]] (PHNT_VERSION >= PHNT_WIN7)
 
 NTSYSCALLAPI
 NTSTATUS
@@ -192,9 +192,9 @@ NtDisableLastKnownGood(
     VOID
     );
 
-#endif
+[[endif]]
 
-#if (PHNT_VERSION >= PHNT_VISTA)
+[[if]] (PHNT_VERSION >= PHNT_VISTA)
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
@@ -203,7 +203,7 @@ NtReplacePartitionUnit(
     _In_ PUNICODE_STRING SpareInstancePath,
     _In_ ULONG Flags
     );
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

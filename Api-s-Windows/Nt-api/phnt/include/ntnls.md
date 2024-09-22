@@ -5,10 +5,10 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTNLS_H
-#define _NTNLS_H
+[[ifndef]] _NTNLS_H
+[[define]] _NTNLS_H
 
-#define MAXIMUM_LEADBYTES 12
+[[define]] MAXIMUM_LEADBYTES 12
 
 typedef struct _CPTABLEINFO
 {
@@ -34,11 +34,11 @@ typedef struct _NLSTABLEINFO
     PUSHORT LowerCaseTable;
 } NLSTABLEINFO, *PNLSTABLEINFO;
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
 NTSYSAPI USHORT NlsAnsiCodePage;
 NTSYSAPI BOOLEAN NlsMbCodePageTag;
 NTSYSAPI BOOLEAN NlsMbOemCodePageTag;
-#endif
+[[endif]]
 
-#endif
+[[endif]]
 ```

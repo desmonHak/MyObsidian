@@ -5,8 +5,8 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTSMSS_H
-#define _NTSMSS_H
+[[ifndef]] _NTSMSS_H
+[[define]] _NTSMSS_H
 
 NTSYSAPI
 NTSTATUS
@@ -26,5 +26,5 @@ RtlSendMsgToSm(
     _In_ PPORT_MESSAGE MessageData
     );
 
-#endif
+[[endif]]
 ```

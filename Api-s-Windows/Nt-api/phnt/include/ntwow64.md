@@ -5,13 +5,13 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTWOW64_H
-#define _NTWOW64_H
+[[ifndef]] _NTWOW64_H
+[[define]] _NTWOW64_H
 
-#define WOW64_SYSTEM_DIRECTORY "SysWOW64"
-#define WOW64_SYSTEM_DIRECTORY_U L"SysWOW64"
-#define WOW64_X86_TAG " (x86)"
-#define WOW64_X86_TAG_U L" (x86)"
+[[define]] WOW64_SYSTEM_DIRECTORY "SysWOW64"
+[[define]] WOW64_SYSTEM_DIRECTORY_U L"SysWOW64"
+[[define]] WOW64_X86_TAG " (x86)"
+[[define]] WOW64_X86_TAG_U L" (x86)"
 
 // In USER_SHARED_DATA
 typedef enum _WOW64_SHARED_INFORMATION
@@ -32,7 +32,7 @@ typedef enum _WOW64_SHARED_INFORMATION
 
 // 32-bit definitions
 
-#define WOW64_POINTER(Type) ULONG
+[[define]] WOW64_POINTER(Type) ULONG
 
 typedef struct _RTL_BALANCED_NODE32
 {
@@ -101,11 +101,11 @@ typedef struct _LDR_DDAG_NODE32
     ULONG PreorderNumber;
 } LDR_DDAG_NODE32, *PLDR_DDAG_NODE32;
 
-#define LDR_DATA_TABLE_ENTRY_SIZE_WINXP_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, DdagNode)
-#define LDR_DATA_TABLE_ENTRY_SIZE_WIN7_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, BaseNameHashValue)
-#define LDR_DATA_TABLE_ENTRY_SIZE_WIN8_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, ImplicitPathOptions)
-#define LDR_DATA_TABLE_ENTRY_SIZE_WIN10_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, SigningLevel)
-#define LDR_DATA_TABLE_ENTRY_SIZE_WIN11_32 sizeof(LDR_DATA_TABLE_ENTRY32)
+[[define]] LDR_DATA_TABLE_ENTRY_SIZE_WINXP_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, DdagNode)
+[[define]] LDR_DATA_TABLE_ENTRY_SIZE_WIN7_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, BaseNameHashValue)
+[[define]] LDR_DATA_TABLE_ENTRY_SIZE_WIN8_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, ImplicitPathOptions)
+[[define]] LDR_DATA_TABLE_ENTRY_SIZE_WIN10_32 FIELD_OFFSET(LDR_DATA_TABLE_ENTRY32, SigningLevel)
+[[define]] LDR_DATA_TABLE_ENTRY_SIZE_WIN11_32 sizeof(LDR_DATA_TABLE_ENTRY32)
 
 typedef struct _LDR_DATA_TABLE_ENTRY32
 {
@@ -423,7 +423,7 @@ C_ASSERT(sizeof(PEB32) == 0x488); // WIN11
 // Note: Use PhGetProcessPeb32 instead. (dmex)
 //#define WOW64_GET_PEB32(peb64) ((PPEB32)PTR_ADD_OFFSET((peb64), ALIGN_UP_BY(sizeof(PEB), PAGE_SIZE)))
 
-#define GDI_BATCH_BUFFER_SIZE 310
+[[define]] GDI_BATCH_BUFFER_SIZE 310
 
 typedef struct _GDI_TEB_BATCH32
 {
@@ -621,33 +621,33 @@ FORCEINLINE VOID UStrToUStr32(
 //
 // Page size on x86 NT
 //
-#define PAGE_SIZE_X86NT 0x1000
-#define PAGE_SHIFT_X86NT 12L
-#define WOW64_SPLITS_PER_PAGE (PAGE_SIZE_X86NT / PAGE_SIZE_X86NT)
+[[define]] PAGE_SIZE_X86NT 0x1000
+[[define]] PAGE_SHIFT_X86NT 12L
+[[define]] WOW64_SPLITS_PER_PAGE (PAGE_SIZE_X86NT / PAGE_SIZE_X86NT)
 
 //
 // Convert the number of native pages to sub x86-pages
 //
-#define Wow64GetNumberOfX86Pages(NativePages) \
+[[define]] Wow64GetNumberOfX86Pages(NativePages) \
     (NativePages * (PAGE_SIZE_X86NT >> PAGE_SHIFT_X86NT))
 
 //
 // Macro to round to the nearest page size
 //
-#define WOW64_ROUND_TO_PAGES(Size) \
+[[define]] WOW64_ROUND_TO_PAGES(Size) \
     (((ULONG_PTR)(Size) + PAGE_SIZE_X86NT - 1) & ~(PAGE_SIZE_X86NT - 1))
 
 //
 // Get number of native pages
 //
-#define WOW64_BYTES_TO_PAGES(Size) \
+[[define]] WOW64_BYTES_TO_PAGES(Size) \
     (((ULONG)(Size) >> WOW64_ROUND_TO_PAGES) + (((ULONG)(Size) & (PAGE_SIZE_X86NT - 1)) != 0))
 
 //
 // Get the 32-bit TEB without doing a memory reference.
 //
-#define WOW64_GET_TEB32(teb64) ((PTEB32)(PVOID)RtlOffsetToPointer((teb64), WOW64_ROUND_TO_PAGES(sizeof(TEB))))
-#define WOW64_TEB32_POINTER_ADDRESS(teb64) (PVOID)&((teb64)->NtTib.ExceptionList)
+[[define]] WOW64_GET_TEB32(teb64) ((PTEB32)(PVOID)RtlOffsetToPointer((teb64), WOW64_ROUND_TO_PAGES(sizeof(TEB))))
+[[define]] WOW64_TEB32_POINTER_ADDRESS(teb64) (PVOID)&((teb64)->NtTib.ExceptionList)
 
 typedef union _WOW64_EXECUTE_OPTIONS
 {
@@ -667,9 +667,9 @@ typedef union _WOW64_EXECUTE_OPTIONS
     };
 } WOW64_EXECUTE_OPTIONS, *PWOW64_EXECUTE_OPTIONS;
 
-#define WOW64_CPUFLAGS_MSFT64           0x00000001
-#define WOW64_CPUFLAGS_SOFTWARE         0x00000002
-#define WOW64_CPUFLAGS_IA64             0x00000004
+[[define]] WOW64_CPUFLAGS_MSFT64           0x00000001
+[[define]] WOW64_CPUFLAGS_SOFTWARE         0x00000002
+[[define]] WOW64_CPUFLAGS_IA64             0x00000004
 
 typedef struct _WOW64INFO
 {
@@ -685,8 +685,8 @@ typedef struct _PEB32_WITH_WOW64INFO
     WOW64INFO Wow64Info;
 } PEB32_WITH_WOW64INFO, *PPEB32_WITH_WOW64INFO;
 
-#if (PHNT_MODE != PHNT_MODE_KERNEL)
-#ifdef _M_X64
+[[if]] (PHNT_MODE != PHNT_MODE_KERNEL)
+[[ifdef]] _M_X64
 
 FORCEINLINE
 TEB32*
@@ -771,14 +771,14 @@ Wow64CurrentNativeTeb(
     return HostTeb;
 }
 
-#define NtCurrentTeb32() (Wow64CurrentGuestTeb())
-#define NtCurrentPeb32()  ((PPEB32)(UlongToPtr((NtCurrentTeb32()->ProcessEnvironmentBlock))))
+[[define]] NtCurrentTeb32() (Wow64CurrentGuestTeb())
+[[define]] NtCurrentPeb32()  ((PPEB32)(UlongToPtr((NtCurrentTeb32()->ProcessEnvironmentBlock))))
 
-#define Wow64GetNativeTebField(teb, field) (((ULONG)(teb) == ((PTEB32)(teb))->NtTib.Self) ? (((PTEB32)(teb))->##field) : (((PTEB)(teb))->##field) )
-#define Wow64SetNativeTebField(teb, field, value) { if ((ULONG)(teb) == ((PTEB32)(teb))->NtTib.Self) {(((PTEB32)(teb))->##field) = (value);} else {(((PTEB)(teb))->##field) = (value);} }
+[[define]] Wow64GetNativeTebField(teb, field) (((ULONG)(teb) == ((PTEB32)(teb))->NtTib.Self) ? (((PTEB32)(teb))->##field) : (((PTEB)(teb))->##field) )
+[[define]] Wow64SetNativeTebField(teb, field, value) { if ((ULONG)(teb) == ((PTEB32)(teb))->NtTib.Self) {(((PTEB32)(teb))->##field) = (value);} else {(((PTEB)(teb))->##field) = (value);} }
 
-#endif
-#endif
+[[endif]]
+[[endif]]
 
-#endif
+[[endif]]
 ```

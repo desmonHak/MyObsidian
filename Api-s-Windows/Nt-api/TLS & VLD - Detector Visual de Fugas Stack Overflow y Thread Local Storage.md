@@ -101,10 +101,10 @@ Otro paso necesario para reproducir es asegurarse de que VLD se asigna con una r
 
 Aquí está el ejemplo de código mínimo reproducido:
 ```cpp
-#include <windows.h>
-#include <thread>
-#include <chrono>
-#include <memory>
+[[include]] <windows.h>
+[[include]] <thread>
+[[include]] <chrono>
+[[include]] <memory>
 
 typedef void(*vld_enable_t)(void);
 

@@ -9,8 +9,8 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
 
 ## [SYNOPSIS](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#SYNOPSIS)         [top](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html#top_of_page)
 ```c
-       #define _GNU_SOURCE             /* See feature_test_macros(7) */
-       #include <sched.h>
+       [[define]] _GNU_SOURCE             /* See feature_test_macros(7) */
+       [[include]] <sched.h>
 
        int sched_setaffinity(pid_t pid, size_t cpusetsize, const cpu_set_t *mask);
        int sched_getaffinity(pid_t pid, size_t cpusetsize,cpu_set_t *mask);
@@ -217,13 +217,13 @@ _sched_setaffinity_(2)       System Calls Manual      _sched_setaffinity_(2)
 Ejemplo [[afinidad.c]]
 ```c
 
-#define _GNU_SOURCE
-#include <err.h>
-#include <sched.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <unistd.h>
+[[define]] _GNU_SOURCE
+[[include]] <err.h>
+[[include]] <sched.h>
+[[include]] <stdio.h>
+[[include]] <stdlib.h>
+[[include]] <sys/wait.h>
+[[include]] <unistd.h>
 
 /*
  *

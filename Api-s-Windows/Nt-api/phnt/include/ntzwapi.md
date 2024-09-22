@@ -1,6 +1,6 @@
 ```c
-#ifndef _NTZWAPI_H
-#define _NTZWAPI_H
+[[ifndef]] _NTZWAPI_H
+[[define]] _NTZWAPI_H
 
 // This file was automatically generated. Do not edit.
 
@@ -4814,5 +4814,5 @@ ZwYieldExecution(
     VOID
     );
 
-#endif
+[[endif]]
 ```

@@ -108,13 +108,13 @@ En los núcleos que no habilitan [[FSGSBASE]], la ejecución de las instruccione
 
 El núcleo proporciona información confiable sobre el estado habilitado en el vector [[ELF AUX]]. Si el bit [[HWCAP2_FSGSBASE]] está establecido en el vector [[AUX]], el núcleo tiene habilitadas las instrucciones [[FSGSBASE]] y las aplicaciones pueden usarlas. El siguiente ejemplo de código muestra cómo funciona esta detección:
 ```c
-#include <sys/auxv.h>
-#include <elf.h>
+[[include]] <sys/auxv.h>
+[[include]] <elf.h>
 
 /* Will be eventually in asm/hwcap.h */
-#ifndef HWCAP2_FSGSBASE
-#define HWCAP2_FSGSBASE        (1 << 1)
-#endif
+[[ifndef]] HWCAP2_FSGSBASE
+[[define]] HWCAP2_FSGSBASE        (1 << 1)
+[[endif]]
 
 ....
 
@@ -145,7 +145,7 @@ Para utilizar estos intrínsecos, <[[immintrin.h]]> debe incluirse en el código
 | `__seg_gs` | La variable se direcciona en relación con GS |
 Los símbolos de preprocesador ``__SEG_FS`` y ``__SEG_GS`` se definen cuando se admiten estos espacios de direcciones. El código que implementa los modos de respaldo debe verificar si estos símbolos están definidos. Ejemplo de uso:
 ```c
-#ifdef __SEG_GS
+[[ifdef]] __SEG_GS
 
 long data0 = 0;
 long data1 = 1;
@@ -348,4 +348,4 @@ Más tarde se introdujeron métodos adicionales como las instrucciones [[RDFSBAS
 Encontré un método interesante para ajustar las bases desde el modo usuario en ``Linux`` mediante una llamada al sistema. En ``ms win x64`` no conozco un método similar y sencillo, pero puedes ejecutar un proceso secundario como depurador y luego ajustar sus registros usando llamadas del sistema dedicadas al depurador:
 https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa [[CreateProcessA]]
 es necesario establecer ``dwCreationFlags`` en ``DEBUG_PROCESS`` o en ``DEBUG_PROCESS+DEBUG_ONLY_THIS_PROCESS``
-El kernel, al cambiar de ``ring3`` a ``ring0``, ejecuta [[SWAPGS]] como una forma rápida de cambiar las bases ``GS`` de ``ring3`` y ``ring0`` y también ejecuta lo mismo justo antes de volver a cambiar de ``ring0`` a ``ring3`` (normalmente la secuencia de código [[SWAPGS]] \ ``iretq``, [[SWAPGS]] \ ``sysretq``). Así que no juegues con la base [[GS]] de ``ring0``.
+El kernel, al cambiar de [[ring-3]] a [[ring-0]], ejecuta [[SWAPGS]] como una forma rápida de cambiar las bases [[GS]] de [[ring-3]] y [[ring-0]] y también ejecuta lo mismo justo antes de volver a cambiar de [[ring-0]] a [[ring-3]] (normalmente la secuencia de código [[SWAPGS]] \ ``iretq``, [[SWAPGS]] \ ``sysretq``). Así que no juegues con la base [[GS]] de [[ring-0]].

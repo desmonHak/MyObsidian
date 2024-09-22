@@ -6,9 +6,9 @@ El endurecimiento de las llamadas a funciones mediante la macro ``_FORTIFY_SOURC
 
 Las funciones incorporadas se optimizan en las funciones normales de cadena como ``memcpy`` si el último argumento es ``(size_t) -1`` o si se sabe en tiempo de compilación que el objeto de destino no se desbordará. Si el compilador puede determinar en tiempo de compilación que el objeto siempre se desbordará, emite una advertencia.
 ```c
-#undef memcpy
-#define bos0(dest) __builtin_object_size (dest, 0)
-#define memcpy(dest, src, n) \
+[[undef]] memcpy
+[[define]] bos0(dest) __builtin_object_size (dest, 0)
+[[define]] memcpy(dest, src, n) \
   __builtin___memcpy_chk (dest, src, n, bos0 (dest))
 
 char *volatile p;

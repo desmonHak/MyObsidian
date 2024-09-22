@@ -231,7 +231,7 @@ En este ejemplo ``i386``, old (mencionado en la cadena de plantilla como %0) y `
 ```c
 bool old;
 
-__asm__ ("btsl %2,%1\n\t" // Activa el bit #Offset basado en cero en Base.
+__asm__ ("btsl %2,%1\n\t" // Activa el bit [[Offset]] basado en cero en Base.
 "sbb %0,%0" // Utiliza el CF para calcular el valor antiguo.
 : "=r" (antiguo), "+rm" (*Base)
 : "Ir" (Desplazamiento)

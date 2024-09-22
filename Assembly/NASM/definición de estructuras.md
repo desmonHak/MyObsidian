@@ -11,7 +11,7 @@ struct _UNICODE_STRING
 }; 
 ```
 
-la macro ``RESB_size_t`` se usa para indicar que el miembro buffer es del tamaño de palabra de la CPU, esto implica que para una CPU de 16bits como el [[8086]] buffer será del tamaño de 16bits, mientras que para una CPU de 32bits como el procesador [[80386]], esta será de 32bits. Puede encontrar esta macro en [[Macros]].
+la macro ``RESB_size_t`` se usa para indicar que el miembro buffer es del tamaño de palabra de la CPU, esto implica que para una CPU de 16bits como el [[8086]] buffer será del tamaño de 16bits, mientras que para una CPU de 32bits como el procesador [[i80386]], esta será de 32bits. Puede encontrar esta macro en [[Macros]].
 
 ``RESB_int_16`` se usa para reservar 16bits.
 ```c

@@ -5,8 +5,8 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTXCAPI_H
-#define _NTXCAPI_H
+[[ifndef]] _NTXCAPI_H
+[[define]] _NTXCAPI_H
 
 NTSYSAPI
 BOOLEAN
@@ -31,7 +31,7 @@ RtlRaiseException(
     _In_ PEXCEPTION_RECORD ExceptionRecord
     );
 
-#if (PHNT_VERSION >= PHNT_20H1)
+[[if]] (PHNT_VERSION >= PHNT_20H1)
 // rev
 NTSYSAPI
 VOID
@@ -49,7 +49,7 @@ RtlRaiseNoncontinuableException(
     _In_ PEXCEPTION_RECORD ExceptionRecord,
     _In_ PCONTEXT ContextRecord
     );
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -59,7 +59,7 @@ NtContinue(
     _In_ BOOLEAN TestAlert
     );
 
-#if (PHNT_VERSION >= PHNT_THRESHOLD)
+[[if]] (PHNT_VERSION >= PHNT_THRESHOLD)
 typedef enum _KCONTINUE_TYPE
 {
     KCONTINUE_UNWIND,
@@ -76,8 +76,8 @@ typedef struct _KCONTINUE_ARGUMENT
     ULONGLONG Reserved[2];
 } KCONTINUE_ARGUMENT, *PKCONTINUE_ARGUMENT;
 
-#define KCONTINUE_FLAG_TEST_ALERT 0x00000001 // wbenny
-#define KCONTINUE_FLAG_DELIVER_APC 0x00000002 // wbenny
+[[define]] KCONTINUE_FLAG_TEST_ALERT 0x00000001 // wbenny
+[[define]] KCONTINUE_FLAG_DELIVER_APC 0x00000002 // wbenny
 
 NTSYSCALLAPI
 NTSTATUS
@@ -96,7 +96,7 @@ NtContinueEx(
 //{
 //    return NtContinueEx(ContextRecord, (PCONTINUE_ARGUMENT)TestAlert);
 //}
-#endif
+[[endif]]
 
 NTSYSCALLAPI
 NTSTATUS
@@ -118,14 +118,14 @@ RtlAssert(
     _In_opt_ PSTR MutableMessage
     );
 
-#define RTL_ASSERT(exp) \
+[[define]] RTL_ASSERT(exp) \
     ((!(exp)) ? (RtlAssert((PVOID)#exp, (PVOID)__FILE__, __LINE__, NULL), FALSE) : TRUE)
-#define RTL_ASSERTMSG(msg, exp) \
+[[define]] RTL_ASSERTMSG(msg, exp) \
     ((!(exp)) ? (RtlAssert((PVOID)#exp, (PVOID)__FILE__, __LINE__, msg), FALSE) : TRUE)
-#define RTL_SOFT_ASSERT(_exp) \
-    ((!(_exp)) ? (DbgPrint("%s(%d): Soft assertion failed\n   Expression: %s\n", __FILE__, __LINE__, #_exp), FALSE) : TRUE)
-#define RTL_SOFT_ASSERTMSG(_msg, _exp) \
-    ((!(_exp)) ? (DbgPrint("%s(%d): Soft assertion failed\n   Expression: %s\n   Message: %s\n", __FILE__, __LINE__, #_exp, (_msg)), FALSE) : TRUE)
+[[define]] RTL_SOFT_ASSERT(_exp) \
+    ((!(_exp)) ? (DbgPrint("%s(%d): Soft assertion failed\n   Expression: %s\n", __FILE__, __LINE__, [[_exp]]), FALSE) : TRUE)
+[[define]] RTL_SOFT_ASSERTMSG(_msg, _exp) \
+    ((!(_exp)) ? (DbgPrint("%s(%d): Soft assertion failed\n   Expression: %s\n   Message: %s\n", __FILE__, __LINE__, [[_exp]], (_msg)), FALSE) : TRUE)
 
-#endif
+[[endif]]
 ```

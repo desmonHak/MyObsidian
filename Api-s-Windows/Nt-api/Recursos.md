@@ -1,3 +1,10 @@
+# Windows Internals CTF
+
+^8f60c6
+
+https://samsclass.info/126/WI2021.htm
+![[Pasted image 20240911190744.png]]
+
 % cpu segun process hacker:
 [process hacker - procprv.c](https://processhacker.sourceforge.io/doc/procprv_8c_source.html)
 

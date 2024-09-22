@@ -6,10 +6,10 @@ gcc -Wall get_opcode.c -o get_opcode.exe
 ```
 Codigo: 
 ```C
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
+[[include]] <stdio.h>
+[[include]] <stdlib.h>
+[[include]] <string.h>
+[[include]] <sys/stat.h>
 
 char *concatenacion(char *texto1, char *texto2)
 {
@@ -26,9 +26,9 @@ char *concatenacion(char *texto1, char *texto2)
     return FinallyText;
 }
 
-#define NAME_FILE_INPUT ".get_opcode.asm"
-#define NAME_FILE_OUTPUT ".get_opcode.bin"
-#define FORMAT "bin "
+[[define]] NAME_FILE_INPUT ".get_opcode.asm"
+[[define]] NAME_FILE_OUTPUT ".get_opcode.bin"
+[[define]] FORMAT "bin "
 
 
 int main(int argc, char **argv){

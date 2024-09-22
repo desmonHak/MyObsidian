@@ -949,11 +949,11 @@ NtQueryInformationProcess(
             if (ExAcquireRundownProtection(&Process->RundownProtect))
             {
                 /* Get the WOW64 process structure */
-#ifdef _WIN64
+[[ifdef]] _WIN64
                 Wow64 = (ULONG_PTR)Process->Wow64Process;
-#else
+[[else]]
                 Wow64 = 0;
-#endif
+[[endif]]
                 /* Release the lock */
                 ExReleaseRundownProtection(&Process->RundownProtect);
             }

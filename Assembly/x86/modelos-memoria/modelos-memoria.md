@@ -111,8 +111,8 @@ En [[CR3]] ([[PDBR]]) se almacena la dirección física donde se encuentra el di
 	- Este bit lo modifica el S.O. La CPU sólo lo lee. 
 - ``R/W``: ``Read/Write``. Sólo ``lectura (=0)``. ``Lectura/escritura (=1)``.
 - ``U/S``: ``User``/``Supervisor``. Privilegio necesario para acceder: 
-	- (``=0``) ring 0,1,2; 
-	- (``=1``) ring 3.
+	- (``=0``) [[ring-0]], [[ring-1]], [[ring-2]];  ^5d8a1f
+	- (``=1``) [[ring-3]].
 - ``PWT``: ``Page-Level Write-Through``. 
 	- (``=0``) Escritura continua, 
 	- (``=1``) Escritura diferida. 

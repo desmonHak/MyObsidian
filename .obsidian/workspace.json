@@ -8,7 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "61e991596c4e078b",
+            "id": "7cd48d686d5d2ce8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Assembly/x86/Registros.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0c4adb0e0c52b342",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -66,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 292.5
+    "width": 266.5124969482422
   },
   "right": {
     "id": "21a07210af194487",
@@ -82,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Assembly/x86/Registros.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Assembly/x86/Registros.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Assembly/x86/Registros.md"
+              }
             }
           },
           {
@@ -144,64 +160,74 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "templates:Insertar plantilla": false,
       "graph:Abrir vista gráfica": false,
       "canvas:Crear nuevo lienzo": false,
       "daily-notes:Abrir la nota de hoy": false,
       "switcher:Abrir selector rápido": false,
-      "templates:Insertar plantilla": false,
       "command-palette:Abrir paleta de comandos": false,
-      "markdown-importer:Abrir el importador de Markdown": false
+      "markdown-importer:Abrir el importador de Markdown": false,
+      "random-note:Abrir nota al azar": false,
+      "obsidian-extract-pdf-highlights:PDF Highlights": false
     }
   },
-  "active": "61e991596c4e078b",
+  "active": "7cd48d686d5d2ce8",
   "lastOpenFiles": [
-    "Assembly/modos de la cpu/modo-virtual-8086.md",
-    "Assembly/modos de la cpu/modo-largo.md",
-    "Assembly/modos de la cpu/modo-real.md",
-    "Assembly/modos de la cpu/modo-protegido.md",
-    "Assembly/x86/modelos-memoria/modelos-memoria.md",
-    "Assembly/modos de la cpu",
-    "modo-protegido.md",
-    "Assembly/x86/control-registers/CR3.md",
-    "Assembly/RECURSOS.md",
-    "Assembly/x86/modos-direccionamiento.md",
-    "Assembly/x86/las-arquitecturas.md",
-    "malaware/imagenes/mal-linux-kernel.png",
-    "Assembly/Virtualizacion/Un-sueño-dentro-de-un-sueño-dentro-de-un-sueño.md",
-    "Assembly/CONCAT.md",
-    "Assembly/x86/control-registers/control-registers.md",
-    "Assembly/x86/modelos-memoria/registros-segmento/GDTR.md",
-    "Assembly/x86/modelos-memoria/IDT.md",
-    "Assembly/x86/modelos-memoria/LDT.md",
-    "Assembly/x86/modelos-memoria/TLB.md",
-    "Assembly/x86/modelos-memoria/segmentos/registros-segmento-selectores-segmento.md",
+    "Assembly/x86/Registros.md",
+    "Assembly/x86/modelos-memoria/registros-segmento/CPL.md",
     "Assembly/x86/modelos-memoria/segmentos/Descriptor-de-segmento.md",
-    "Assembly/x86/modelos-memoria/PAE.md",
-    "C-C++/Errores_manejo/Patrones de manejo de errores.md",
-    "Assembly/x86/control-registers/CR1.md",
-    "malaware/imagenes",
-    "C-C++/atributos/atributos.md",
-    "C-C++/atributos/atributo-zero_call_used_regs.md",
-    "C-C++/Errores_manejo/Callback Hell.md",
-    "C-C++/Errores_manejo/callbacks.md",
-    "Assembly/x86/rings",
-    "C-C++/linux-man-c/CPU/CPUSET",
-    "C-C++/linux-man-c/CPU",
-    "Api-s-Windows/Win-api/UMS",
-    "Assembly/x86/imagenes/Pasted image 20240810141221.png",
-    "Assembly/x86/control-registers",
-    "Assembly/x86/imagenes/Pasted image 20240905192521.png",
-    "Assembly/x86/imagenes/Pasted image 20240905191514.png",
-    "Assembly/x86/imagenes/Pasted image 20240905191245.png",
-    "Assembly/x86/imagenes/Pasted image 20240905190800.png",
-    "Assembly/x86/imagenes/Pasted image 20240905190659.png",
-    "Assembly/x86/imagenes/Pasted image 20240905190208.png",
-    "Assembly/x86/imagenes/Pasted image 20240905190201.png",
-    "Assembly/x86/imagenes/Pasted image 20240905185326.png",
-    "Assembly/x86/imagenes",
-    "Assembly/x86/modelos-memoria/registros-segmento",
-    "Assembly/x86/modelos-memoria",
-    "Sin título 1.canvas",
-    "Sin título.canvas"
+    "Assembly/x86/modelos-memoria/segmentos/segmentación.md",
+    "Assembly/x86/modelos-memoria/segmentos/registros-segmento-selectores-segmento.md",
+    "__thread.md",
+    "Assembly/convenciones de llamadas/__msfastcall.md",
+    "Assembly/convenciones de llamadas/convenciones-de-llamadas.md",
+    "VirtualBox/Obtener_info_vm.md",
+    "Assembly/x86/Energia/S-State/S-State.md",
+    "VirtualBox/Listar_valores_CPUID.md",
+    "VirtualBox/Emular_CPU.md",
+    "VirtualBox/Cambiar_VM_EFI32.md",
+    "VirtualBox/Cambiar_nombre_cpu.md",
+    "VirtualBox/Cambiar_valores_CPUID.md",
+    "Assembly/Instructions/CPUID/Cómo_detectar_la_cantidad_de_procesadores_núcleos_físicos_en_Windows_Mac_y_Linux.md",
+    "Api-s-Windows/Win-api/SetProcessAffinityMask - Cambiar afinidad de un proceso.md",
+    "Api-s-Windows/Win-api/SetThreadSelectedCpuSetMasks.md",
+    "Assembly/x86/Interupciones/INT_0x2E.md",
+    "Api-s-Windows/Nt-api/NtSetInformationProcess.md",
+    "Api-s-Windows/WinInternals/Windows_7_8_8.1_or_10 MBR_Master_Boot_Record.md",
+    "Api-s-Windows/WinInternals",
+    "Api-s-Windows/Kernel/KiSystemService.md",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917015515.png",
+    "Assembly/x86/Interupciones",
+    "Assembly/Instructions/CPUID/CPUID(0xA).md",
+    "Assembly/Instructions/CPUID/CPUID(0xB).md",
+    "Assembly/Instructions/CPUID/CPUID(1).md",
+    "Python/type_hints.md",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917015425.png",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917015207.png",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014937.png",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014918.png",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014832.png",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014824.png",
+    "Assembly/x86/Energia/M-State",
+    "Assembly/x86/Energia/P-State",
+    "Assembly/x86/Energia/S-State",
+    "Assembly/x86/Imagenes/Pasted image 20240916231012.png",
+    "Assembly/x86/Energia/D-State",
+    "Assembly/x86/Energia",
+    "Assembly/x86/Energia/G-State",
+    "Assembly/x86/Imagenes/Pasted image 20240916225402.png",
+    "Assembly/x86/C-States/Sin título.canvas",
+    "Assembly/x86/Energia/C-States",
+    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240916224653.png",
+    "Assembly/Instructions/CPUID/Imagenes",
+    "Assembly/1726494639918.canvas",
+    "Assembly/1726494487943.canvas",
+    "Assembly/1726494628855.canvas",
+    "Assembly/1726494569853.canvas",
+    "Api-s-Windows/Nt-api/NtosKrnl.exe/1726494308846.canvas",
+    "Assembly/NASM/windows/1726494246900.canvas",
+    "Assembly/NASM/windows/1726494217431.canvas",
+    "Assembly/NASM/windows/1726494202719.canvas",
+    "Assembly/NASM/windows/1726494203055.canvas"
   ]
 }

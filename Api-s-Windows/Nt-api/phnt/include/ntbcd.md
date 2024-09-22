@@ -5,10 +5,10 @@
  * This file is part of System Informer.
  */
 
-#ifndef _NTBCD_H
-#define _NTBCD_H
+[[ifndef]] _NTBCD_H
+[[define]] _NTBCD_H
 
-#ifndef PHNT_INLINE_BCD_GUIDS
+[[ifndef]] PHNT_INLINE_BCD_GUIDS
 // 5189B25C-5558-4BF2-BCA4-289B11BD29E2 // {badmemory}
 DEFINE_GUID(GUID_BAD_MEMORY_GROUP, 0x5189B25C, 0x5558, 0x4BF2, 0xBC, 0xA4, 0x28, 0x9B, 0x11, 0xBD, 0x29, 0xE2);
 // 6EFB52BF-1766-41DB-A6B3-0EE5EFF72BD7 // {bootloadersettings}
@@ -53,7 +53,7 @@ DEFINE_GUID(GUID_WINDOWS_SETUP_PCAT, 0xCBD971BF, 0xB7B8, 0x4885, 0x95, 0x1A, 0xF
 DEFINE_GUID(GUID_WINDOWS_SETUP_RAMDISK_OPTIONS, 0xAE5534E0, 0xA924, 0x466C, 0xB8, 0x36, 0x75, 0x85, 0x39, 0xA3, 0xEE, 0x3A);
 // {7619dcc9-fafe-11d9-b411-000476eba25f}
 DEFINE_GUID(GUID_WINDOWS_SETUP_BOOT_ENTRY, 0x7619dcc9, 0xfafe, 0x11d9, 0xb4, 0x11, 0x00, 0x04, 0x76, 0xeb, 0xa2, 0x5f);
-#else
+[[else]]
 NTSYSAPI GUID GUID_BAD_MEMORY_GROUP; // {badmemory}
 NTSYSAPI GUID GUID_BOOT_LOADER_SETTINGS_GROUP; // {bootloadersettings}
 NTSYSAPI GUID GUID_CURRENT_BOOT_ENTRY; // {current}
@@ -75,7 +75,7 @@ NTSYSAPI GUID GUID_WINDOWS_RESUME_TARGET_TEMPLATE_PCAT;
 NTSYSAPI GUID GUID_WINDOWS_SETUP_EFI;
 NTSYSAPI GUID GUID_WINDOWS_SETUP_PCAT;
 NTSYSAPI GUID GUID_WINDOWS_SETUP_RAMDISK_OPTIONS; // {ramdiskoptions}
-#endif
+[[endif]]
 
 typedef enum _BCD_MESSAGE_TYPE
 {
@@ -151,7 +151,7 @@ BcdExportStore(
     _In_ UNICODE_STRING BcdFilePath
     );
 
-#if (PHNT_VERSION > PHNT_WIN11)
+[[if]] (PHNT_VERSION > PHNT_WIN11)
 NTSYSAPI
 NTSTATUS
 NTAPI
@@ -160,7 +160,7 @@ BcdExportStoreEx(
     _In_ ULONG Flags,
     _In_ UNICODE_STRING BcdFilePath
     );
-#endif
+[[endif]]
 
 NTSYSAPI
 NTSTATUS
@@ -283,22 +283,22 @@ typedef enum _BCD_INHERITED_CLASS_TYPE
     BCD_INHERITED_CLASS_DEVICE
 } BCD_INHERITED_CLASS_TYPE;
 
-#define MAKE_BCD_OBJECT(ObjectType, ImageType, ApplicationType) \
+[[define]] MAKE_BCD_OBJECT(ObjectType, ImageType, ApplicationType) \
     (((ULONG)(ObjectType) << 28) | \
     (((ULONG)(ImageType) & 0xF) << 20) | \
     ((ULONG)(ApplicationType) & 0xFFFFF))
 
-#define MAKE_BCD_APPLICATION_OBJECT(ImageType, ApplicationType) \
+[[define]] MAKE_BCD_APPLICATION_OBJECT(ImageType, ApplicationType) \
     MAKE_BCD_OBJECT(BCD_OBJECT_TYPE_APPLICATION, (ULONG)(ImageType), (ULONG)(ApplicationType))
 
-#define GET_BCD_OBJECT_TYPE(DataType) \
+[[define]] GET_BCD_OBJECT_TYPE(DataType) \
     ((BCD_OBJECT_TYPE)(((((ULONG)DataType)) >> 28) & 0xF))
-#define GET_BCD_APPLICATION_IMAGE(DataType) \
+[[define]] GET_BCD_APPLICATION_IMAGE(DataType) \
     ((BCD_APPLICATION_IMAGE_TYPE)(((((ULONG)DataType)) >> 20) & 0xF))
-#define GET_BCD_APPLICATION_OBJECT(DataType) \
+[[define]] GET_BCD_APPLICATION_OBJECT(DataType) \
     ((BCD_APPLICATION_OBJECT_TYPE)((((ULONG)DataType)) & 0xFFFFF))
 
-#define BCD_OBJECT_OSLOADER_TYPE \
+[[define]] BCD_OBJECT_OSLOADER_TYPE \
     MAKE_BCD_APPLICATION_OBJECT(BCD_APPLICATION_IMAGE_BOOT_APPLICATION, BCD_APPLICATION_OBJECT_WINDOWS_BOOT_LOADER)
 
 typedef union _BCD_OBJECT_DATATYPE
@@ -335,7 +335,7 @@ typedef union _BCD_OBJECT_DATATYPE
 
 static_assert(sizeof(BCD_OBJECT_DATATYPE) == sizeof(ULONG), "sizeof(BCD_OBJECT_DATATYPE) is invalid.");
 
-#define BCD_OBJECT_DESCRIPTION_VERSION 0x1
+[[define]] BCD_OBJECT_DESCRIPTION_VERSION 0x1
 
 typedef struct _BCD_OBJECT_DESCRIPTION
 {
@@ -494,14 +494,14 @@ typedef enum _BCD_ELEMENT_DEVICE_TYPE
     BCD_ELEMENT_DEVICE_TYPE_COMPOSITE
 } BCD_ELEMENT_DEVICE_TYPE;
 
-#define MAKE_BCDE_DATA_TYPE(Class, Format, Subtype) \
+[[define]] MAKE_BCDE_DATA_TYPE(Class, Format, Subtype) \
     (((((ULONG)Class) & 0xF) << 28) | ((((ULONG)Format) & 0xF) << 24) | (((ULONG)Subtype) & 0x00FFFFFF))
 
-#define GET_BCDE_DATA_CLASS(DataType) \
+[[define]] GET_BCDE_DATA_CLASS(DataType) \
     ((BCD_ELEMENT_DATATYPE_CLASS)(((((ULONG)DataType)) >> 28) & 0xF))
-#define GET_BCDE_DATA_FORMAT(DataType) \
+[[define]] GET_BCDE_DATA_FORMAT(DataType) \
     ((BCD_ELEMENT_DATATYPE_FORMAT)(((((ULONG)DataType)) >> 24) & 0xF))
-#define GET_BCDE_DATA_SUBTYPE(DataType) \
+[[define]] GET_BCDE_DATA_SUBTYPE(DataType) \
     ((ULONG)((((ULONG)DataType)) & 0x00FFFFFF))
 
 typedef union _BCD_ELEMENT_DATATYPE
@@ -611,7 +611,7 @@ typedef struct _BCD_ELEMENT_BOOLEAN
     //BOOLEAN Pad; // sym
 } BCD_ELEMENT_BOOLEAN, *PBCD_ELEMENT_BOOLEAN;
 
-#define BCD_ELEMENT_DESCRIPTION_VERSION 0x1
+[[define]] BCD_ELEMENT_DESCRIPTION_VERSION 0x1
 
 typedef struct BCD_ELEMENT_DESCRIPTION
 {
@@ -2131,5 +2131,5 @@ typedef enum _BcdOSLoaderElementTypes
     BcdOSLoaderString_HypervisorDebuggerNetHostIpv6 = MAKE_BCDE_DATA_TYPE(BCD_ELEMENT_DATATYPE_CLASS_APPLICATION, BCD_ELEMENT_DATATYPE_FORMAT_STRING, 353),
 } BcdOSLoaderElementTypes;
 
-#endif
+[[endif]]
 ```
