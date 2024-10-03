@@ -1,4 +1,5 @@
 https://en.wikichip.org/wiki/intel/microarchitectures/alder_lake
+https://edc.intel.com/content/www/us/en/design/ipla/software-development-platforms/client/platforms/alder-lake-desktop/12th-generation-intel-core-processors-datasheet-volume-1-of-2/006/cpuid/
 
 | Core                                                                                                                                                      | Abbrev    | Platform | Target                                                                                              |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
@@ -33,3 +34,14 @@ Core i5	    Mid-range Performance	   10 (6+4) ✔	✔	✔	 ✔	 ✘
 Core i7	    High-end Performance	   12 (8+4)	✔	✔	✔	 ✔	 ✔
 Core i9	    Extreme Performance	       16 (8+8)	✔	✔	✔	 ✔	 ✔
 ```
+
+
+| SKU               | CPUID  | Extended Family<br><br>[27:20] | Extended Model<br><br>[19:16] | Processor Type<br><br>[13:12] | Family Code<br><br>[11:8] | Model Number<br><br>[7:4] | Stepping ID<br><br>[3:0] |
+| ----------------- | ------ | ------------------------------ | ----------------------------- | ----------------------------- | ------------------------- | ------------------------- | ------------------------ |
+| S-processor 8+8   | 90672h | 0x0                            | 0x9                           | 0x0                           | 0x6                       | 0x7                       | 0x2                      |
+| S-processor 6+0   | 90675h | 0x0                            | 0x9                           | 0x0                           | 0x6                       | 0x7                       | 0x5                      |
+| P-processor 6+8   | 906A3h | 0x0                            | 0x9                           | 0x0                           | 0x6                       | 0x7                       | 0x3                      |
+| H-processor 6+8   | 906A3h | 0x0                            | 0x9                           | 0x0                           | 0x6                       | 0x7                       | 0x3                      |
+| U15-processor 2+8 | 906A4h | 0x0                            | 0x9                           | 0x0                           | 0x6                       | 0x7                       | 0x4                      |
+| U9-processor 2+8  | 906A4h | 0x0                            | 0x9                           | 0x0                           | 0x6                       | 0x7                       | 0x4                      |
+

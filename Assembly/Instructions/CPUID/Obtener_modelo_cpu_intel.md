@@ -236,13 +236,40 @@ char* get_micro_arch_strings(micro_arch this_arch) {
 La siguiente estructura se usa para definir el modelo de ``CPU`` de forma redundante:
 ```c
 typedef struct cpu_model {
+    /*
+     * ID del descriptor string arch, este ID se usa para indicar
+     * con que string se define esta microarquitectura.
+     */
     uint32_t arch;
+    
+    /*
+     * core equivale al campo "Stepping ID", se puede intentar
+     * adivinar la conf de los cores usando este campo justo al resto.
+     */
     uint8_t  core;
 
+    /*
+     * El modelo extendido identifica normalmente la microarquitectura,
+     * a la que pertenece el modelo, el modelo se especifica mas abajo
+     * y junto al campo core se puede usar predecir la configuracion
+     * de los cores.
+     */
     uint8_t  extended_model:4;
+
+    /*
+     * El campo modelo puede variar entre procesadores de la misma 
+     * microarquitectura, pero suelen usar valores cercanos.
+     */
     uint8_t           model:4;
 
+    /*
+     * La familia extendia
+     */
     uint8_t extended_family:4;
+
+    /*
+     * Las familias abarcan normalmente un conjunto de microarquitecturas.
+     */
     uint8_t          family:4;
 } cpu_model;
 ```

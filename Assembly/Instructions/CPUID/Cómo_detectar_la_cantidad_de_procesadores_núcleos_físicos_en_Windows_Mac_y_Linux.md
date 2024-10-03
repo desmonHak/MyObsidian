@@ -118,7 +118,7 @@ int getNumCores(void) {
 }
 ```
 
-No basta con comprobar si una CPU Intel tiene ``hyperthreading``, también hay que comprobar si el ``hyperthreading`` está habilitado o deshabilitado. No hay ninguna forma documentada de comprobarlo. Un empleado de Intel ideó este truco para comprobar si el ``hyperthreading`` está habilitado: comprueba la cantidad de contadores de rendimiento programables utilizando [[CPUID(0xA)]].eax[15:8] y asume que si el valor es 8, el ``HT`` está deshabilitado, y si el valor es 4, el ``HT`` está habilitado (https://software.intel.com/en-us/forums/intel-isa-extensions/topic/831551).
+No basta con comprobar si una CPU Intel tiene ``hyperthreading``, también hay que comprobar si el ``hyperthreading`` está habilitado o deshabilitado. No hay ninguna forma documentada de comprobarlo. Un empleado de Intel ideó este truco para comprobar si el ``hyperthreading`` está habilitado: comprueba la cantidad de contadores de rendimiento programables utilizando [[CPUID(0xA)]].eax[15:8] y asume que si el valor es 8, el ``HT`` está deshabilitado, y si el valor es 4, el ``HT`` está habilitado (https://software.intel.com/en-us/forums/intel-isa-extensions/topic/831551). Al parecer en Alder lake no funcion, o al menos en el i7 13th kf
 
 No hay ningún problema en los chips ``AMD``: el [[CPUID]] informa 1 o 2 subprocesos por núcleo, dependiendo de si el ``multithreading`` simultáneo está deshabilitado o habilitado.
 

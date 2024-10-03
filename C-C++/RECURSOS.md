@@ -1,0 +1,1 @@
+https://graphics.stanford.edu/~seander/bithacks.html

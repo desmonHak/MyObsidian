@@ -10,7 +10,16 @@ Obtiene modelo y familia de la CPU
 | 31    28 | 27            20 | 19      16 | 15 14     | 13 12 | 11     8 | 7      4 | 3      0 |
 | -------- | ---------------- | ---------- | --------- | ----- | -------- | -------- | -------- |
 | Reserved | Extended family  | Extmodel   | Reserved2 | type  | familyid | model    | stepping |
-
+Valor de ejemplo ``0xB0671``, no se obtiene directamente de la instrucción CPUID, sino que es una representación condensada
+1. El valor 0xB0671 se construye de la siguiente manera:    
+    - Bits 0-3 (0001): Stepping ID
+    - Bits 4-7 (0111): Model Number
+    - Bits 8-11 (0110): Family Code
+    - Bits 12-13 (00): Processor Type
+    - Bits 16-19 (1011): Extended Model
+    - Bits 20-27 (00000011): Extended Family
+    
+2. En hexadecimal, esto se representa como 0xB0671.
 
 ##### AMD:
 
