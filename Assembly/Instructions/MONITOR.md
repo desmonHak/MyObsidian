@@ -23,50 +23,50 @@ El rango de direcciones debe utilizar memoria del tipo ``write-back``. Sólo la 
 
 La instrucción [[MONITOR]] se ordena como una operación de carga con respecto a otras transacciones de memoria. La instrucción está sujeta a la comprobación de permisos y fallos asociados a una carga de bytes. Al igual que una carga, [[MONITOR]] establece el ``bit A`` pero no el ``bit D`` en las tablas de páginas.
 
-[[CPUID(1)]]:ECX.[[MONITOR]][bit 3] indica la disponibilidad de [[MONITOR]] y [[MWAIT]] en el procesador. Cuando está activado, [[MONITOR]] sólo puede ejecutarse en el nivel de privilegio 0 (su uso en cualquier otro nivel de privilegio provoca una excepción de código de operación no válido). El sistema operativo o la ``BIOS`` del sistema pueden deshabilitar esta instrucción utilizando el [[MSR]] ``IA32_MISC_ENABLE``; al deshabilitar [[MONITOR]] se borra el indicador de función [[CPUID]] y la ejecución genera una excepción de código de operación no válido.
+[[CPUID(1)]]:``ECX``.[[MONITOR]][``bit 3``] indica la disponibilidad de [[MONITOR]] y [[MWAIT]] en el procesador. Cuando está activado, [[MONITOR]] sólo puede ejecutarse en el nivel de privilegio 0 (su uso en cualquier otro nivel de privilegio provoca una excepción de código de operación no válido). El sistema operativo o la ``BIOS`` del sistema pueden deshabilitar esta instrucción utilizando el [[MSR]] ``IA32_MISC_ENABLE``; al deshabilitar [[MONITOR]] se borra el indicador de función [[CPUID]] y la ejecución genera una excepción de código de operación no válido.
 
 El funcionamiento de la instrucción es el mismo en los modos que no son de ``64 bits`` y en el modo de 64 bits.
 
 ## Operation [¶](https://www.felixcloutier.com/x86/monitor#operation)
 [[MONITOR]] configura un rango de direcciones para el hardware del monitor utilizando el contenido de ``EAX`` (``RAX`` en modo de ``64 bits``) como una dirección efectiva y pone el hardware del monitor en estado armado. Siempre use memoria del tipo de caché de escritura diferida. Un almacenamiento en el rango de direcciones especificado activará el hardware del monitor. El contenido de ``ECX`` y ``EDX`` se utiliza para comunicar otra información al hardware del monitor.
 
-## [[modo-protegido]] Exceptions [¶](https://www.felixcloutier.com/x86/monitor#protected-mode-exceptions)
+## [[Assembly/MODOS/modo-protegido]] Exceptions [¶](https://www.felixcloutier.com/x86/monitor#protected-mode-exceptions)
 
 |                                                                                                     |                                                                         |
 | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| #GP(0)                                                                                              | If the value in EAX is outside the CS, DS, ES, FS, or GS segment limit. |
+| GP(0)                                                                                               | If the value in EAX is outside the CS, DS, ES, FS, or GS segment limit. |
 | If the DS, ES, FS, or GS register is used to access memory and it contains a NULL segment selector. |                                                                         |
 | If ECX ≠ 0.                                                                                        |                                                                         |
-| #SS(0)                                                                                              | If the value in EAX is outside the SS segment limit.                    |
-| #PF(fault-code)                                                                                     | For a page fault.                                                       |
-| #UD                                                                                                 | If CPUID.01H:ECX.MONITOR[bit 3] = 0.                                    |
+| SS(0)                                                                                               | If the value in EAX is outside the SS segment limit.                    |
+| PF(fault-code)                                                                                      | For a page fault.                                                       |
+| UD                                                                                                  | if [[CPUID]].[[CPUID(1)\|0x01]]:``ECX``.[[MONITOR]][``bit 3``] = 0.     |
 | If current privilege level is not 0.                                                                |                                                                         |
 
-## [[modo-real]] Mode Exceptions [¶](https://www.felixcloutier.com/x86/monitor#real-address-mode-exceptions)
+## [[Assembly/MODOS/modo-real]] Mode Exceptions [¶](https://www.felixcloutier.com/x86/monitor#real-address-mode-exceptions)
 
-|   |   |
-|---|---|
-|#GP|If the CS, DS, ES, FS, or GS register is used to access memory and the value in EAX is outside of the effective address space from 0 to FFFFH.|
-|If ECX ≠ 0.|
-|#SS|If the SS register is used to access memory and the value in EAX is outside of the effective address space from 0 to FFFFH.|
-|#UD|If CPUID.01H:ECX.MONITOR[bit 3] = 0.|
+|              |                                                                                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| GP           | If the CS, DS, ES, FS, or GS register is used to access memory and the value in EAX is outside of the effective address space from 0 to FFFFH. |
+| If ECX ≠ 0. |                                                                                                                                                |
+| SS           | If the SS register is used to access memory and the value in EAX is outside of the effective address space from 0 to FFFFH.                    |
+| UD           | if [[CPUID]].[[CPUID(1)\|0x01]]:``ECX``.[[MONITOR]][``bit 3``] = 0.                                                                            |
 
-## [[modo-virtual-8086]] Mode Exceptions [¶](https://www.felixcloutier.com/x86/monitor#virtual-8086-mode-exceptions)
+## [[Assembly/MODOS/modo-virtual-8086]] Mode Exceptions [¶](https://www.felixcloutier.com/x86/monitor#virtual-8086-mode-exceptions)
 
-|   |   |
-|---|---|
-|#UD|The MONITOR instruction is not recognized in virtual-8086 mode (even if CPUID.01H:ECX.MONITOR[bit 3] = 1).|
+|                                       |                                                                                                                                               |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| [UD](app://obsidian.md/index.html#UD) | The [[MONITOR]] instruction is not recognized in virtual-8086 mode (even if [[CPUID]].[[CPUID(1)\|0x01]]:``ECX``.[[MONITOR]][``bit 3``] = 1). |
 
 ## Compatibility Mode Exceptions [¶](https://www.felixcloutier.com/x86/monitor#compatibility-mode-exceptions)
 Same exceptions as in protected mode.
 
-##[[modo-largo]] Exceptions [¶](https://www.felixcloutier.com/x86/monitor#64-bit-mode-exceptions)
+## [[Assembly/MODOS/modo-largo]] Exceptions [¶](https://www.felixcloutier.com/x86/monitor#64-bit-mode-exceptions)
 
-|   |   |
-|---|---|
-|#GP(0)|If the linear address of the operand in the CS, DS, ES, FS, or GS segment is in a non-canonical form.|
-|If RCX ≠ 0.|
-|#SS(0)|If the SS register is used to access memory and the value in EAX is in a non-canonical form.|
-|#PF(fault-code)|For a page fault.|
-|#UD|If the current privilege level is not 0.|
-|If CPUID.01H:ECX.MONITOR[bit 3] = 0.|
+|                                      |                                                                                                       |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| GP(0)                                | If the linear address of the operand in the CS, DS, ES, FS, or GS segment is in a non-canonical form. |
+| If RCX ≠ 0.                         |                                                                                                       |
+| SS(0)                                | If the SS register is used to access memory and the value in EAX is in a non-canonical form.          |
+| PF(fault-code)                       | For a page fault.                                                                                     |
+| UD                                   | If the current privilege level is not 0.                                                              |
+| If CPUID.01H:ECX.MONITOR[bit 3] = 0. |                                                                                                       |

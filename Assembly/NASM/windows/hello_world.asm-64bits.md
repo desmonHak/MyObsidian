@@ -7,7 +7,7 @@ gcc hello_world.obj -o hello_world.exe -nostartfiles -luser32 -lgdi32 -luser32 -
 ```
 
 ```js
-default rel         ; Utiliza por defecto el direccionamiento relativo RIP como [rel msg].
+default rel         ; Utiliza por defecto el direccionamiento relativo RIP como [rel msg]
 
 section .data exec write
    msg: db "Hola mundo", 0xa, 0x0

@@ -30,7 +30,7 @@ Se vigila si nos salimos de los segmentos y se puede prohibir realizar determina
 
 # Direcciones lineales, lógicas y físicas
 ### [[Direcciones-Físicas]] 
-En [[modo-protegido]] se dispone de ``4Gb`` o ``2**32 bytes`` de espacio de direcciones físicas (**las que se ponen en el bus de direcciones**). Puede estar ocupado con memoria (``RAM``, ``ROM``) y/o con ``Entrada/Salida``. A partir de [[Pentium-Pro CR4.PAE=1]] activa ``una extensión del direccionamiento físico``, conocido como [[PAE]] que permite direccionar hasta ``64Gb`` (``2^36``).
+En [[Assembly/MODOS/modo-protegido]] se dispone de ``4Gb`` o ``2**32 bytes`` de espacio de direcciones físicas (**las que se ponen en el bus de direcciones**). Puede estar ocupado con memoria (``RAM``, ``ROM``) y/o con ``Entrada/Salida``. A partir de [[Pentium-Pro CR4.PAE=1]] activa ``una extensión del direccionamiento físico``, conocido como [[PAE]] que permite direccionar hasta ``64Gb`` (``2^36``).
 
 ### [[Direcciones-Lógicas-y-Lineales]]
 La **dirección lógica o virtual** se compone de un **selector de segmento** **y de un desplazamiento**. El **selector de segmento indexa en la [[GDT]]** (**o en la [[LDT]] actua**l) un descriptor de segmento. Una vez comprobado que el desplazamiento está en los límites del segmento y que tengamos nivel de privilegio suficiente para acceder **se le suma la dirección base y se obtiene la dirección lineal**. Para ``pasar de la dirección lineal a la dirección física está el mecanismo de la paginación``.
@@ -39,7 +39,7 @@ La **dirección lógica o virtual** se compone de un **selector de segmento** **
 # Selectores-descriptores-de-segmento
 ### [[Selectores-de-segmento]] véase [[registros-segmento-selectores-segmento]]
 El índice selecciona una de las ``8192`` (``2^14``) entradas (``máximo``) de la [[GDT]] y [[LDT]]. El indicador de tabla selecciona la tabla (se usará [[GDTR]] o [[LDTR]]). **[[RPL]] será el nivel de privilegio solicitado para acceder al segmento**. La **primera entrada de la [[GDT]]** se usa como **selector de segmento NULO**. Si intentamos acceder al segmento apuntado por él se producirá una excepción.
-![[Pasted image 20240905185250.png]]
+![[Pasted image 20240905185250.png]] ^57f7ab
 ### [[Registros de segmento]] véase [[registros-segmento-selectores-segmento]]
 [[CS]], [[DS]], [[ES]], [[FS]], [[GS]], [[SS]] de ``16 bits``. **Disponen de una parte oculta (``caché``) para acelerar las referencias a memoria**.
 ![[Pasted image 20240905185326.png]]

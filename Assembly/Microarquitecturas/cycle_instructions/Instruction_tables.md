@@ -7,7 +7,7 @@ que los valores publicados en otros lugares. Las discrepancias se pueden explica
 - Mis cifras se obtienen con un método de prueba particular en condiciones particulares. Es posible que se puedan obtener valores diferentes en otras condiciones.
 - Algunas latencias son difíciles o imposibles de medir con precisión, especialmente para el acceso a la memoria y las conversiones de tipos que no se pueden encadenar.
 - Las latencias para mover datos de una unidad de ejecución a otra se enumeran explícitamente en algunas de mis tablas, mientras que están incluidas en las latencias generales en algunas tablas publicadas por los proveedores de microprocesadores.
-La mayoría de los valores son los mismos en todos los modos de microprocesador ([[modo-real]], [[modo-virtual-8086]], [[modo-protegido]], 16 bits, 32 bits, 64 bits([[modo-largo]])).
+La mayoría de los valores son los mismos en todos los modos de microprocesador ([[Assembly/MODOS/modo-real]], [[Assembly/MODOS/modo-virtual-8086]], [[Assembly/MODOS/modo-protegido]], 16 bits, 32 bits, 64 bits([[Assembly/MODOS/modo-largo]])).
 Los valores para llamadas lejanas([[JMP FAR]]) e interrupciones([[INT]]) pueden ser diferentes en distintos modos. Las puertas de llamada no han sido probadas.
 Las instrucciones con un prefijo [[LOCK]] tienen una latencia larga que depende de la organización de la caché y posiblemente de la velocidad de la RAM. Si hay varios procesadores o núcleos o dispositivos de acceso directo a memoria ([[DMA]]), entonces todas las instrucciones bloqueadas bloquearán una línea de caché para acceso exclusivo, lo que puede implicar acceso a RAM. Un prefijo [[LOCK]] normalmente cuesta más de cien ciclos de reloj, incluso en sistemas de un solo procesador. Esto también se aplica a la instrucción [[XCHG]] con un operando de memoria.
 
@@ -66,8 +66,8 @@ probando si una instrucción o ``µop`` en particular puede ejecutarse simultán
 # Explicación de los conjuntos de instrucciones para procesadores x86
 - ``x86`` Este es el nombre del conjunto de instrucciones común, compatible con todos los procesadores de este linaje
 - [[i80186]] Esta es la primera extensión del conjunto de instrucciones ``x86``. Nuevas instrucciones de enteros: [[PUSH]] i, [[PUSHA]], [[POPA]], [[IMUL]] r,r,i, [[BOUND]], [[ENTER]], [[LEAVE]], desplaza y rota por ≠ 1 inmediato. 
-- [[i80286]] Instrucciones del sistema para el [[modo-protegido]] de 16 bits. 
-- [[i80386]] Los ocho [[Registros]] de propósito general se extienden de ``16`` a ``32 bits``. Direccionamiento de ``32 bits``. [[modo-protegido]] de ``32 bits``. Direccionamiento de índice escalado. [[MOVZX]], [[MOVSX]], [[IMUL]] r,r, [[SHLD]], [[SHRD]], [[BT]], [[BTR]], [[BTS]], [[BTC]], [[BSF]], [[BSR]], [[SET]]cc. 
+- [[i80286]] Instrucciones del sistema para el [[Assembly/MODOS/modo-protegido]] de 16 bits. 
+- [[i80386]] Los ocho [[Registros]] de propósito general se extienden de ``16`` a ``32 bits``. Direccionamiento de ``32 bits``. [[Assembly/MODOS/modo-protegido]] de ``32 bits``. Direccionamiento de índice escalado. [[MOVZX]], [[MOVSX]], [[IMUL]] r,r, [[SHLD]], [[SHRD]], [[BT]], [[BTR]], [[BTS]], [[BTC]], [[BSF]], [[BSR]], [[SET]]cc. 
 - [[i80486]] [[BSWAP]]. Las versiones posteriores tienen [[CPUID]]. 
 - [[x87]] Este es el conjunto de instrucciones de punto flotante. Se admite cuando hay un coprocesador ``8087`` o posterior. Algunos procesadores [[i80486]] y todos los procesadores desde ``Pentium``/``K5`` tienen soporte integrado para instrucciones de punto flotante sin la necesidad de un coprocesador. 
 - ``80287`` FSTSW AX 

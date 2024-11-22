@@ -34,7 +34,7 @@ El objetivo de usar una [[LDT]] es localizar los segmentos de este programa solo
 ### ¿Cómo se definen y se accede a las [[LDT]]?
 Una [[LDT]] es un `bloque de memoria (lineal)` de hasta `64K` de tamaño, al igual que la [[GDT]]. Se puede paginar a través del mecanismo estándar, por lo que se trata como una memoria normal en ese sentido. _La diferencia con la [[GDT]] está en los descriptores que puede almacenar y el método utilizado para acceder a ellos_.
 
-En el [[modo-protegido]], se utiliza un [[registros-segmento-selectores-segmento|selector de segmento]] ([[CS]], [[DS]], [[ES]], [[FS]], [[GS]], [[SS]]) para indexar un descriptor de una tabla de descriptores. El selector de segmentos de `16 bits` está formado por tres campos:
+En el [[Assembly/MODOS/modo-protegido]], se utiliza un [[registros-segmento-selectores-segmento|selector de segmento]] ([[CS]], [[DS]], [[ES]], [[FS]], [[GS]], [[SS]]) para indexar un descriptor de una tabla de descriptores. El selector de segmentos de `16 bits` está formado por tres campos:
 
 | Index           | T   | PL   |
 | --------------- | --- | ---- |

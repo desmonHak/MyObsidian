@@ -1,4 +1,4 @@
-
+https://learn.microsoft.com/es-es/virtualization/hyper-v-on-windows/tlfs/datatypes/hv_x64_segment_register
 En la arquitectura ``x86-64``, los registros de segmento [[FS]] y [[GS]] se utilizan a menudo para acceder a estructuras de datos específicas en la memoria. Estos registros son particularmente útiles para implementar el almacenamiento local de subprocesos ([[TLS]]), manejar datos por ``CPU`` o acceder a áreas de memoria específicas. En el contexto de ``Windows``, la manipulación de estos registros directamente desde el modo de usuario está restringida, a diferencia de ``Linux``, donde se pueden configurar mediante llamadas del sistema.
 
 Consideraciones específicas de ``Windows``

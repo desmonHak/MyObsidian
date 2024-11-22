@@ -2,7 +2,7 @@ https://wiki.osdev.org/Segmentation#Notes_Regarding_Pascal[FPC]
 
 Vea [[registros-segmento-selectores-segmento]], [[Descriptor-de-segmento]]
 
-## [[modo-real]]
+## [[Assembly/MODOS/modo-real]]
 En el [Modo real](https://wiki.osdev.org/Real_Mode "Modo real") se utiliza una dirección lógica en el formato `A:B` para direccionar la memoria. Esto se traduce en una dirección física utilizando la ecuación:
 ```c
 Dirección física = (A * 0x10) + B
@@ -63,17 +63,17 @@ Esto es exactamente lo mismo que un retorno lejano, salvo que el procesador extr
 
 Aparte de estos casos, ninguna instrucción altera el valor de [[CS]].
 
-## [[modo-protegido]]
-La [[segmentación]] se considera una técnica de protección de memoria obsoleta en [[modo-protegido]] tanto por los fabricantes de `CPU` como por la mayoría de los programadores. Ya no se admite en [[modo-largo]] (tal como era en [[modo-protegido]]), vea [[Recuperando-las-Call-Gates-Back]]. La información que se incluye aquí es necesaria para que funcione el [[modo-protegido]]; también se necesita [[GDT]] de `64 bits` para ingresar al [[modo-largo]] y los segmentos aún se usan para saltar del [[modo-largo]] al [[modo-real|modo de compatibilidad]] y viceversa. Si desea tomarse en serio el desarrollo de SO, le recomendamos enfáticamente usar el modelo de memoria plana y la [paginación](https://wiki.osdev.org/Paging "Paginación") como técnica de administración de memoria. Para obtener más información, consulte [x86-64](https://wiki.osdev.org/X86-64 "X86-64")._
+## [[Assembly/MODOS/modo-protegido]]
+La [[segmentación]] se considera una técnica de protección de memoria obsoleta en [[Assembly/MODOS/modo-protegido]] tanto por los fabricantes de `CPU` como por la mayoría de los programadores. Ya no se admite en [[Assembly/MODOS/modo-largo]] (tal como era en [[Assembly/MODOS/modo-protegido]]), vea [[Recuperando-las-Call-Gates-Back]]. La información que se incluye aquí es necesaria para que funcione el [[Assembly/MODOS/modo-protegido]]; también se necesita [[GDT]] de `64 bits` para ingresar al [[Assembly/MODOS/modo-largo]] y los segmentos aún se usan para saltar del [[Assembly/MODOS/modo-largo]] al [[Assembly/MODOS/modo-real|modo de compatibilidad]] y viceversa. Si desea tomarse en serio el desarrollo de SO, le recomendamos enfáticamente usar el modelo de memoria plana y la [paginación](https://wiki.osdev.org/Paging "Paginación") como técnica de administración de memoria. Para obtener más información, consulte [x86-64](https://wiki.osdev.org/X86-64 "X86-64")._
 
 _Lea más sobre [Tabla de descriptores globales](https://wiki.osdev.org/Global_Descriptor_Table "Tabla de descriptores globales")_
 
 En [Modo protegido](https://wiki.osdev.org/Protected_mode "Modo protegido"), se utiliza una dirección lógica en el formato `A:B` para direccionar la memoria. Al igual que en [Modo real](https://wiki.osdev.org/Real_Mode "Modo real"), A es la parte del segmento y B es el desplazamiento dentro de ese segmento. Los registros en modo protegido están limitados a `32 bits`. `32 bits` pueden representar cualquier número entero entre `0` y `4 GiB`.
 
-Como `B` puede ser cualquier valor entre `0` y `4 GiB`, nuestros segmentos ahora tienen un tamaño máximo de `4 GiB` (el mismo razonamiento que en [[modo-real]]).
+Como `B` puede ser cualquier valor entre `0` y `4 GiB`, nuestros segmentos ahora tienen un tamaño máximo de `4 GiB` (el mismo razonamiento que en [[Assembly/MODOS/modo-real]]).
 
 Ahora, la diferencia.
-En el [[modo-protegido]], `A` no es un valor absoluto para el segmento. En el [[modo-protegido]], `A` es un [[registros-segmento-selectores-segmento|selector]]. Un [[registros-segmento-selectores-segmento|selector]] representa un desplazamiento en una tabla del sistema denominada [Tabla de descriptores globales](https://wiki.osdev.org/Global_Descriptor_Table "Tabla de descriptores globales") ([[GDT]]). La [[GDT]] contiene una lista de descriptores. Cada uno de estos descriptores contiene información que describe las características de un segmento.
+En el [[Assembly/MODOS/modo-protegido]], `A` no es un valor absoluto para el segmento. En el [[Assembly/MODOS/modo-protegido]], `A` es un [[registros-segmento-selectores-segmento|selector]]. Un [[registros-segmento-selectores-segmento|selector]] representa un desplazamiento en una tabla del sistema denominada [Tabla de descriptores globales](https://wiki.osdev.org/Global_Descriptor_Table "Tabla de descriptores globales") ([[GDT]]). La [[GDT]] contiene una lista de descriptores. Cada uno de estos descriptores contiene información que describe las características de un segmento.
 
 Cada [[Descriptor-de-segmento|descriptor de segmento]] contiene la siguiente información:
 - La dirección base del segmento
@@ -90,7 +90,7 @@ Para los fines de esta explicación, solo me interesan tres cosas: la dirección
 
 Si el tipo de descriptor es claro (tipo de sistema), entonces el descriptor no está describiendo un segmento, sino uno de los mecanismos de compuerta especiales, dónde encontrar un [[LDT]] o un [[TSS]]. Estos no tienen nada que ver con el direccionamiento general, por lo que asumiré un tipo de descriptor de 1 (tipo de código/datos) y dejaré que lea los manuales de Intel para el resto.
 
-El segmento se describe por su dirección base y límite. ¿Recuerdas en [[modo-real]] donde el segmento era un área de `64k` en la memoria? La única diferencia aquí es que el tamaño del segmento no es fijo. La dirección base proporcionada por el descriptor es el comienzo del segmento, el límite es el desplazamiento máximo que el procesador permitirá antes de producir una excepción.
+El segmento se describe por su dirección base y límite. ¿Recuerdas en [[Assembly/MODOS/modo-real]] donde el segmento era un área de `64k` en la memoria? La única diferencia aquí es que el tamaño del segmento no es fijo. La dirección base proporcionada por el descriptor es el comienzo del segmento, el límite es el desplazamiento máximo que el procesador permitirá antes de producir una excepción.
 
 Por lo tanto, el rango de direcciones físicas en nuestro segmento de modo protegido es:
 ```c
@@ -102,13 +102,13 @@ Dirección física = Base del segmento (GDT[A]) + B
 ```
 **Base del segmento (que se obtiene a partir del descriptor [[GDT]][A])**
 
-Todas las demás reglas del [[modo-real]] siguen aplicándose.
+Todas las demás reglas del [[Assembly/MODOS/modo-real]] siguen aplicándose.
 ### Notas
 - Los segmentos pueden superponerse
 - [[CS]], [[DS]], [[ES]], [[FS]], [[GS]], [[SS]] son independientes entre sí
 - [[CS]] no se puede cambiar directamente
 
-En el [[modo-protegido]], [[CS]] también se puede cambiar a través del [[TSS]] o una compuerta.
+En el [[Assembly/MODOS/modo-protegido]], [[CS]] también se puede cambiar a través del [[TSS]] o una compuerta.
 
 ## Notas sobre `C`
 - La mayoría de los compiladores de `C` asumen un modelo de memoria plana.

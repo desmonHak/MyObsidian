@@ -63,23 +63,18 @@ Para obtener detalles adicionales sobre las extensiones [[MWAIT]], consulte el `
 
 Typically the MONITOR/MWAIT pair is used in a sequence, such as:
 
+```c
 EAX = Logical Address(Trigger)
-
 ECX = 0 (*Hints *)
-
 EDX = 0 (* Hints *)
 
 IF ( !trigger_store_happened) {
-
-MONITOR EAX, ECX, EDX
-
-IF ( !trigger_store_happened ) {
-
-MWAIT EAX, ECX
-
+	MONITOR EAX, ECX, EDX
+	IF ( !trigger_store_happened ) {
+		MWAIT EAX, ECX
+	}
 }
-
-}
+```
 
 The above code sequence makes sure that a triggering store does not happen between the first check of the trigger and the execution of the monitor instruction. Without the second check that triggering store would go un-noticed. Typical usage of MONITOR and MWAIT would have the above code sequence within a loop.
 
@@ -89,26 +84,26 @@ None.
 
 ## Protected Mode Exceptions [¶](https://www.felixcloutier.com/x86/mwait#protected-mode-exceptions)
 
-|   |   |
-|---|---|
-|#GP(0)|If ECX[31:1] ≠ 0.|
-|If ECX[0] = 1 and CPUID.05H:ECX[bit 1] = 0.|
-|#UD|If CPUID.01H:ECX.MONITOR[bit 3] = 0.|
-|If current privilege level is not 0.|
+|                                             |                                      |
+| ------------------------------------------- | ------------------------------------ |
+| GP(0)                                       | If ECX[31:1] ≠ 0.                   |
+| If ECX[0] = 1 and CPUID.05H:ECX[bit 1] = 0. |                                      |
+| UD                                          | If CPUID.01H:ECX.MONITOR[bit 3] = 0. |
+| If current privilege level is not 0.        |                                      |
 
 ## Real Address Mode Exceptions [¶](https://www.felixcloutier.com/x86/mwait#real-address-mode-exceptions)
 
-|   |   |
-|---|---|
-|#GP|If ECX[31:1] ≠ 0.|
-|If ECX[0] = 1 and CPUID.05H:ECX[bit 1] = 0.|
-|#UD|If CPUID.01H:ECX.MONITOR[bit 3] = 0.|
+|                                             |                                      |
+| ------------------------------------------- | ------------------------------------ |
+| GP                                          | If ECX[31:1] ≠ 0.                   |
+| If ECX[0] = 1 and CPUID.05H:ECX[bit 1] = 0. |                                      |
+| UD                                          | If CPUID.01H:ECX.MONITOR[bit 3] = 0. |
 
 ## Virtual 8086 Mode Exceptions [¶](https://www.felixcloutier.com/x86/mwait#virtual-8086-mode-exceptions)
 
-|   |   |
-|---|---|
-|#UD|The MWAIT instruction is not recognized in virtual-8086 mode (even if CPUID.01H:ECX.MONITOR[bit 3] = 1).|
+|     |                                                                                                          |
+| --- | -------------------------------------------------------------------------------------------------------- |
+| UD  | The MWAIT instruction is not recognized in virtual-8086 mode (even if CPUID.01H:ECX.MONITOR[bit 3] = 1). |
 
 ## Compatibility Mode Exceptions [¶](https://www.felixcloutier.com/x86/mwait#compatibility-mode-exceptions)
 
@@ -116,9 +111,9 @@ Same exceptions as in protected mode.
 
 ## 64-Bit Mode Exceptions [¶](https://www.felixcloutier.com/x86/mwait#64-bit-mode-exceptions)
 
-|   |   |
-|---|---|
-|#GP(0)|If RCX[63:1] ≠ 0.|
-|If RCX[0] = 1 and CPUID.05H:ECX[bit 1] = 0.|
-|#UD|If the current privilege level is not 0.|
-|If CPUID.01H:ECX.MONITOR[bit 3] = 0.|
+|                                             |                                          |
+| ------------------------------------------- | ---------------------------------------- |
+| GP(0)                                       | If RCX[63:1] ≠ 0.                       |
+| If RCX[0] = 1 and CPUID.05H:ECX[bit 1] = 0. |                                          |
+| UD                                          | If the current privilege level is not 0. |
+| If CPUID.01H:ECX.MONITOR[bit 3] = 0.        |                                          |

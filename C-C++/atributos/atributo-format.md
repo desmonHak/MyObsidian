@@ -5,7 +5,7 @@ El atributo `format` especifica que una función toma argumentos del estilo `pri
 ```c
 extern int
 my_printf (void *my_object, const char *my_format, ...)
-      __atributo__ ((format(printf, 2, 3)));
+      __attribute__ ((format(printf, 2, 3)));
 ```
 
 hace que el compilador compruebe si los argumentos de las llamadas a `my_printf` son consistentes con el argumento de cadena de formato estilo `printf` `my_format`.

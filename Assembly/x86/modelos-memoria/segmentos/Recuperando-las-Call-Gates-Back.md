@@ -13,7 +13,7 @@ Esto me llevó a analizar más a fondo cómo funcionaba [[UMS]] antes de que se 
 
 Lo que descubrí cambió por completo mi comprensión de la semántica del modo largo de ``64 bits`` y desafió muchas suposiciones que estaba haciendo; al consultar con otros expertos, parece que estaban tan sorprendidos como yo (¡incluso ``Mateusz`` "``j00ru``" ``Jurczyk`` no lo sabía!).
 
-A lo largo de esta publicación del blog, verá cómo los procesadores ``x64``, incluso cuando funcionan en ``modo de 64 bits``, véase [[modo-largo]]:
+A lo largo de esta publicación del blog, verá cómo los procesadores ``x64``, incluso cuando funcionan en ``modo de 64 bits``, véase [[Assembly/MODOS/modo-largo]]:
 
 - Aún admiten el uso de una ``tabla de descriptores locales`` ([[LDT]]) 
 - Aún admiten el uso de puertas de llamada([[Call-Gates]]), utilizando un nuevo formato de descriptor.
@@ -48,7 +48,7 @@ No puedo empezar a contar la cantidad de veces que he oído, visto y repetido yo
 
 Sin embargo, es evidente que ``Microsoft`` estaba prestando atención (¿lo solicitaron?). Como probablemente ya pueda adivinar, [[UMS]] aprovecha esta característica en particular (por eso solo está disponible en versiones ``x64`` de Windows). De hecho, el núcleo crea una ``tabla de descriptores locales`` [[LDT]] tan pronto como hay un subproceso [[UMS]] presente en el proceso.
 
-Esta fue mi segunda sorpresa, ya que no tenía idea de que las [[LDT]] todavía eran algo compatible al ejecutar código nativo de ``64 bits`` (es decir, "[[modo-largo]]"). Pero todavía lo son, por lo que agregar el bit ``TABLE_INDICATOR (TI) (0x4)`` en un segmento hará que el procesador lea la [[LDTR]] para recuperar la dirección base de la [[LDT]] y ``desreferenciar`` el segmento indicado por los otros bits.
+Esta fue mi segunda sorpresa, ya que no tenía idea de que las [[LDT]] todavía eran algo compatible al ejecutar código nativo de ``64 bits`` (es decir, "[[Assembly/MODOS/modo-largo]]"). Pero todavía lo son, por lo que agregar el bit ``TABLE_INDICATOR (TI) (0x4)`` en un segmento hará que el procesador lea la [[LDTR]] para recuperar la dirección base de la [[LDT]] y ``desreferenciar`` el segmento indicado por los otros bits.
 
 Veamos cómo podemos obtener nuestra propia [[LDT]] para un proceso.
 
@@ -83,7 +83,7 @@ Además, el ``VAD``, que permanece “``privado``” (y esto no se mostrará com
 - Borran la dirección superior de ``32 bits`` del registro de sombra de la dirección base [[GS]]
 - Cargan la dirección inferior de ``32 bits`` del registro de sombra de la dirección base [[GS]] con el contenido de la entrada de la tabla de descriptores en el selector dado
 
-Por lo tanto, la segmentación de estilo ``x86`` todavía es totalmente compatible cuando se trata de [[FS]] y [[GS]], incluso cuando se opera en [[modo-largo]], y anula la dirección base de ``64 bits`` almacenada en ``MSR_GS_BASE``. Sin embargo, debido a que no hay una entrada de ``tabla de descriptor de segmento`` de datos de ``64 bits``, solo se puede usar una dirección base de ``32 bits``, lo que requiere que el kernel realice esta compleja reasignación.
+Por lo tanto, la segmentación de estilo ``x86`` todavía es totalmente compatible cuando se trata de [[FS]] y [[GS]], incluso cuando se opera en [[Assembly/MODOS/modo-largo]], y anula la dirección base de ``64 bits`` almacenada en ``MSR_GS_BASE``. Sin embargo, debido a que no hay una entrada de ``tabla de descriptor de segmento`` de datos de ``64 bits``, solo se puede usar una dirección base de ``32 bits``, lo que requiere que el kernel realice esta compleja reasignación.
 
 Sin embargo, en ``Windows 10``, esta funcionalidad no está presente y, en su lugar, el kernel verifica la presencia de la característica de ``CPU FSGSBASE``. Si la característica está presente, no se crea una [[LDT]] en absoluto y, en su lugar, se aprovecha el hecho de que las aplicaciones en modo usuario pueden usar las instrucciones [[WRGSBASE]] y [[RDGSBASE]] para evitar tener que reasignar un [[TEB]] de`` < 4 GB``. Por otro lado, si la característica de ``CPU`` _no_ está disponible, siempre que el [[TEB]] real termine por debajo de los ``4 GB``, se _seguirá utilizando_ una [[LDT]].
 

@@ -4,30 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "ddf932e8599c5852",
+        "id": "63d091c2a7b4b09a",
         "type": "tabs",
         "children": [
           {
-            "id": "7cd48d686d5d2ce8",
+            "id": "f3be4cd409b78f9c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Assembly/x86/Registros.md",
+                "file": "Redes/x11-protcol/RECURSOS.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "RECURSOS"
             }
           },
           {
-            "id": "0c4adb0e0c52b342",
+            "id": "47c04873ac777cd4",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Redes/x11-protcol/X Window System Protocol.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "X Window System Protocol"
+            }
+          },
+          {
+            "id": "f96936295dc75095",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Assembly/cache/MESI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MESI"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -46,13 +69,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "mesi",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
             }
           },
           {
@@ -60,7 +85,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
             }
           },
           {
@@ -70,7 +97,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
             }
           }
         ],
@@ -78,7 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 266.5124969482422
+    "width": 342.5110321044922
   },
   "right": {
     "id": "21a07210af194487",
@@ -94,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Assembly/x86/Registros.md",
+                "file": "Assembly/NASM/definición de estructuras.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +131,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de definición de estructuras"
             }
           },
           {
@@ -111,10 +142,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Assembly/x86/Registros.md",
+                "file": "Assembly/NASM/definición de estructuras.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de definición de estructuras"
             }
           },
           {
@@ -125,7 +158,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
             }
           },
           {
@@ -134,8 +169,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Assembly/x86/Registros.md"
-              }
+                "file": "Assembly/NASM/definición de estructuras.md"
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de definición de estructuras"
             }
           },
           {
@@ -147,7 +184,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
             }
           }
         ],
@@ -160,6 +199,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-extract-pdf-highlights:PDF Highlights": false,
       "templates:Insertar plantilla": false,
       "graph:Abrir vista gráfica": false,
       "canvas:Crear nuevo lienzo": false,
@@ -167,60 +207,59 @@
       "switcher:Abrir selector rápido": false,
       "command-palette:Abrir paleta de comandos": false,
       "markdown-importer:Abrir el importador de Markdown": false,
-      "random-note:Abrir nota al azar": false,
-      "obsidian-extract-pdf-highlights:PDF Highlights": false
+      "random-note:Abrir nota al azar": false
     }
   },
-  "active": "7cd48d686d5d2ce8",
+  "active": "f96936295dc75095",
   "lastOpenFiles": [
-    "Assembly/x86/Registros.md",
-    "Assembly/x86/modelos-memoria/registros-segmento/CPL.md",
-    "Assembly/x86/modelos-memoria/segmentos/Descriptor-de-segmento.md",
-    "Assembly/x86/modelos-memoria/segmentos/segmentación.md",
-    "Assembly/x86/modelos-memoria/segmentos/registros-segmento-selectores-segmento.md",
-    "__thread.md",
+    "Assembly/cache/Cache-coherency-protocols.md",
+    "Assembly/cache/MESI.md",
+    "Crypto/XOR/Vulns.md",
+    "Assembly/MODOS/mirame.md",
+    "Crypto/XOR",
+    "Crypto",
+    "Redes/x11-protcol/X Window System Protocol.md",
+    "Redes/x11-protcol/RECURSOS.md",
+    "Redes/x11-protcol",
+    "Assembly/cache",
+    "Assembly/convenciones de llamadas/__fastcall.md",
+    "C-C++/punteros/punteros-opacos.md",
+    "CMD/variables-de-entorno.md",
+    "C-C++/punteros",
+    "malaware/Recursos.md",
+    "malaware/imagenes/Pasted image 20241122020639.png",
+    "SQL/Creando_tablas.md",
+    "SQL/Cargar_datos_en_una_tabla.md",
+    "C-C++/gdb/comandos.md",
+    "Linux/Montar-particiones.md",
+    "Assembly/Instructions/RDTSC.md",
     "Assembly/convenciones de llamadas/__msfastcall.md",
-    "Assembly/convenciones de llamadas/convenciones-de-llamadas.md",
-    "VirtualBox/Obtener_info_vm.md",
-    "Assembly/x86/Energia/S-State/S-State.md",
-    "VirtualBox/Listar_valores_CPUID.md",
-    "VirtualBox/Emular_CPU.md",
-    "VirtualBox/Cambiar_VM_EFI32.md",
-    "VirtualBox/Cambiar_nombre_cpu.md",
-    "VirtualBox/Cambiar_valores_CPUID.md",
-    "Assembly/Instructions/CPUID/Cómo_detectar_la_cantidad_de_procesadores_núcleos_físicos_en_Windows_Mac_y_Linux.md",
-    "Api-s-Windows/Win-api/SetProcessAffinityMask - Cambiar afinidad de un proceso.md",
-    "Api-s-Windows/Win-api/SetThreadSelectedCpuSetMasks.md",
-    "Assembly/x86/Interupciones/INT_0x2E.md",
-    "Api-s-Windows/Nt-api/NtSetInformationProcess.md",
-    "Api-s-Windows/WinInternals/Windows_7_8_8.1_or_10 MBR_Master_Boot_Record.md",
-    "Api-s-Windows/WinInternals",
-    "Api-s-Windows/Kernel/KiSystemService.md",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917015515.png",
-    "Assembly/x86/Interupciones",
-    "Assembly/Instructions/CPUID/CPUID(0xA).md",
-    "Assembly/Instructions/CPUID/CPUID(0xB).md",
-    "Assembly/Instructions/CPUID/CPUID(1).md",
-    "Python/type_hints.md",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917015425.png",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917015207.png",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014937.png",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014918.png",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014832.png",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240917014824.png",
-    "Assembly/x86/Energia/M-State",
-    "Assembly/x86/Energia/P-State",
-    "Assembly/x86/Energia/S-State",
-    "Assembly/x86/Imagenes/Pasted image 20240916231012.png",
-    "Assembly/x86/Energia/D-State",
-    "Assembly/x86/Energia",
-    "Assembly/x86/Energia/G-State",
-    "Assembly/x86/Imagenes/Pasted image 20240916225402.png",
-    "Assembly/x86/C-States/Sin título.canvas",
-    "Assembly/x86/Energia/C-States",
-    "Assembly/Instructions/CPUID/Imagenes/Pasted image 20240916224653.png",
-    "Assembly/Instructions/CPUID/Imagenes",
+    "Assembly/convenciones de llamadas/__regcall.md",
+    "Api-s-Windows/shellcodes/msgbox.md",
+    "WSL/acceder-carpetas-win-desde-lin.md",
+    "Api-s-Windows/Win-api/Net/Protocolos-soportados.md",
+    "WSL",
+    "Redes/UDP/QUIC/QUIC.md",
+    "Redes/TCP/MTU.md",
+    "Redes/UDP/QUIC",
+    "Redes/UDP",
+    "Redes/TCP/Ajuste de tamaño máximo de segmento TCP.md",
+    "Redes/TCP/MSS.md",
+    "CMD/comandos-raros.md",
+    "Redes/TCP",
+    "Redes",
+    "Erlang/Lenguaje.md",
+    "imagenes/Pasted image 20241103172216.png",
+    "imagenes/Pasted image 20241103172106.png",
+    "imagenes/Pasted image 20241102201514.png",
+    "imagenes/Pasted image 20241102195724.png",
+    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/wow64-arch.png",
+    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/winobj-base-named-objects.png",
+    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/winobj-alpc-port.png",
+    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/windows-process.png",
+    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/windows-security-components.png",
     "Assembly/1726494639918.canvas",
+    "Assembly/x86/C-States/Sin título.canvas",
     "Assembly/1726494487943.canvas",
     "Assembly/1726494628855.canvas",
     "Assembly/1726494569853.canvas",

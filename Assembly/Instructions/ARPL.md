@@ -23,9 +23,9 @@ Compara los campos [[RPL]] de dos selectores de segmento. El primer operando (op
 
 La instrucción A[[RPL]] está pensada para ser utilizada por procedimientos del sistema operativo (aunque también puede ser utilizada por aplicaciones). Generalmente se utiliza para ajustar el [[RPL]] de un [[Assembly/x86/GDT|selector de segmento]] que ha sido pasado al sistema operativo por un programa de aplicación para que coincida con el nivel de privilegio del programa de aplicación. Aquí el selector de segmento pasado al sistema operativo se coloca en el operando destino y el selector de segmento para el segmento de código del programa de aplicación se coloca en el operando fuente. (El campo [[RPL]] en el operando fuente representa el nivel de privilegio del programa de aplicación). La ejecución de la instrucción ARPL garantiza entonces que el [[RPL]] del selector de segmento recibido por el sistema operativo no es inferior (no tiene un privilegio superior) al nivel de privilegio del programa de aplicación (el selector de segmento para el segmento de código del programa de aplicación puede leerse de la pila tras una llamada a procedimiento).
 
-Esta instrucción se ejecuta como se describe en el modo de compatibilidad y en el modo heredado. No es codificable en el [[modo-largo|modo de 64 bits]].
+Esta instrucción se ejecuta como se describe en el modo de compatibilidad y en el modo heredado. No es codificable en el [[Assembly/MODOS/modo-largo|modo de 64 bits]].
 
-Consulte «``Comprobación de los privilegios de acceso del llamante``» en el Capítulo 3, «Gestión de memoria en [[modo-protegido]]», del ``Manual del desarrollador de software de arquitecturas Intel® 64 e IA-32``, ``Volumen 3A``, para obtener más información sobre el uso de esta instrucción.
+Consulte «``Comprobación de los privilegios de acceso del llamante``» en el Capítulo 3, «Gestión de memoria en [[Assembly/MODOS/modo-protegido]]», del ``Manual del desarrollador de software de arquitecturas Intel® 64 e IA-32``, ``Volumen 3A``, para obtener más información sobre el uso de esta instrucción.
 
 ## Operación [¶](https://www.felixcloutier.com/x86/arpl#operation)
 ```c

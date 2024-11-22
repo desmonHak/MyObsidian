@@ -248,12 +248,12 @@
 ^c5b559
 
 - ``Instrucción``: Nombre de la instrucción. cc significa cualquier código de condición. Por ejemplo, Jcc puede ser JB, JNE, etc.
-- ``Operandos``:
+- ``Operandos``: ^65fa53
 	- ``i`` = constante inmediata,
 	- ``r`` = cualquier registro,
 	- ``r32`` = registro de ``32 bits``, etc.,
 	- ``mm`` = registro mmx de ``64 bits``,
-	- ``xmm`` = registro xmm de ``128 bits``,
+	- ``xmm`` = registro xmm de ``128 bits``, ^4a7ba2
 	- ``sr`` = registro de segmento,
 	- ``m`` = cualquier operando de memoria, incluidos los operandos indirectos,
 	- ``m64`` significa operando de memoria de ``64 bits``, etc.

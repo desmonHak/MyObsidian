@@ -1,10 +1,10 @@
 https://wiki.osdev.org/Protected_Mode
 
-El [[modo-protegido]] es el modo operativo principal de los procesadores Intel modernos (y clones) desde el [[80286]] (`16 bits`) hasta la creación del [[modo-largo]]. En los [[i80386]] y posteriores, el [[modo-protegido]] de `32 bits` permite trabajar con varios espacios de direcciones virtuales, cada uno de los cuales tiene un máximo de `4 GB` de memoria direccionable; y permite que el sistema aplique una protección estricta de la memoria y de la `E/S` del hardware, así como que restrinja el conjunto de instrucciones disponible a través de anillos.
+El [[Assembly/modos de la cpu/modo-protegido]] es el modo operativo principal de los procesadores Intel modernos (y clones) desde el [[80286]] (`16 bits`) hasta la creación del [[Assembly/modos de la cpu/modo-largo]]. En los [[i80386]] y posteriores, el [[Assembly/modos de la cpu/modo-protegido]] de `32 bits` permite trabajar con varios espacios de direcciones virtuales, cada uno de los cuales tiene un máximo de `4 GB` de memoria direccionable; y permite que el sistema aplique una protección estricta de la memoria y de la `E/S` del hardware, así como que restrinja el conjunto de instrucciones disponible a través de anillos.
 
-Una `CPU` que se inicializa mediante el [[BIOS]] se inicia en [[modo-real]]. Al habilitar el [[modo-protegido]], se libera la potencia real de la `CPU`. Sin embargo, evitará que utilice la mayoría de las interrupciones del [[BIOS]], ya que estas funcionan en [[modo-real]] (a menos que también haya escrito un monitor [[V86]]([[modo-virtual-8086]])).
+Una `CPU` que se inicializa mediante el [[BIOS]] se inicia en [[Assembly/modos de la cpu/modo-real/modo-real]]. Al habilitar el [[Assembly/modos de la cpu/modo-protegido]], se libera la potencia real de la `CPU`. Sin embargo, evitará que utilice la mayoría de las interrupciones del [[BIOS]], ya que estas funcionan en [[Assembly/modos de la cpu/modo-real/modo-real]] (a menos que también haya escrito un monitor [[V86]]([[Assembly/modos de la cpu/modo-virtual-8086]])).
 ## Ingresar al modo protegido
-Antes de cambiar al [[modo-protegido]], debe:
+Antes de cambiar al [[Assembly/modos de la cpu/modo-protegido]], debe:
 - Deshabilitar las interrupciones, incluida [NMI](https://wiki.osdev.org/Non_Maskable_Interrupt "Interrupción no enmascarable") (como se sugiere en el Manual de desarrolladores de Intel).
 - Habilitar la [Línea A20](https://wiki.osdev.org/A20_Line "Línea A20")(vea [[Linea_A20]]).
 - Cargar la [Tabla de descriptores globales](https://wiki.osdev.org/Global_Descriptor_Table "Tabla de descriptores globales") con descriptores de segmento adecuados para código, datos y pila.

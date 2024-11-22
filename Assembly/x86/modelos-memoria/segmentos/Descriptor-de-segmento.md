@@ -37,8 +37,8 @@ Son **estructuras de datos** que se encuentran en la [[GDT]], [[LDT]] o [[IDT]] 
 		 Por ejemplo, el código en el [[ring-3]] puede realizar un salto lejano(`jmp far`) al código _conforme_ en un segmento del [[ring-2]]. El campo **DPL** representa el nivel de privilegio más alto que se permite para ejecutar el segmento. Por ejemplo, el código en el `ring 0` no puede realizar un salto lejano(`jmp far`) a un segmento de código conforme donde **DPL**`=2`, mientras que el código en los `ring 2 y 3` sí puede. Tenga en cuenta que el nivel de privilegio sigue siendo el mismo, es decir, un salto lejano(`jmp far`) desde el [[ring-3]] a un segmento con un **DPL**`=2` **permanece en el [[ring-3]] después del salto**.
 - ``P`` (``Present-segment``). Indica si el segmento está (``=1``) o no (``=0``) en memoria. **Permite un sistema de memoria virtual basado en la segmentación**.
 - ``D/B`` (``Default Operation Size/Default Stack Size``)  Indicador de tamaño.
-		- (``=1``) Direccionamiento ``32 bits`` y usa ``ESP``. define un segmento de [[modo-protegido]] de `32 bits`. Un [[GDT]] puede tener selectores de `16 y 32 bits` a la vez.
-		- (``=0``) Direccionamiento de ``16 bits`` y usa ``SP``. define un segmento de [[modo-protegido]] de `16 bits`.
+		- (``=1``) Direccionamiento ``32 bits`` y usa ``ESP``. define un segmento de [[Assembly/MODOS/modo-protegido]] de `32 bits`. Un [[GDT]] puede tener selectores de `16 y 32 bits` a la vez.
+		- (``=0``) Direccionamiento de ``16 bits`` y usa ``SP``. define un segmento de [[Assembly/MODOS/modo-protegido]] de `16 bits`.
 		
 - ``AVL`` (``Available to software``)
 - `S` (`Descriptor type bit`)
@@ -55,7 +55,7 @@ Son **estructuras de datos** que se encuentran en la [[GDT]], [[LDT]] o [[IDT]] 
 			- ``A`` ``Accesed``. Se ha accedido al segmento (``=1``). El S.O. lo usa y lo borra. 
 			- ``R`` ``Read Enable``. Se puede leer su contenido además de ejecutarlo (``=1``). 
 			- ``C`` ``Conforming``. Las transferencias de ejecución a segmentos conformados (``=1``) se pueden hacer manteniendo el nivel de privilegio actual.
-- `L`(`Long-mode`)Indicador de código de [[modo-largo]]. 
+- `L`(`Long-mode`)Indicador de código de [[Assembly/MODOS/modo-largo]]. 
 	- `L=`(**1**), el descriptor define un segmento de código de 64 bits. Cuando está activado, **DB** debe estar siempre vacío. 
 	- `L=`(0). Para cualquier otro tipo de segmento (otros tipos de código o cualquier segmento de datos), debe estar vacío (**0**).
 
@@ -72,20 +72,20 @@ Para obtener más información, consulte la **Sección 3.5: Tipos de descriptore
 | **P** | **DPL** | **S** | **Type** |
 - **Type:**  Tipo de segmento del sistema.
 
-Tipos disponibles en [[modo-protegido]] de `32 bits`:
+Tipos disponibles en [[Assembly/MODOS/modo-protegido]] de `32 bits`:
 - **0x1:** `16-bit` [[TSS]] (_Disponible_)
 - **0x2:** [[LDT]]
 - **0x3:** `16-bit` [[TSS]] (_Ocupado_)
 - **0x9:** `32-bit` [[TSS]] (_Disponible_)
 - **0xB:** `32-bit` [[TSS]] (_Ocupado_)
 
-Tipos disponibles en [[modo-largo]]:
+Tipos disponibles en [[Assembly/MODOS/modo-largo]]:
 - **0x2:** [[LDT]]
 - **0x9:** `64-bit` [[TSS]] (_Disponible_)
 - **0xB:** `64-bit` [[TSS]] (_Ocupado_)
 
-# Descriptor de Segmento de Sistema en [[modo-largo]]
-[[TSS]] (`segmento de estado de tarea`**[Task State Segment](https://wiki.osdev.org/Task_State_Segment "Task State Segment")**) o una [[LDT]](`tabla de descriptores locales`**[Local Descriptor Table](https://wiki.osdev.org/Local_Descriptor_Table "Local Descriptor Table")**) en [[modo-largo]], el formato de un [[Descriptor-de-segmento]] difiere para asegurar que el valor `Base` pueda contener una **Dirección Lineal** de `64 bits`. Ocupa el espacio en la tabla de dos entradas habituales, en formato `little endian`, de forma que la mitad inferior de esta entrada precede a la mitad superior en la tabla.
+# Descriptor de Segmento de Sistema en [[Assembly/MODOS/modo-largo]]
+[[TSS]] (`segmento de estado de tarea`**[Task State Segment](https://wiki.osdev.org/Task_State_Segment "Task State Segment")**) o una [[LDT]](`tabla de descriptores locales`**[Local Descriptor Table](https://wiki.osdev.org/Local_Descriptor_Table "Local Descriptor Table")**) en [[Assembly/MODOS/modo-largo]], el formato de un [[Descriptor-de-segmento]] difiere para asegurar que el valor `Base` pueda contener una **Dirección Lineal** de `64 bits`. Ocupa el espacio en la tabla de dos entradas habituales, en formato `little endian`, de forma que la mitad inferior de esta entrada precede a la mitad superior en la tabla.
 
 Para más información, véase el apartado 8.2.3: **[[TSS]] Descriptor in 64-bit Mode**(Descriptor [[TSS]] en modo de `64 bits`) y la Figura 8-4: **Format of [[TSS]] and [[LDT]] Descriptors in 64-bit Mode**(Formato de los descriptores [[TSS]] y [[LDT]] en modo de `64 bits`) del `Intel Software Developer Manual`, `Volume 3-A`. 
 
