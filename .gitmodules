@@ -1,0 +1,4 @@
+[submodule "Api-s-Windows/WinInternals/windows-internals"]
+	path = Api-s-Windows/WinInternals/windows-internals
+	url = https://github.com/ayoubfaouzi/windows-internals.git
+	branch = master
