@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Assembly/cache/MESI.md",
+                "file": "Git/error-al-actualizar-submodulos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MESI"
+              "title": "error-al-actualizar-submodulos"
             }
           }
         ],
@@ -212,8 +212,16 @@
   },
   "active": "f96936295dc75095",
   "lastOpenFiles": [
-    "Assembly/cache/Cache-coherency-protocols.md",
+    "Git/añadir-submodulos.md",
+    "Git/error-al-actualizar-submodulos.md",
+    "Git/crear-ramas.md",
+    "Git/Solucionar-agregar-directorios-como-archivos.md",
+    "Git/fusionar-ramas.md",
+    "Git/imagenes/Pasted image 20241201201923.png",
+    "Git/imagenes",
+    "Git/imagenes/Pasted image 20241130223848.png",
     "Assembly/cache/MESI.md",
+    "Assembly/cache/Cache-coherency-protocols.md",
     "Crypto/XOR/Vulns.md",
     "Assembly/MODOS/mirame.md",
     "Crypto/XOR",
@@ -240,15 +248,9 @@
     "Api-s-Windows/Win-api/Net/Protocolos-soportados.md",
     "WSL",
     "Redes/UDP/QUIC/QUIC.md",
-    "Redes/TCP/MTU.md",
     "Redes/UDP/QUIC",
     "Redes/UDP",
-    "Redes/TCP/Ajuste de tamaño máximo de segmento TCP.md",
-    "Redes/TCP/MSS.md",
-    "CMD/comandos-raros.md",
     "Redes/TCP",
-    "Redes",
-    "Erlang/Lenguaje.md",
     "imagenes/Pasted image 20241103172216.png",
     "imagenes/Pasted image 20241103172106.png",
     "imagenes/Pasted image 20241102201514.png",
@@ -256,8 +258,6 @@
     "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/wow64-arch.png",
     "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/winobj-base-named-objects.png",
     "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/winobj-alpc-port.png",
-    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/windows-process.png",
-    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/windows-security-components.png",
     "Assembly/1726494639918.canvas",
     "Assembly/x86/C-States/Sin título.canvas",
     "Assembly/1726494487943.canvas",
