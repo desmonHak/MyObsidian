@@ -35,3 +35,7 @@ git push --recurse-submodules=on-demand
 - Si tu submódulo apunta a un commit específico y no deseas cambiar esa referencia, puedes optar por usar `git push origin HEAD:<nombre-de-la-rama>` para forzar el envío desde el estado desconectado, aunque esto no es recomendado para un flujo de trabajo continuo.
 
 - Para evitar futuros problemas, asegúrate de que los submódulos siempre estén sincronizados con una rama activa en lugar de un commit específico. Esto puede facilitar el manejo de submódulos en repositorios complejos
+Para hacerlo a una rama especifica:
+```bash
+git push --recurse-submodules=on-demand origin 8086
+```

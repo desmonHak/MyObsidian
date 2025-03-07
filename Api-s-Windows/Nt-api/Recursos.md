@@ -21,3 +21,7 @@ Estructura del PEB y como obtenerlo: [[PEB]] [[PEB#^ab1f70]]
 
 Errores windows:
 https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-erref/596a1078-e883-4972-9bbc-49e60bebca55
+
+
+![[Pasted image 20241203002701.png]]
+https://ntdiff.github.io/#versionLeft=Win7%2Fx64%2FSystem32&filenameLeft=ntoskrnl.exe&typeLeft=Standalone%2F_KPCR&versionRight=Win10_1803_RS4%2Fx64%2FSystem32&filenameRight=ntoskrnl.exe&typeRight=Standalone%2F_KPCR

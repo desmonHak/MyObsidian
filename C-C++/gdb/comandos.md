@@ -21,3 +21,6 @@ o para una dirección en especifico:
 ```c
 b *0x000055555555546f
 ```
+
+Si un programa estalla, podemos correrlo con `run` y usar `bt`(backtrace) para ver las funciones llamadas
+![[Pasted image 20250125215328.png]]

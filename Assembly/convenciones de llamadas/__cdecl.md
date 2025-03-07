@@ -82,3 +82,6 @@ Con respecto a cómo devolver valores, algunos compiladores devuelven estructura
 En Linux, GCC establece el estándar de facto para las convenciones de llamada. Desde la versión 4.5 de GCC, la pila debe estar alineada a un límite de ``16 bytes`` cuando se llama a una función (las versiones anteriores sólo requerían una alineación de ``4 bytes``)[1][3].
 
 Una versión de cdecl se describe en [[System V ABI]] para sistemas ``i386``.[4]
+
+
+el registro ESI es un registro de propósito general preservado en la convención de llamadas stdcall en x86. Esto significa que, si una función modifica el contenido de ESI, debe asegurarse de restaurar su valor original antes de devolver el control al llamador.

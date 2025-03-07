@@ -201,26 +201,19 @@ git submodule update --remote --merge
 Este comando actualizará los submódulos y los mantendrá en la última versión de la rama `main` de cada uno. También fusionará los cambios si es necesario.
 
 Si deseas asegurarte de que se descargue siempre la rama `main` en lugar de cualquier otro commit específico, puedes ejecutar lo siguiente:
-
-bash
-
-Copiar código
-
-`git submodule foreach 'git checkout main'`
+```bash
+git submodule foreach 'git checkout main'
+```
 
 Este comando hará que todos los submódulos cambien a la rama `main`, si no están ya en ella.
 
 ### 3. **Hacer que el submódulo siempre siga la rama `main`**
-
 En los submódulos, Git puede recordar el commit exacto en el que se encuentran (en lugar de la rama). Para hacer que el submódulo siempre siga la rama `main`, debes agregar una configuración adicional en el repositorio principal para que los submódulos no se "desconecten" de la rama al hacer un `git pull`.
 
 1. Asegúrate de que la rama `main` esté configurada para ser la predeterminada para cada submódulo:
-
-bash
-
-Copiar código
-
-`git submodule foreach 'git fetch origin main && git checkout main && git pull origin main'`
+```bash
+git submodule foreach 'git fetch origin main && git checkout main && git pull origin main'
+```
 
 Este comando actualizará cada submódulo, descargará los últimos cambios y se asegurará de que esté en la rama `main` de cada uno.
 
@@ -229,38 +222,28 @@ Este comando actualizará cada submódulo, descargará los últimos cambios y se
 Finalmente, asegúrate de que las actualizaciones de los submódulos (si han cambiado a la rama `main`) se reflejan en el repositorio principal:
 
 1. Confirma y añade los cambios en el archivo `.gitmodules`:
-
-bash
-
-Copiar código
-
-`git add .gitmodules git commit -m "Update .gitmodules to track main branch for all submodules"`
+```bash
+git add .gitmodules 
+git commit -m "Update .gitmodules to track main branch for all submodules"
+```
 
 2. Luego, para cada submódulo que haya cambiado, confirma el nuevo commit que apunta a la rama `main`:
-
-bash
-
-Copiar código
-
-`git submodule update --remote git add <submodule_path> git commit -m "Update submodule to latest commit on main"`
-
+```bash
+git submodule update --remote git add <submodule_path> 
+git commit -m "Update submodule to latest commit on main"
+```
 Finalmente, empuja los cambios:
 
-bash
-
-Copiar código
-
-`git push --recurse-submodules=on-demand`
+```bash
+git push --recurse-submodules=on-demand
+```
 
 ### 5. **Verificar que todo esté actualizado**
 
 Verifica que los submódulos estén apuntando correctamente a las últimas versiones de la rama `main`:
-
-bash
-
-Copiar código
-
-`git submodule status`
+```bash
+git submodule status
+```
 
 Esto debería mostrarte los hashes de commit más recientes de la rama `main` para cada submódulo.
 
