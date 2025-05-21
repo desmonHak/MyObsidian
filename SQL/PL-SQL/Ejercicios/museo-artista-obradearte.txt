@@ -1,0 +1,124 @@
+--**************************************************
+--
+-- SCRIPT DE MUSEO, ARTISTA Y OBRAS DE ARTE
+--
+--**************************************************
+
+
+-- Borrar tablas Museo, Artista y ObraDeArte
+DROP TABLE Museo CASCADE CONSTRAINTS;
+DROP TABLE Artista CASCADE CONSTRAINTS;
+DROP TABLE ObraDeArte CASCADE CONSTRAINTS;
+
+-- Tabla Museo
+CREATE TABLE Museo (
+    MuseoID NUMBER,
+    Nombre VARCHAR2(100) NOT NULL,
+    Ubicacion VARCHAR2(100),
+    CONSTRAINT PK_Museo PRIMARY KEY (MuseoID)
+);
+
+-- Tabla Artista
+CREATE TABLE Artista (
+    ArtistaID NUMBER,
+    Nombre VARCHAR2(100) NOT NULL,
+    Nacionalidad VARCHAR2(50),
+    FechaNacimiento DATE,
+    CONSTRAINT PK_Artista PRIMARY KEY (ArtistaID)
+);
+
+-- Tabla ObraDeArte
+CREATE TABLE ObraDeArte (
+    ObraID NUMBER,
+    Titulo VARCHAR2(100) NOT NULL,
+    ArtistaID NUMBER,
+    AnioCreacion NUMBER,
+    MuseoID NUMBER,
+    CONSTRAINT PK_ObraDeArte PRIMARY KEY (ObraID),
+    CONSTRAINT fk_artista FOREIGN KEY (ArtistaID) REFERENCES Artista(ArtistaID),
+    CONSTRAINT fk_museo FOREIGN KEY (MuseoID) REFERENCES Museo(MuseoID)
+);
+
+-- Insertar registros en la tabla Museo
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (1, 'Museo del Prado', 'Madrid');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (2, 'Museo Reina Sofía', 'Madrid');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (3, 'Museo Guggenheim', 'Bilbao');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (4, 'Museo Thyssen-Bornemisza', 'Madrid');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (5, 'Museo Picasso', 'Málaga');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (6, 'Museo de Bellas Artes', 'Sevilla');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (7, 'Museo Nacional de Arte de Cataluña', 'Barcelona');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (8, 'Museo de Arte Abstracto Español', 'Cuenca');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (9, 'Museo de Arte Contemporáneo', 'Valencia');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (10, 'Museo de Arte Moderno', 'Zaragoza');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (11, 'Museo Sorolla', 'Madrid');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (12, 'Museo de Arte Romano', 'Mérida');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (13, 'Museo de Altamira', 'Santillana del Mar');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (14, 'Museo Nacional de Escultura', 'Valladolid');
+INSERT INTO Museo (MuseoID, Nombre, Ubicacion) VALUES (15, 'Museo del Greco', 'Toledo');
+
+-- Insertar registros en la tabla Artista
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (1, 'Pablo Picasso', 'Española', '25-10-1881');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (2, 'Salvador Dalí', 'Española', '11-05-1904');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (3, 'Francisco de Goya', 'Española', '30-03-1746');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (4, 'Diego Velázquez', 'Española', '06-06-1599');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (5, 'Joan Miró', 'Española', '20-04-1893');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (6, 'El Greco', 'Griega', '01-10-1541');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (7, 'Antoni Tàpies', 'Española', '13-12-1923');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (8, 'Eduardo Chillida', 'Española', '10-01-1924');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (9, 'Joaquín Sorolla', 'Española', '27-02-1863');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (10, 'Antoni Gaudí', 'Española', '25-06-1852');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (11, 'Bartolomé Esteban Murillo', 'Española', '31-12-1617');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (12, 'José de Ribera', 'Española', '12-01-1591');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (13, 'Juan Gris', 'Española', '23-03-1887');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (14, 'Luis Buñuel', 'Española', '22-02-1900');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (15, 'Mariano Fortuny', 'Española', '11-06-1838');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (16, 'Ramón Casas', 'Española', '04-01-1866');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (17, 'Santiago Rusiñol', 'Española', '25-02-1861');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (18, 'Isidre Nonell', 'Española', '30-11-1872');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (19, 'Francisco Zurbarán', 'Española', '07-11-1598');
+INSERT INTO Artista (ArtistaID, Nombre, Nacionalidad, FechaNacimiento) VALUES (20, 'Joaquín Torres García', 'Uruguaya', '28-07-1874');
+
+-- Insertar registros en la tabla ObraDeArte
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (1, 'Guernica', 1, 1937, 2);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (2, 'La persistencia de la memoria', 2, 1931, 2);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (3, 'El 3 de mayo de 1808', 3, 1814, 1);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (4, 'Las Meninas', 4, 1656, 1);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (5, 'El jardín de las delicias', NULL, 1500, 1);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (6, 'La masía', 5, 1922, 2);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (7, 'Vista de Toledo', 6, 1600, 15);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (8, 'Gran mural cerámico', 7, 1964, 7);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (9, 'Peine del viento', 8, 1977, 3);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (10, 'Paseo a orillas del mar', 9, 1909, 11);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (11, 'La Sagrada Familia', 10, 1882, 7);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (12, 'La Inmaculada Concepción', 11, 1678, 6);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (13, 'El martirio de San Felipe', 12, 1639, 14);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (14, 'Retrato de Pablo Picasso', 13, 1912, 2);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (15, 'Un perro andaluz', 14, 1929, 2);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (16, 'La batalla de Tetuán', 15, 1862, 1);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (17, 'Ramon Casas y Pere Romeu en un tándem', 16, 1897, 7);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (18, 'Café de Montmartre', 17, 1899, 7);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (19, 'La Paloma de la Paz', 1, 1949, 5);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (20, 'El niño de Vallecas', 4, 1645, 1);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (21, 'La mujer de la paloma', 18, 1905, 7);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (22, 'Bisonte de Altamira', NULL, -15000, 13);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (23, 'La dama de Elche', 20, -500, 14);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (24, 'San Jerónimo penitente', 19, 1639, 14);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (25, 'La Piedad', 19, 1633, 14);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (26, 'Cristo yacente', 19, 1640, 14);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (27, 'Cabeza de toro', 1, 1942, 5);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (28, 'El entierro del Conde de Orgaz', 6, 1586, 15);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (29, 'San Sebastián', 19, 1645, 14);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (30, 'La Adoración de los Reyes Magos', 19, 1638, 14);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (31, 'El sueño', 1, 1932, 5);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (32, 'Cristo de San Juan de la Cruz', 2, 1951, 2);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (33, 'Saturno devorando a su hijo', 3, 1823, 1);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (34, 'La fragua de Vulcano', 4, 1630, 1);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (35, 'El carnaval de Arlequín', 5, 1924, 2);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (36, 'El caballero de la mano en el pecho', 6, 1580, 15);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (37, 'Homenaje a Picasso', 7, 1981, 7);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (38, 'Elogio del horizonte', 8, 1990, 3);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (39, 'Triste herencia', 9, 1899, 11);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (40, 'Casa Batlló', 10, 1906, 7);
+INSERT INTO ObraDeArte (ObraID, Titulo, ArtistaID, AnioCreacion, MuseoID) VALUES (41, 'Constructivo en blanco y negro', 20, 1938, 9);
+COMMIT;
+

@@ -1,9 +1,16 @@
 Compilar sin optimizaciones:
 
 ```bash
-gcc -O0 hash_table.c -o  hash_table.exe -pg
+gcc -O0 hash_table.c -o  hash_table.exe -pg -fprofile-arcs -fprofile-arcs -g
 ```
 
+**Recomendaciones para una compilación detallada con gprof:**
+
+1. **Incluir la opción `-fprofile-arcs`:** Esta opción instruye al compilador para que agregue código que registre cómo se ejecutan las distintas ramas del programa, permitiendo un análisis más preciso del flujo de control.​
+    
+2. **Añadir la opción `-ftest-coverage`:** Junto con `-fprofile-arcs`, esta opción recopila información sobre la cobertura de código, es decir, qué partes del código se ejecutan durante la ejecución del programa.​[GCC](https://gcc.gnu.org/onlinedocs/gcc-13.2.0/gcc/Instrumentation-Options.html?utm_source=chatgpt.com)
+    
+3. **Mantener la opción `-pg`:** Esta opción es esencial para generar datos de perfil compatibles con gprof.
 Luego ejecutamos el ejecutable y generara un archivo `gmon.out`, este archivo se deberá analizar con `grpof`:
 ```bash
 gprof hash_table.exe gmon.out

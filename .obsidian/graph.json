@@ -2,18 +2,11 @@
   "collapse-filter": false,
   "search": "",
   "showTags": true,
-  "showAttachments": true,
+  "showAttachments": false,
   "hideUnresolved": true,
   "showOrphans": true,
   "collapse-color-groups": false,
   "colorGroups": [
-    {
-      "query": "path:Assembly/Instructions/CPUID  ",
-      "color": {
-        "a": 1,
-        "rgb": 7602762
-      }
-    },
     {
       "query": "path:Assembly/Microarquitecturas  ",
       "color": {
@@ -25,7 +18,7 @@
       "query": "path:Assembly  ",
       "color": {
         "a": 1,
-        "rgb": 16722342
+        "rgb": 8324684
       }
     },
     {
@@ -39,7 +32,7 @@
       "query": "path:Api-s-Windows  ",
       "color": {
         "a": 1,
-        "rgb": 16757596
+        "rgb": 8258050
       }
     },
     {
@@ -102,20 +95,55 @@
       "query": "path:VirtualBox  ",
       "color": {
         "a": 1,
-        "rgb": 13722880
+        "rgb": 5712384
+      }
+    },
+    {
+      "query": "path:Assembly/arm  ",
+      "color": {
+        "a": 1,
+        "rgb": 82262
+      }
+    },
+    {
+      "query": "path:XML-DTD  ",
+      "color": {
+        "a": 1,
+        "rgb": 13812857
+      }
+    },
+    {
+      "query": "path:WSL ",
+      "color": {
+        "a": 1,
+        "rgb": 5395168
+      }
+    },
+    {
+      "query": "path:Redes  ",
+      "color": {
+        "a": 1,
+        "rgb": 3735680
+      }
+    },
+    {
+      "query": "path:Java  ",
+      "color": {
+        "a": 1,
+        "rgb": 10696960
       }
     }
   ],
   "collapse-display": false,
   "showArrow": false,
   "textFadeMultiplier": -1.9,
-  "nodeSizeMultiplier": 0.647534246575342,
+  "nodeSizeMultiplier": 0.993229166666667,
   "lineSizeMultiplier": 1.19986301369863,
   "collapse-forces": false,
   "centerStrength": 0.418590998043053,
   "repelStrength": 10.1252446183953,
   "linkStrength": 0.737964774951076,
   "linkDistance": 347,
-  "scale": 0.13350511963348807,
+  "scale": 0.1533747744347004,
   "close": false
 }

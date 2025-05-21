@@ -1,0 +1,112 @@
+--**************************************************
+--
+-- SCRIPT DE CLIENTE, VEHICULO Y CITA
+--
+--**************************************************
+
+-- Eliminar tablas si existen previamente
+
+DROP TABLE CLIENTE CASCADE CONSTRAINTS;
+DROP TABLE VEHICULO CASCADE CONSTRAINTS;
+DROP TABLE CITA CASCADE CONSTRAINTS;
+
+-- Crear tabla CLIENTE
+CREATE TABLE CLIENTE (
+    cliente_id NUMBER,
+    nombre VARCHAR2(50) NOT NULL,
+    apellido VARCHAR2(50) NOT NULL,
+    telefono VARCHAR2(15),
+    email VARCHAR2(100),
+    CONSTRAINT pk_cliente PRIMARY KEY (cliente_id)
+);
+
+-- Crear tabla VEHICULO
+CREATE TABLE VEHICULO (
+    vehiculo_id NUMBER,
+    marca VARCHAR2(50) NOT NULL,
+    modelo VARCHAR2(50) NOT NULL,
+    anio NUMBER(4),
+    color VARCHAR2(20),
+    matricula VARCHAR2(20),
+    cliente_id NUMBER,
+    CONSTRAINT pk_vehiculo PRIMARY KEY (vehiculo_id),
+    CONSTRAINT fk_cliente FOREIGN KEY (cliente_id) REFERENCES CLIENTE(cliente_id)
+);
+
+-- Crear tabla CITA
+CREATE TABLE CITA (
+    cita_id NUMBER,
+    vehiculo_id NUMBER,
+    fecha_cita DATE NOT NULL,
+    descripcion VARCHAR2(255),
+    CONSTRAINT pk_cita PRIMARY KEY (cita_id),
+    CONSTRAINT fk_vehiculo FOREIGN KEY (vehiculo_id) REFERENCES VEHICULO(vehiculo_id)
+);
+
+-- Insertar datos de ejemplo en CLIENTE
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (1, 'Juan', 'Pérez', '612345678', 'juan.perez@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (2, 'María', 'Gómez', '623456789', 'maria.gomez@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (3, 'Carlos', 'López', '634567890', 'carlos.lopez@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (4, 'Ana', 'Martínez', '612345678', 'ana.martinez@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (5, 'Luis', 'Hernández', '623456789', 'luis.hernandez@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (6, 'Elena', 'García', '634567890', 'elena.garcia@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (7, 'Pedro', 'Sánchez', '645678901', 'pedro.sanchez@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (8, 'Sofía', 'Ramírez', '656789012', 'sofia.ramirez@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (9, 'Javier', 'Torres', '667890123', 'javier.torres@example.com');
+INSERT INTO CLIENTE (cliente_id, nombre, apellido, telefono, email) VALUES (10, 'Lucía', 'Morales', '678901234', 'lucia.morales@example.com');
+
+-- Insertar datos de ejemplo en VEHICULO
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (1, 'Toyota', 'Corolla', 2020, 'Rojo', 'ABC123', 1);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (2, 'Honda', 'Civic', 2019, 'Azul', 'DEF456', 2);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (3, 'Ford', 'Focus', 2021, 'Negro', 'GHI789', 3);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (4, 'Chevrolet', 'Cruze', 2018, 'Blanco', 'JKL012', 4);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (5, 'Nissan', 'Altima', 2022, 'Gris', 'MNO345', 5);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (6, 'Hyundai', 'Elantra', 2020, 'Verde', 'PQR678', 6);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (7, 'Kia', 'Rio', 2019, 'Amarillo', 'STU901', 7);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (8, 'Volkswagen', 'Jetta', 2021, 'Plateado', 'VWX234', 8);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (9, 'Mazda', '3', 2017, 'Rojo', 'YZA567', 9);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (10, 'Subaru', 'Impreza', 2020, 'Azul', 'BCD890', 10);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (11, 'BMW', 'Serie 3', 2019, 'Negro', 'EFG123', 1);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (12, 'Mercedes', 'Clase C', 2021, 'Blanco', 'HIJ456', 2);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (13, 'Audi', 'A4', 2022, 'Gris', 'KLM789', 3);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (14, 'Lexus', 'IS', 2020, 'Rojo', 'NOP012', 4);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (15, 'Tesla', 'Model 3', 2021, 'Negro', 'QRS345', 5);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (16, 'Volvo', 'S60', 2018, 'Azul', 'TUV678', 6);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (17, 'Peugeot', '308', 2019, 'Amarillo', 'WXY901', 7);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (18, 'Renault', 'Megane', 2020, 'Plateado', 'ZAB234', 8);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (19, 'Fiat', 'Punto', 2016, 'Verde', 'XYZ123', 2);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (20, 'Jeep', 'Compass', 2023, 'Naranja', 'LMN456', 5);
+INSERT INTO VEHICULO (vehiculo_id, marca, modelo, anio, color, matricula, cliente_id) VALUES (21, 'Porsche', 'Cayenne', 2022, 'Dorado', 'OPQ789', 10);
+
+-- Insertar datos de ejemplo en CITA
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (1, 1, TO_DATE('15-01-2024', 'DD-MM-YYYY'), 'Revisión de suspensión');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (2, 2, TO_DATE('20-01-2024', 'DD-MM-YYYY'), 'Revisión general');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (3, 3, TO_DATE('25-01-2024', 'DD-MM-YYYY'), 'Cambio de frenos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (4, 4, TO_DATE('30-01-2024', 'DD-MM-YYYY'), 'Alineación de ruedas');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (5, 5, TO_DATE('05-02-2024', 'DD-MM-YYYY'), 'Revisión general');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (6, 6, TO_DATE('10-02-2024', 'DD-MM-YYYY'), 'Cambio de frenos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (7, 7, TO_DATE('15-02-2024', 'DD-MM-YYYY'), 'Cambio de aceite');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (8, 8, TO_DATE('20-02-2024', 'DD-MM-YYYY'), 'Revisión general');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (9, 9, TO_DATE('25-02-2024', 'DD-MM-YYYY'), 'Cambio de frenos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (10, 10, TO_DATE('01-03-2024', 'DD-MM-YYYY'), 'Cambio de aceite');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (11, 11, TO_DATE('05-03-2024', 'DD-MM-YYYY'), 'Revisión general');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (12, 12, TO_DATE('10-03-2024', 'DD-MM-YYYY'), 'Cambio de frenos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (13, 13, TO_DATE('15-03-2024', 'DD-MM-YYYY'), 'Cambio de filtro de aire');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (14, 14, TO_DATE('20-03-2024', 'DD-MM-YYYY'), 'Revisión general');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (15, 15, TO_DATE('25-03-2024', 'DD-MM-YYYY'), 'Cambio de frenos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (16, 16, TO_DATE('30-03-2024', 'DD-MM-YYYY'), 'Cambio de aceite');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (17, 17, TO_DATE('05-04-2024', 'DD-MM-YYYY'), 'Revisión general');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (18, 18, TO_DATE('10-04-2024', 'DD-MM-YYYY'), 'Cambio de frenos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (19, 1, TO_DATE('15-04-2024', 'DD-MM-YYYY'), 'Alineación de ruedas');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (20, 2, TO_DATE('20-04-2024', 'DD-MM-YYYY'), 'Cambio de batería');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (21, 3, TO_DATE('25-04-2024', 'DD-MM-YYYY'), 'Reparación de luces');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (22, 4, TO_DATE('30-04-2024', 'DD-MM-YYYY'), 'Revisión de suspensión');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (23, 5, TO_DATE('05-05-2024', 'DD-MM-YYYY'), 'Cambio de filtro de aire');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (24, 2, TO_DATE('10-05-2024', 'DD-MM-YYYY'), 'Cambio de neumáticos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (25, 19, TO_DATE('15-05-2024', 'DD-MM-YYYY'), 'Revisión de motor');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (26, 5, TO_DATE('20-05-2024', 'DD-MM-YYYY'), 'Cambio de aceite y filtro');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (27, 20, TO_DATE('25-05-2024', 'DD-MM-YYYY'), 'Revisión de frenos');
+INSERT INTO CITA (cita_id, vehiculo_id, fecha_cita, descripcion) VALUES (28, 21, TO_DATE('30-05-2024', 'DD-MM-YYYY'), 'Revisión general');
+
+COMMIT;
+

@@ -11,7 +11,7 @@ struct _UNICODE_STRING
 }; 
 ```
 
-la macro ``RESB_size_t`` se usa para indicar que el miembro buffer es del tamaño de palabra de la CPU, esto implica que para una CPU de 16bits como el [[8086]] buffer será del tamaño de 16bits, mientras que para una CPU de 32bits como el procesador [[i80386]], esta será de 32bits. Puede encontrar esta macro en [[Macros]].
+la macro ``RESB_size_t`` se usa para indicar que el miembro buffer es del tamaño de palabra de la CPU, esto implica que para una CPU de 16bits como el [[8086]] buffer será del tamaño de 16bits, mientras que para una CPU de 32bits como el procesador [[i80386]], esta será de 32bits. Puede encontrar esta macro en [[Assembly/NASM/Macros]].
 
 ``RESB_int_16`` se usa para reservar 16bits.
 ```c
@@ -105,7 +105,7 @@ Volviendo al ejemplo inicial de `UNICODE_STRING`, primero declaremos el miembro 
 .Length:        resw 1
 .MaximumLength: resw 1
 ```
-Ahora el siguiente miembro es un ``Buffer`` de tipo `WCHAR*` debemos tener en cuenta aquí consideraciones. Todo valor que sea un puntero, será del mismo tamaño de palabra que la CPU, por lo tanto deberemos usar `resw` para 16bits, ``resd`` para 32bits, y `resq` para 64bits, para los campos que se han punteros. Por lo tanto a de tener cuidado si sus implementaciones son para CPU's donde esto pueda influir. La solución mas eficiente para no tener que preocuparnos por esto, es definir una macro tal como se hace en [[Macros]] para poder usar estos de forma dinámica:
+Ahora el siguiente miembro es un ``Buffer`` de tipo `WCHAR*` debemos tener en cuenta aquí consideraciones. Todo valor que sea un puntero, será del mismo tamaño de palabra que la CPU, por lo tanto deberemos usar `resw` para 16bits, ``resd`` para 32bits, y `resq` para 64bits, para los campos que se han punteros. Por lo tanto a de tener cuidado si sus implementaciones son para CPU's donde esto pueda influir. La solución mas eficiente para no tener que preocuparnos por esto, es definir una macro tal como se hace en [[Assembly/NASM/Macros]] para poder usar estos de forma dinámica:
 ```c
 %if __BITS__ == 64
 %define RESB_size_t       RESQ

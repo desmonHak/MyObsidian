@@ -1,0 +1,58 @@
+
+Aunque la subselect de error por que no exista, no se mostrara como tal
+```sql
+SELECT PROFESOR
+FROM PROFESOR
+WHERE EXISTS (
+	SELECT *
+	FROM PROFESOR
+	WHERE SALARIO = 1000
+)
+```
+
+
+# Subconsultas escalares
+```sql
+SELECT NUMPRO CODIGO, TITCUR TITULO, 
+(
+	CASE WHEN NUMPRO = (
+		SELECT NUMPRO
+		FROM PROFESOR
+		WHERE ESPPRO = 'Hardware' 
+	) THEN 'HARDWARE' ELSE 'OTROS' END
+) TIPO FROM CURSO;
+	-- Si aparece 'Hardware' se devuelve 'HARDWARE', en caso contraio devuelve 'OTROS'
+```
+
+# Subconsulta de conjunto(UNION, INTERSECT, MINUS)
+```sql
+SELECT NOMPRO
+FROM PROFESOR
+WHERE SALARIO = 1500
+UNION
+SELECT NUMPRO
+FROM PROFESOR
+WHERE ESPPRO 'WEB';
+```
+
+que cumplen ambas condiciones:
+```sql
+SELECT NOMPRO
+FROM PROFESOR
+WHERE SALARIO = 1500
+INTERSECT
+SELECT NUMPRO
+FROM PROFESOR
+WHERE ESPPRO 'WEB';
+```
+
+
+```sql
+SELECT NOMPRO
+FROM PROFESOR
+WHERE SALARIO = 1500
+MINUS
+SELECT NUMPRO
+FROM PROFESOR
+WHERE ESPPRO 'WEB';
+```

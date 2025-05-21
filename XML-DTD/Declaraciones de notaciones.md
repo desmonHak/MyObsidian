@@ -1,0 +1,1 @@
+Las notaciones se usan en ``XML`` para definir las entidades externas que no va a analizar el procesador ``XML`` (aunque sí lo hará la aplicación que trate un documento). Para hacer referencia estas entidades no se utiliza la notación habitual (``&nombreEntidad;``), sino que se utiliza el nombre de la entidad directamente.

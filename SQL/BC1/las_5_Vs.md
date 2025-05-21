@@ -1,0 +1,6 @@
+Las 5 V's
+	- **Volumen**: los conjuntos de datos de [[Big_Data]] son muy grandes. Pueden tener millones, miles de millones o incluso billones de registros. Esto podría ser terabytes, petabytes o incluso exabytes de información, a menudo generada en tiempo real
+	- **Velocidad**: los datos se generan a una velocidad sin precedentes. Publicaciones en redes sociales, datos de sensores y otras fuentes en tiempo real contribuyen al flujo constante de datos que deben procesarse rápidamente.
+	- **Variedad**: El [[Big_Data]] viene en diversos formatos. Incluye datos estructurados (como bases de datos), datos no estructurados (como texto) y datos semi-estructurados (como archivos XML). La diversidad de tipos de datos agrega complejidad al procesamiento y análisis.
+	- **Veracidad** se refiere al grado de fiabilidad y calidad de los datos, es decir, si están contrastados y completos. Los conjuntos de datos pueden ser inexactos o incompletos.
+	- **Valor** se refiere a la información útil que se puede extraer de los datos para tomar mejores decisiones, identificar tendencias y desarrollar nuevos productos y servicios.

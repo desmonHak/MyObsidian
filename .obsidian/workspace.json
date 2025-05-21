@@ -4,49 +4,45 @@
     "type": "split",
     "children": [
       {
-        "id": "63d091c2a7b4b09a",
+        "id": "6c193d15d7f835ea",
         "type": "tabs",
         "children": [
           {
-            "id": "f3be4cd409b78f9c",
+            "id": "2c804d3f5adbbcef",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Redes/x11-protcol/RECURSOS.md",
+                "file": "XML-DTD/DTD.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RECURSOS"
+              "title": "DTD"
             }
           },
           {
-            "id": "47c04873ac777cd4",
+            "id": "0f9a878bdcdb1721",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Redes/x11-protcol/X Window System Protocol.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "X Window System Protocol"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Vista gráfica"
             }
           },
           {
-            "id": "f96936295dc75095",
+            "id": "288618b0ba9ea691",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git/error-al-actualizar-submodulos.md",
+                "file": "XML-DTD/Declaraciones de atributos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "error-al-actualizar-submodulos"
+              "title": "Declaraciones de atributos"
             }
           }
         ],
@@ -69,8 +65,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mesi",
-                "matchingCase": false,
+                "query": "",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -96,10 +92,21 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "39737038d95a18b3",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Complemento no activo"
             }
           }
         ],
@@ -107,7 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 342.5110321044922
+    "width": 261.5
   },
   "right": {
     "id": "21a07210af194487",
@@ -123,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Assembly/NASM/definición de estructuras.md",
+                "file": "Assembly/convenciones de llamadas/__clrcall.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +140,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de definición de estructuras"
+              "title": "Enlaces entrantes de __clrcall"
             }
           },
           {
@@ -142,12 +149,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Assembly/NASM/definición de estructuras.md",
+                "file": "Assembly/convenciones de llamadas/__clrcall.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de definición de estructuras"
+              "title": "Enlaces salientes de __clrcall"
             }
           },
           {
@@ -169,10 +176,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Assembly/NASM/definición de estructuras.md"
+                "file": "Assembly/convenciones de llamadas/__clrcall.md"
               },
               "icon": "lucide-list",
-              "title": "Esquema de definición de estructuras"
+              "title": "Esquema de __clrcall"
             }
           },
           {
@@ -194,71 +201,72 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
       "obsidian-extract-pdf-highlights:PDF Highlights": false,
-      "templates:Insertar plantilla": false,
+      "switcher:Abrir selector rápido": false,
       "graph:Abrir vista gráfica": false,
       "canvas:Crear nuevo lienzo": false,
+      "templates:Insertar plantilla": false,
       "daily-notes:Abrir la nota de hoy": false,
-      "switcher:Abrir selector rápido": false,
       "command-palette:Abrir paleta de comandos": false,
       "markdown-importer:Abrir el importador de Markdown": false,
       "random-note:Abrir nota al azar": false
     }
   },
-  "active": "f96936295dc75095",
+  "active": "288618b0ba9ea691",
   "lastOpenFiles": [
-    "Git/añadir-submodulos.md",
-    "Git/error-al-actualizar-submodulos.md",
-    "Git/crear-ramas.md",
-    "Git/Solucionar-agregar-directorios-como-archivos.md",
-    "Git/fusionar-ramas.md",
-    "Git/imagenes/Pasted image 20241201201923.png",
-    "Git/imagenes",
-    "Git/imagenes/Pasted image 20241130223848.png",
-    "Assembly/cache/MESI.md",
-    "Assembly/cache/Cache-coherency-protocols.md",
-    "Crypto/XOR/Vulns.md",
-    "Assembly/MODOS/mirame.md",
-    "Crypto/XOR",
-    "Crypto",
-    "Redes/x11-protcol/X Window System Protocol.md",
-    "Redes/x11-protcol/RECURSOS.md",
-    "Redes/x11-protcol",
-    "Assembly/cache",
-    "Assembly/convenciones de llamadas/__fastcall.md",
-    "C-C++/punteros/punteros-opacos.md",
-    "CMD/variables-de-entorno.md",
-    "C-C++/punteros",
-    "malaware/Recursos.md",
-    "malaware/imagenes/Pasted image 20241122020639.png",
-    "SQL/Creando_tablas.md",
-    "SQL/Cargar_datos_en_una_tabla.md",
-    "C-C++/gdb/comandos.md",
-    "Linux/Montar-particiones.md",
-    "Assembly/Instructions/RDTSC.md",
-    "Assembly/convenciones de llamadas/__msfastcall.md",
-    "Assembly/convenciones de llamadas/__regcall.md",
-    "Api-s-Windows/shellcodes/msgbox.md",
-    "WSL/acceder-carpetas-win-desde-lin.md",
-    "Api-s-Windows/Win-api/Net/Protocolos-soportados.md",
-    "WSL",
-    "Redes/UDP/QUIC/QUIC.md",
-    "Redes/UDP/QUIC",
-    "Redes/UDP",
-    "Redes/TCP",
-    "imagenes/Pasted image 20241103172216.png",
-    "imagenes/Pasted image 20241103172106.png",
-    "imagenes/Pasted image 20241102201514.png",
-    "imagenes/Pasted image 20241102195724.png",
-    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/wow64-arch.png",
-    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/winobj-base-named-objects.png",
-    "Api-s-Windows/WinInternals/windows-internals/windows-internals-6th-ed/assets/winobj-alpc-port.png",
+    "XML-DTD/Ejemplo1.md",
+    "XML-DTD/Declaración de elementos.md",
+    "XML-DTD/Declaraciones de atributos.md",
+    "XML-DTD/Declaraciones de notaciones.md",
+    "XML-DTD/DTD.md",
+    "XML-DTD/Declaraciones de entidades.md",
+    "SQL/libro_editorial2.md",
+    "SQL/TCL.md",
+    "SQL/Subconsultas.md",
+    "SQL/Secuencias.md",
+    "SQL/Recolecion_info.md",
+    "SQL/provincias.sql.md",
+    "SQL/Peculiaridades SQL.md",
+    "SQL/Normas.md",
+    "SQL/libro_editorial2.sql",
+    "SQL/libro_editorial.md",
+    "SQL/Formula-1.dmd",
+    "SQL/EXISTS, UNION, INTERSECT, MINUS.md",
+    "SQL/Examen BD 1ª eval - resuelto.pdf",
+    "SQL/Dar_Y_QUITAR_PERMISOS.md",
+    "SQL/CreateUsers.md",
+    "SQL/BC2_Diseño de bases de datos relacionales - Anexo Instalación de Oracle.pdf",
+    "SQL/Consultas/TrabajoMonumentos/BC3. Ejercicio Monumentos CyL-DavidLópezTomuta.md",
+    "SQL/Consultas/TrabajoMonumentos/BC3. Ejercicio Monumentos CyL.pdf",
+    "SQL/Consultas/TrabajoMonumentos/msoD9AF.tmp",
+    "SQL/Consultas/TrabajoMonumentos/msoD615.tmp",
+    "SQL/Consultas/TrabajoMonumentos/~WRL0001.tmp",
+    "SQL/Consultas/TrabajoMonumentos/~WRD0000.tmp",
+    "SQL/Consultas/TrabajoMonumentos/~$3. Ejercicio Monumentos CyL-DavidLópezTomuta.docx",
+    "SQL/Consultas/TrabajoMonumentos/Relational_1.png",
+    "SQL/Consultas/TrabajoMonumentos/Logical.png",
+    "SQL/PL-SQL/Deberes/BC4_2. Juego de preguntas y respuestas en ORACLE/BC4_2. Juego de preguntas y respuestas en ORACLE.md",
+    "SQL/PL-SQL/Deberes/BC4_1. Identidades en ORACLE/BC4_1-Identidades-en-ORACLE.md",
+    "SQL/PL-SQL/Ejercicios/Loteria.md",
+    "SQL/PL-SQL/Ejercicios/Extras.md",
+    "SQL/PL-SQL/Ejercicios/BC4_Ejercicios_9-Procedimientos y funcionesCamping.md",
+    "SQL/PL-SQL/Ejercicios/BC4_Ejercicios_8-Procedimientos y funcionesBiblioteca.md",
+    "SQL/PL-SQL/Ejercicios/BC4_Ejercicios_4 -Bucles.md",
+    "SQL/MongoDB/imagenes/Pasted image 20250313105542.png",
+    "SQL/MongoDB/imagenes/Pasted image 20250313105320.png",
+    "SQL/MongoDB/imagenes/Pasted image 20250313105102.png",
+    "SQL/MongoDB/imagenes/Pasted image 20250313104924.png",
+    "SQL/MongoDB/imagenes/Pasted image 20250313104236.png",
+    "SQL/MongoDB/imagenes/Pasted image 20250313103952.png",
+    "SQL/MongoDB/imagenes/Pasted image 20250313103753.png",
+    "SQL/MongoDB/imagenes/Pasted image 20250313103609.png",
     "Assembly/1726494639918.canvas",
+    "Sin título.canvas",
     "Assembly/x86/C-States/Sin título.canvas",
     "Assembly/1726494487943.canvas",
     "Assembly/1726494628855.canvas",
@@ -266,7 +274,6 @@
     "Api-s-Windows/Nt-api/NtosKrnl.exe/1726494308846.canvas",
     "Assembly/NASM/windows/1726494246900.canvas",
     "Assembly/NASM/windows/1726494217431.canvas",
-    "Assembly/NASM/windows/1726494202719.canvas",
-    "Assembly/NASM/windows/1726494203055.canvas"
+    "Assembly/NASM/windows/1726494202719.canvas"
   ]
 }

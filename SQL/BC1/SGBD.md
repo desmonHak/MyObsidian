@@ -1,0 +1,25 @@
+Tipos de [[SGBD]]: 
+- Según el modelo lógico en el que se basan 
+	- Jerárquico 
+	- En red 
+	- **Relacional** 
+	- Objeto-relacional 
+	- Orientado a objetos 
+- Número de usuarios 
+	- Monousuario 
+	- Multiusuario 
+	
+- Número de sitios 
+	- Centralizado 
+	- Distribuido
+- Ámbito de aplicación 
+	- Propósito general
+	- Propósito específico 
+- Tipos de datos 
+	- Sistemas relacionales estándar 
+	- XML 
+	- Objeto-relacionales 
+	- Orientados a objetos 
+- Lenguajes soportados 
+	- SQL estándar 
+	- NoSQL o nuevo lenguaje de consulta

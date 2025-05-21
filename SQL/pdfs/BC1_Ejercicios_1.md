@@ -1,0 +1,4 @@
+```c
+343w4f#Julia#Rodrigez#Martinez#643667393$343w4A#Marta#Iglesias#Alonso#643627793$3ut24b#Juan Martín#Moreno#Martinez#643623393$34j24c#Antonio#Vidal#Sánchez#643627493$34324d#Daniela#Ruiz#Marín#643637393$3d324e#Juan Sebastián#Ramírez#Ramírez#643627393$3mn24g#Diego#González#Ortiz#643628393$34324h#Juan José#Molina#Rubio#643927393$343z4i#Juan Pablo#Rodrigez#Martinez#643627390$34324j#Marcelo#Castro#Serrano#643627103$34324k#Jesus#Díaz#Gil#643777353$3432al#Aladin#López#López#643628993$%
+```
+Lecturas secuencial, se a de hacer lectura lineal para indexar un registro, no como en [[BC1_Ejercicios_2]] donde se puede acceder directamente al registro deseado.
